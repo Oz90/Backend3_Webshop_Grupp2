@@ -73,7 +73,15 @@ föreläsningen med Torbjörn om Agil projektform). Det slutgiltiga projektet sk
 ett fullstack projekt på GitHub. Datum för sista redovisningsdag presenteras på
 studentportalen.</td></tr></table>
 
-### Tech
+## Tech Stack
 - [MongoDB][mongodb ref]
+- [ExpressJS][express ref]
+- [ReactJS][react ref]
+- [NodeJS][node ref]
+- [Tutorial: How to set up a MERN project][tutorial ref]
 
 [mongodb ref]: https://docs.mongodb.com/
+[express ref]: https://expressjs.com/en/starter/installing.html
+[react ref]: https://reactjs.org/docs/getting-started.html
+[node ref]: https://nodejs.org/en/
+[tutorial ref]: https://www.mongodb.com/languages/mern-stack-tutorial
