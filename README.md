@@ -1,5 +1,12 @@
-# Backend3_Webshop_Grupp2
-## Nackademin Backend 3 - Fullstack School Project
+# Nackademin Backend 3 - Fullstack Webshop Project
+
+## Table of Contents
+<ol>
+<li><a href="https://github.com/Oz90/Backend3_Webshop_Grupp2#group-members">Group Members</a></li>
+<li><a href="https://github.com/Oz90/Backend3_Webshop_Grupp2#trello">Trello</a></li>
+<li><a href="https://github.com/Oz90/Backend3_Webshop_Grupp2#specification-of-requirements-swedish">Specification of Requirements (Swedish)</a></li>
+<li><a href="https://github.com/Oz90/Backend3_Webshop_Grupp2#tech-stack">Tech Stack</a></li>
+</ol>
 
 ## Group Members
 <h3 align="center">
