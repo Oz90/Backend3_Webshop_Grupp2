@@ -2,7 +2,7 @@
 ## Fullstack School Project
 
 ## Group Members
-* Albind
+* Albin
 * Daniel
 * Erika
 * Jimmy
@@ -10,9 +10,9 @@
 * Sarmad
 * Özgür
 
-[Trello for our project][reference text]
+[Trello for our project][trello ref]
 
-[reference text]: https://trello.com/b/RiE1kXST/backend-3-webshop-grupp-2
+[trello ref]: https://trello.com/b/RiE1kXST/backend-3-webshop-grupp-2
 
 ## Specification of Requirements (Swedish)
 <table><tr><td>
