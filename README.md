@@ -1,5 +1,5 @@
 # Backend3_Webshop_Grupp2
-## Fullstack School Project
+## Nackademin Backend 3 - Fullstack School Project
 
 ## Group Members
 * Albin
