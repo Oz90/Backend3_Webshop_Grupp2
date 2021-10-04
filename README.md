@@ -2,13 +2,21 @@
 ## Nackademin Backend 3 - Fullstack School Project
 
 ## Group Members
-* Albin
-* Daniel
-* Erika
-* Jimmy
-* Mathilde
-* Sarmad
-* Özgür
+<h3 align="center">
+  <a href="https://github.com/Flibben">Albin</a>
+  •
+  <a href="https://github.com/d-c-k">Daniel</a>
+  •
+  <a href="https://github.com/ErikaAhlstrom">Erika</a>
+  •
+  <a href="https://github.com/RickardssonJ">Jimmy</a>
+  •
+  <a href="https://github.com/Mathilde-akerlind">Mathilde</a>
+  •
+  <a href="https://github.com/Semthan">Sarmad</a>
+  •
+  <a href="https://github.com/Oz90">Özgür</a>
+  </h3>
 
 ## Trello
 [Trello for our project][trello ref]
