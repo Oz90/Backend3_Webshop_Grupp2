@@ -10,6 +10,12 @@ exports.getSingleProduct = async (req, res) => {
   res.status(200).json(product);
 };
 
+exports.deleteSingleProduct = async (req, res) => {
+  const productId = req.params.id;
+
+  await Product.findByIdAndDelete(productId);
+};
+
 exports.addProduct = async (req, res) => {
   const images = [];
   const image1 = req.body.image1;
