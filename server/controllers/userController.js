@@ -1,6 +1,6 @@
 const User = require("./../models/UserModel");
 
-exports.createUser = (req, res) => {
+exports.createUser = async (req, res) => {
   const fullAddress = {
     address: req.body.address,
     city: req.body.city,
@@ -16,6 +16,9 @@ exports.createUser = (req, res) => {
     fullAddress: fullAddress
   };
 
-  const user = new User(newUser);
-  user.save().then(user => res.json(user));
+  //   const user = new User(newUser);
+  //   user.save().then(user => res.json(user));
+  const user = await new User(newUser);
+  user.save();
+  res.status(200).json(user);
 };
