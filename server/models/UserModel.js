@@ -13,15 +13,15 @@ const userSchema = new Schema(
       city: { type: String },
       zipcode: { type: String }
     },
-    currentCart: {
-      type: Schema.Types.ObjectId,
-      ref: "Cart"
-    },
+    // currentCart: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Cart"
+    // },
     isAdmin: {
       type: Boolean,
       default: false
-    },
-    orders: { type: Array, required: true }
+    }
+    // orders: { type: Array, required: true }
   },
   {
     timestamps: true
