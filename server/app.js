@@ -14,11 +14,12 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var productsRouter = require("./routes/products");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const productsRouter = require("./routes/products");
+const adminRouter = require("./routes/admin");
 
-var app = express();
+const app = express();
 
 //Middlewares
 app.use(
@@ -36,5 +37,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
+app.use("/admin", adminRouter);
 
 module.exports = app;
