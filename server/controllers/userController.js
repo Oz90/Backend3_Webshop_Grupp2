@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 
 
-exports.createUser = async (req, res) => {
+exports.createUser = async (req, res, next) => {
   try {
   
     const { fullName, displayName, email, password, phoneNumber, city, address, zipcode} = req.body;
@@ -68,3 +68,56 @@ exports.createUser = async (req, res) => {
 
 
 };
+
+exports.loginUser = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validations
+    if(!email || !password) {
+      return res
+        .status(400)
+        .json({errorMessage: "Please fill in all required fields"})
+    }
+
+    const existingUser = await User.findOne({email});
+
+    if(!existingUser) {
+      return res
+        .status(401)
+        .json({errorMessage: "Wrong email or password."})
+    }
+      const passwordCorrect = await bcrypt.compare(
+      password, 
+      existingUser.password
+    ); 
+
+   if(!passwordCorrect) {
+        return res
+        .status(401)
+        .json({errorMessage: "Wrong email or password."})
+    } 
+
+      // sign the token
+      const token = jwt.sign(
+        {
+        user: existingUser._id
+        }, 
+      process.env.JWT_SECRET
+      );
+
+      console.log(token);
+
+      // send the token in a HTTP only cookie
+      res
+        .cookie("token", token, {
+          httpOnly: true
+        })
+        .send();
+
+
+  } catch(err) {
+    console.error(err);
+    res.status(500).send();
+  }
+}
