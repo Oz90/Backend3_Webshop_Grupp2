@@ -51,7 +51,7 @@ exports.registerUser = async (req, res, next) => {
         {
           user: savedUser._id
         },
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET_USER
         )
         
       res.
@@ -98,23 +98,40 @@ exports.loginUser = async (req, res, next) => {
         .json({errorMessage: "Wrong email or password."})
     } 
 
-      // sign the token
+    if(existingUser.isAdmin) {
+      console.log("Admin")
       const token = jwt.sign(
         {
         user: existingUser._id
         }, 
-      process.env.JWT_SECRET
+      process.env.JWT_SECRET_ADMIN
+      )
+
+      res
+        .cookie("token", token, {
+          httpOnly: true
+        })
+        .send();
+    }
+
+    if(!existingUser.isAdmin) {
+      console.log("Not Admin")
+      const token = jwt.sign(
+        {
+        user: existingUser._id
+        }, 
+      process.env.JWT_SECRET_USER
       );
-
-      console.log(token);
-
-      // send the token in a HTTP only cookie
       res
         .cookie("token", token, {
           httpOnly: true
         })
         .send();
 
+    }
+    
+
+      // send the token in a HTTP only cookie
 
   } catch(err) {
     console.error(err);
