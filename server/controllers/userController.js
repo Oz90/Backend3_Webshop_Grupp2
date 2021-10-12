@@ -1,5 +1,7 @@
 const User = require("./../models/UserModel");
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
+
 
 
 exports.createUser = async (req, res) => {
@@ -40,9 +42,24 @@ exports.createUser = async (req, res) => {
         "password": passwordHash,
       });
 
-      const savedUser = await newUser.save();
-      res.status(200).json(savedUser);
+      // save user to db
 
+      const savedUser = await newUser.save();
+      
+      // sign the token
+      const token = jwt.sign(
+        {
+          user: savedUser._id
+        },
+        process.env.JWT_SECRET
+        )
+        
+      res.
+        cookie("token", token, {
+          httpOnly: true
+        })
+        .send();
+      
   } catch(err) {
 
     console.error("Register:", err);
