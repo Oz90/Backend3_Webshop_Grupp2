@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 
 
-exports.createUser = async (req, res, next) => {
+exports.registerUser = async (req, res, next) => {
   try {
   
     const { fullName, displayName, email, password, phoneNumber, city, address, zipcode} = req.body;
@@ -120,4 +120,13 @@ exports.loginUser = async (req, res, next) => {
     console.error(err);
     res.status(500).send();
   }
+}
+
+exports.logoutUser = (req, res, next) => {
+  res
+    .cookie("token", "", {
+      httpOnly: true,
+      expires: new Date(0),
+    })
+    .send();
 }
