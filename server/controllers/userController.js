@@ -1,9 +1,11 @@
 const User = require("./../models/UserModel");
+const bcrypt = require('bcryptjs');
+
 
 exports.createUser = async (req, res) => {
   try {
   
-    const newUser = { fullName, displayName, email, password, phoneNumber, city, address, zipcode} = req.body;
+    const { fullName, displayName, email, password, phoneNumber, city, address, zipcode} = req.body;
 
 
     // Validations
@@ -24,9 +26,22 @@ exports.createUser = async (req, res) => {
       }
 
       // Hash the password
+      const salt = await bcrypt.genSalt();
+      const passwordHash = await bcrypt.hash(password, salt)
 
+      const newUser = await new User({
+        fullName, 
+        displayName, 
+        phoneNumber,
+        address,
+        city,
+        zipcode,
+        email,
+        "password": passwordHash,
+      });
 
-      res.send(newUser);
+      const savedUser = await newUser.save();
+      res.status(200).json(savedUser);
 
   } catch(err) {
 
@@ -34,9 +49,5 @@ exports.createUser = async (req, res) => {
     res.status(500).send();
   }
 
-  //   const user = new User(newUser);
-  //   user.save().then(user => res.json(user));
-/*   const user = await new User(newUser);
-  user.save();
-  res.status(200).json(user); */
+
 };
