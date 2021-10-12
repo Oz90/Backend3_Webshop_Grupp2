@@ -33,6 +33,10 @@ exports.addProduct = async (req, res) => {
 
 
 exports.editProduct = async (req, res) => {
+  try {
+
+  const id = req.params.id;
+
   const images = [];
   const image1 = req.body.image1 ? req.body.image1 : "defaultimage.jpg";
   const image2 = req.body.image2 ? req.body.image2 : "defaultimage2.jpg";
@@ -44,14 +48,19 @@ exports.editProduct = async (req, res) => {
     description: req.body.description,
     price: req.body.price,
     category: req.body.category,
-    weight: req.body.weight,
     manufacturer: req.body.manufacturer,
     thumbnail: req.body.thumbnail,
     images: images
-  };
+  }
 
-  const product = await new Product(newProduct);
-  product.save();
-  res.status(200).json(product);
+  await Product.findOneAndUpdate(id, newProduct, {new: true}) 
+  
+  res.status(200).json("Updated");
+
+  } catch(err) {
+      console.error(err)
+      res.status(500).send()
+  }
+  
 };
 
