@@ -8,5 +8,6 @@ router
 
 router
   .get("/:id", orderController.getSingleOrder)
+  .post("/:id", orderController.toggleIsShipped)
 
 module.exports = router;

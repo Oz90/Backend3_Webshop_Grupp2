@@ -36,7 +36,19 @@ exports.getSingleOrder = async (req, res) => {
 
 
 
-exports.editOrder = (req, res) => {
+exports.toggleIsShipped = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+    const order = await Order.findById(orderId)
+    await Order.findByIdAndUpdate(orderId, {
+      isShipped: order.isShipped ? false : true
+    });
+    res.status(200).json(order.isShipped);
+  }
+  catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
 
 };
 
