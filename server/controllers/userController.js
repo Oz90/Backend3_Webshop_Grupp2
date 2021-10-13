@@ -160,25 +160,23 @@ exports.addToCart = async (req, res, next) => {
   try {
     const productId = req.params.id
     const userId = req.body.userId
-    console.log("UserID: ", userId)
     const amount = req.body.amount
   
     const user = await User.findById(userId)
-    // TODO om användarens cart e tom bara lägg till dirr
-    console.log("USER: ", user._id)
 
+    //lägg till det som kommer in direkt
     const newProducts = [
       {"_id": productId, 
       "amount": amount}
     ];
-
-    console.log("INKOMMANDE PRODUCT ARRAY:", newProducts)
+    // lägger in allt som inte är samma pr id som kommer in
     for (let i = 0; i < user.cart.length; i++){
       if(productId != user.cart[i]._id) {
         newProducts.push(user.cart[i])
       }
     } 
     
+    // Lägger till hela newproducts ist för olika mongoose queries
     const newUser = await User.findByIdAndUpdate(
       userId,
       {$set: {cart: newProducts}},
@@ -191,7 +189,3 @@ exports.addToCart = async (req, res, next) => {
     res.status(500).send()
   }
 }
-
-// 61668e82da96b1ae5f88197e
-
-//61668e82da96b1ae5f881981
