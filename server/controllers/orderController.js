@@ -15,7 +15,6 @@ exports.addOrder = async (req, res) => {
     newOrder.save();
     res.send(newOrder);
 
-
   } catch (err) {
     console.error(err)
     res.status(500).send(err)
@@ -23,13 +22,33 @@ exports.addOrder = async (req, res) => {
 
 };
 
-exports.getSingleOrder = (req, res) => {
+exports.getSingleOrder = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+    const order = await Order.findById(orderId);
+    res.status(200).json(order);
+  }
+  catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
+};
+
+
+
+exports.editOrder = (req, res) => {
 
 };
 
 
-exports.getAllOrders = (req, res) => {
-
+exports.getAllOrders = async (req, res) => {
+  try {
+    const allOrders = await Order.find({})
+    res.status(200).json(allOrders);
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
 
 
 };
