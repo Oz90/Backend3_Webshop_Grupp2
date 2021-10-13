@@ -157,44 +157,39 @@ exports.logoutUser = (req, res, next) => {
 }
 
 exports.addToCart = async (req, res, next) => {
-  // try {
-  //   const productId = req.params.id
-  //   const userId = req.body.userId
-  //   const amount = req.body.amount
-  //   const product = await Product.findById(productId)
-  //   const productObj = {
-  //     _id: productId,
-  //     amount: amount,
-  //   }
-  //   const user = await User.findById(userId)
-  //   const productArray = user.cart.filter((item) => {
-  //     if (item._id == productId) {
-  //       item.amount = amount
-  //       return item
-  //     }
-  //     console.log(item._id == productId)
-  //   })
-  //   console.log(exist)
-  //   if (productArray.length === 0) {
-  //     console.log("Är === 0")
-  //     const newUser = await User.findOneAndUpdate(
-  //       { _id: userId },
-  //       { $push: { cart: productObj } },
-  //       { new: true }
-  //     )
-  //     res.status(200).json(newUser)
-  //   } else {
-  //     const newUser = await User.findOneAndUpdate(
-  //       { _id: userId, _id: productId },
-  //       { $set: { cart: { amount: amount, _id: productId } } },
-  //       { new: true }
-  //     )
-  //     res.status(200).json(newUser)
-  //   }
-  // } catch (err) {
-  //   console.error(err)
-  //   res.status(500).send()
-  // }
+  try {
+    const productId = req.params.id
+    const userId = req.body.userId
+    console.log("UserID: ", userId)
+    const amount = req.body.amount
+  
+    const user = await User.findById(userId)
+    // TODO om användarens cart e tom bara lägg till dirr
+    console.log("USER: ", user._id)
+
+    const newProducts = [
+      {"_id": productId, 
+      "amount": amount}
+    ];
+
+    console.log("INKOMMANDE PRODUCT ARRAY:", newProducts)
+    for (let i = 0; i < user.cart.length; i++){
+      if(productId != user.cart[i]._id) {
+        newProducts.push(user.cart[i])
+      }
+    } 
+    
+    const newUser = await User.findByIdAndUpdate(
+      userId,
+      {$set: {cart: newProducts}},
+      { new: true }
+    )
+    res.status(200).json(newUser)
+    
+  } catch (err) {
+    console.error(err)
+    res.status(500).send()
+  }
 }
 
 // 61668e82da96b1ae5f88197e
