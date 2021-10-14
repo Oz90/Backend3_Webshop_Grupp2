@@ -1,9 +1,10 @@
-const User = require("./../models/UserModel")
-const Product = require("./../models/ProductModel")
-const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
+const User = require("./../models/UserModel");
+const Product = require("./../models/ProductModel");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.registerUser = async (req, res, next) => {
+  console.log(req.body);
   try {
     const {
       fullName,
@@ -13,8 +14,8 @@ exports.registerUser = async (req, res, next) => {
       phoneNumber,
       city,
       address,
-      zipcode,
-    } = req.body
+      zipcode
+    } = req.body;
 
     // Validations
 
@@ -30,25 +31,25 @@ exports.registerUser = async (req, res, next) => {
     ) {
       return res
         .status(400)
-        .json({ errorMessage: "Please fill in all required fields" })
+        .json({ errorMessage: "Please fill in all required fields" });
     }
 
     if (password.length < 6) {
       return res.status(400).json({
-        errorMessage: "Please enter a password with at least 6 characters.",
-      })
+        errorMessage: "Please enter a password with at least 6 characters."
+      });
     }
 
-    const existingUser = await User.findOne({ email })
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
-        errorMessage: "This email already exists",
-      })
+        errorMessage: "This email already exists"
+      });
     }
 
     // Hash the password
-    const salt = await bcrypt.genSalt()
-    const passwordHash = await bcrypt.hash(password, salt)
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = await new User({
       fullName,
@@ -58,123 +59,143 @@ exports.registerUser = async (req, res, next) => {
       city,
       zipcode,
       email,
-      password: passwordHash,
-    })
+      password: passwordHash
+    });
 
     // save user to db
 
-    const savedUser = await newUser.save()
+    const savedUser = await newUser.save();
 
     // sign the token
     const token = jwt.sign(
       {
-        user: savedUser._id,
+        user: savedUser._id
       },
       process.env.JWT_SECRET_USER
-    )
+    );
 
     res
       .cookie("token", token, {
-        httpOnly: true,
+        httpOnly: true
       })
-      .send()
+      .send();
   } catch (err) {
-    console.error("Register:", err)
-    res.status(500).send()
+    console.error("Register:", err);
+    res.status(500).send();
   }
-}
+};
 
 exports.loginUser = async (req, res, next) => {
+  console.log(req.body);
+
   try {
-    const { email, password } = req.body
+    const { email, password } = req.body;
 
     // Validations
     if (!email || !password) {
       return res
         .status(400)
-        .json({ errorMessage: "Please fill in all required fields" })
+        .json({ errorMessage: "Please fill in all required fields" });
     }
 
-    const existingUser = await User.findOne({ email })
+    const existingUser = await User.findOne({ email });
 
     if (!existingUser) {
-      return res.status(401).json({ errorMessage: "Wrong email or password." })
+      return res.status(401).json({ errorMessage: "Wrong email or password." });
     }
     const passwordCorrect = await bcrypt.compare(
       password,
       existingUser.password
-    )
+    );
 
     if (!passwordCorrect) {
-      return res.status(401).json({ errorMessage: "Wrong email or password." })
+      return res.status(401).json({ errorMessage: "Wrong email or password." });
     }
 
     if (existingUser.isAdmin) {
-      console.log("Admin")
       const token = jwt.sign(
         {
-          user: existingUser._id,
+          user: existingUser._id
         },
         process.env.JWT_SECRET_ADMIN
-      )
+      );
 
       res
         .cookie("token", token, {
-          httpOnly: true,
+          httpOnly: true
         })
-        .send()
+        .send();
     }
 
     if (!existingUser.isAdmin) {
-      console.log("Not Admin")
+      console.log("Not Admin");
       const token = jwt.sign(
         {
-          user: existingUser._id,
+          user: existingUser._id
         },
         process.env.JWT_SECRET_USER
-      )
+      );
       res
         .cookie("token", token, {
-          httpOnly: true,
+          httpOnly: true
         })
-        .send()
+        .send();
     }
 
     // send the token in a HTTP only cookie
   } catch (err) {
-    console.error(err)
-    res.status(500).send()
+    console.error(err);
+    res.status(500).send();
   }
-}
+};
+
+exports.loggedInUser = (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) return res.json(false);
+    jwt.verify(token, process.env.JWT_SECRET_USER);
+    res.send(true);
+  } catch (err) {
+    console.log(err);
+    res.json(false);
+  }
+};
+
+exports.loggedInAdmin = (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) return res.json(false);
+    jwt.verify(token, process.env.JWT_SECRET_ADMIN);
+    res.send(true);
+  } catch (err) {
+    console.log(err);
+    res.json(false);
+  }
+};
 
 exports.logoutUser = (req, res, next) => {
   res
     .cookie("token", "", {
       httpOnly: true,
-      expires: new Date(0),
+      expires: new Date(0)
     })
-    .send()
-}
+    .send();
+};
 
 exports.addToCart = async (req, res, next) => {
   try {
-    const productId = req.params.id
-    const userId = req.body.userId
-    const amount = req.body.amount
+    const productId = req.params.id;
+    const userId = req.body.userId;
+    const amount = req.body.amount;
 
-    const user = await User.findById(userId)
+    const user = await User.findById(userId);
 
     //lägg till det som kommer in direkt
-    const newProducts = [
-      {
-        "_id": productId,
-        "amount": amount
-      }
-    ];
+    const newProducts = [{ _id: productId, amount: amount }];
     // lägger in allt som inte är samma pr id som kommer in
     for (let i = 0; i < user.cart.length; i++) {
       if (productId != user.cart[i]._id) {
-        newProducts.push(user.cart[i])
+        newProducts.push(user.cart[i]);
       }
     }
 
@@ -187,41 +208,7 @@ exports.addToCart = async (req, res, next) => {
     res.status(200).json(newUser)
 
   } catch (err) {
-    console.error(err)
-    res.status(500).send()
-  }
-
-}
-
-
-
-
-exports.deleteCartItem = async (req, res, next) => {
-  try {
-    const productId = req.params.id
-    const userId = req.body.userId
-
-    const user = await User.findById(userId)
-
-    //lägg till det som kommer in direkt
-    const newProducts = [];
-    // lägger in allt som inte är samma pr id som kommer in
-    for (let i = 0; i < user.cart.length; i++) {
-      if (productId != user.cart[i]._id) {
-        newProducts.push(user.cart[i])
-      }
-    }
-
-    // Lägger till hela newproducts ist för olika mongoose queries
-    const newUser = await User.findByIdAndUpdate(
-      userId,
-      { $set: { cart: newProducts } },
-      { new: true }
-    )
-    res.status(200).json(newUser)
-
-  } catch (err) {
-    console.error(err)
-    res.status(500).send()
+    console.error(err);
+    res.status(500).send();
   }
 }
