@@ -155,3 +155,73 @@ exports.logoutUser = (req, res, next) => {
     })
     .send()
 }
+
+
+exports.updateUser = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const {
+      fullName,
+      displayName,
+      email,
+      password,
+      phoneNumber,
+      city,
+      address,
+      zipcode,
+    } = req.body
+
+    // Validations
+
+    if (
+      !fullName ||
+      !displayName ||
+      !email ||
+      !password ||
+      !phoneNumber ||
+      !address ||
+      !city ||
+      !zipcode
+    ) {
+      return res
+        .status(400)
+        .json({ errorMessage: "Please fill in all required fields" })
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({
+        errorMessage: "Please enter a password with at least 6 characters.",
+      })
+    }
+    /* 
+        const existingUser = await User.findOne({ email })
+        if (existingUser) {
+          return res.status(400).json({
+            errorMessage: "This email already exists",
+          })
+        } */
+
+    // Hash the password
+    const salt = await bcrypt.genSalt()
+    const passwordHash = await bcrypt.hash(password, salt)
+
+    const updatedUser = {
+      fullName,
+      displayName,
+      phoneNumber,
+      address,
+      city,
+      zipcode,
+      email,
+      password: passwordHash,
+    }
+
+    // save user to db
+    const savedUser = await User.findOneAndUpdate(id, updatedUser, { new: true })
+
+    res.send(savedUser)
+  } catch (err) {
+    console.error("Register:", err)
+    res.status(500).send()
+  }
+}
