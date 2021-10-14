@@ -225,3 +225,23 @@ exports.deleteCartItem = async (req, res, next) => {
     res.status(500).send()
   }
 }
+
+
+exports.deleteCart = async (req, res, next) => {
+  try {
+
+    const userId = req.body.userId
+
+    // Lägger till hela newproducts ist för olika mongoose queries
+    const newUser = await User.findByIdAndUpdate(
+      userId,
+      { $set: { cart: [] } },
+      { new: true }
+    )
+    res.status(200).json(newUser)
+
+  } catch (err) {
+    console.error(err)
+    res.status(500).send()
+  }
+}
