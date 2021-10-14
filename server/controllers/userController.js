@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.registerUser = async (req, res, next) => {
+  console.log(req.body);
   try {
     const {
       fullName,
@@ -85,6 +86,8 @@ exports.registerUser = async (req, res, next) => {
 };
 
 exports.loginUser = async (req, res, next) => {
+  console.log(req.body);
+
   try {
     const { email, password } = req.body;
 
@@ -110,7 +113,6 @@ exports.loginUser = async (req, res, next) => {
     }
 
     if (existingUser.isAdmin) {
-      console.log("Admin");
       const token = jwt.sign(
         {
           user: existingUser._id

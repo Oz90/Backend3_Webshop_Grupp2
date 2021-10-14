@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import fetches from "../../fetches/fetches";
 import { AuthContext } from "../../context/AuthContext";
 
 const StyledForm = styled.form`
@@ -20,11 +20,9 @@ export const LoginForm = () => {
   const [loginValue, setLoginValue] = useState({});
   const { getIsUserLoggedIn, getIsAdminLoggedIn } = useContext(AuthContext);
 
-  const url = axios.create({ baseURL: "http://localhost:5000/" });
-
   const handleOnSubmit = e => {
     e.preventDefault();
-    url.post("users/login", loginValue);
+    fetches.loginUser(loginValue);
     getIsUserLoggedIn();
     getIsAdminLoggedIn();
   };
