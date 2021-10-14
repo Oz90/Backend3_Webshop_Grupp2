@@ -182,33 +182,72 @@ exports.logoutUser = (req, res, next) => {
     .send();
 };
 
-exports.addToCart = async (req, res, next) => {
+
+exports.updateUser = async (req, res, next) => {
   try {
-    const productId = req.params.id;
-    const userId = req.body.userId;
-    const amount = req.body.amount;
+    const id = req.params.id;
+    const {
+      fullName,
+      displayName,
+      email,
+      password,
+      phoneNumber,
+      city,
+      address,
+      zipcode,
+    } = req.body
 
-    const user = await User.findById(userId);
+    // Validations
 
-    //lägg till det som kommer in direkt
-    const newProducts = [{ _id: productId, amount: amount }];
-    // lägger in allt som inte är samma pr id som kommer in
-    for (let i = 0; i < user.cart.length; i++) {
-      if (productId != user.cart[i]._id) {
-        newProducts.push(user.cart[i]);
-      }
+    if (
+      !fullName ||
+      !displayName ||
+      !email ||
+      !password ||
+      !phoneNumber ||
+      !address ||
+      !city ||
+      !zipcode
+    ) {
+      return res
+        .status(400)
+        .json({ errorMessage: "Please fill in all required fields" })
     }
 
-    // Lägger till hela newproducts ist för olika mongoose queries
-    const newUser = await User.findByIdAndUpdate(
-      userId,
-      { $set: { cart: newProducts } },
-      { new: true }
-    )
-    res.status(200).json(newUser)
+    if (password.length < 6) {
+      return res.status(400).json({
+        errorMessage: "Please enter a password with at least 6 characters.",
+      })
+    }
+    /* 
+        const existingUser = await User.findOne({ email })
+        if (existingUser) {
+          return res.status(400).json({
+            errorMessage: "This email already exists",
+          })
+        } */
 
+    // Hash the password
+    const salt = await bcrypt.genSalt()
+    const passwordHash = await bcrypt.hash(password, salt)
+
+    const updatedUser = {
+      fullName,
+      displayName,
+      phoneNumber,
+      address,
+      city,
+      zipcode,
+      email,
+      password: passwordHash,
+    }
+
+    // save user to db
+    const savedUser = await User.findOneAndUpdate(id, updatedUser, { new: true })
+
+    res.send(savedUser)
   } catch (err) {
-    console.error(err);
-    res.status(500).send();
+    console.error("Register:", err)
+    res.status(500).send()
   }
 }
