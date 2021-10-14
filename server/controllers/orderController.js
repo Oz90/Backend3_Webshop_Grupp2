@@ -36,6 +36,21 @@ exports.getSingleOrder = async (req, res) => {
 
 
 
+
+exports.getAllUserOrders = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const orders = await Order.find({ user: userId });
+    res.status(200).json(orders);
+  }
+  catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
+};
+
+
+
 exports.toggleIsShipped = async (req, res) => {
   try {
     const orderId = req.params.id;
