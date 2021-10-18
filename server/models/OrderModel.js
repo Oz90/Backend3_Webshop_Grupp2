@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const orderSchema = new Schema(
   {
@@ -7,23 +8,23 @@ const orderSchema = new Schema(
       {
         _id: {
           type: Schema.Types.ObjectId,
-          ref: "Product"
+          ref: 'Product',
         },
-        amount: { type: Number, required: true }
-      }
+        amount: { type: Number, required: true },
+      },
     ],
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User"
+      ref: 'User',
     },
     isShipped: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;

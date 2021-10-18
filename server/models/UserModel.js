@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
@@ -11,24 +12,24 @@ const userSchema = new Schema(
     address: { type: String, required: true },
     city: { type: String, required: true },
     zipcode: { type: String, required: true },
-  
+
     cart: [
       {
         _id: {
           type: Schema.Types.ObjectId,
-          ref: "Product"
+          ref: 'Product',
         },
-        amount: { type: Number, required: true }
-      }
+        amount: { type: Number, required: true },
+      },
     ],
     isAdmin: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

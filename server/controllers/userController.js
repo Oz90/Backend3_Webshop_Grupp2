@@ -1,7 +1,7 @@
-const User = require("./../models/UserModel");
-const Product = require("./../models/ProductModel");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/UserModel');
+const Product = require('../models/ProductModel');
 
 exports.registerUser = async (req, res, next) => {
   console.log(req.body);
@@ -14,36 +14,36 @@ exports.registerUser = async (req, res, next) => {
       phoneNumber,
       city,
       address,
-      zipcode
+      zipcode,
     } = req.body;
 
     // Validations
 
     if (
-      !fullName ||
-      !displayName ||
-      !email ||
-      !password ||
-      !phoneNumber ||
-      !address ||
-      !city ||
-      !zipcode
+      !fullName
+      || !displayName
+      || !email
+      || !password
+      || !phoneNumber
+      || !address
+      || !city
+      || !zipcode
     ) {
       return res
         .status(400)
-        .json({ errorMessage: "Please fill in all required fields" });
+        .json({ errorMessage: 'Please fill in all required fields' });
     }
 
     if (password.length < 6) {
       return res.status(400).json({
-        errorMessage: "Please enter a password with at least 6 characters."
+        errorMessage: 'Please enter a password with at least 6 characters.',
       });
     }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
-        errorMessage: "This email already exists"
+        errorMessage: 'This email already exists',
       });
     }
 
@@ -59,7 +59,7 @@ exports.registerUser = async (req, res, next) => {
       city,
       zipcode,
       email,
-      password: passwordHash
+      password: passwordHash,
     });
 
     // save user to db
@@ -69,18 +69,18 @@ exports.registerUser = async (req, res, next) => {
     // sign the token
     const token = jwt.sign(
       {
-        user: savedUser._id
+        user: savedUser._id,
       },
-      process.env.JWT_SECRET_USER
+      process.env.JWT_SECRET_USER,
     );
 
     res
-      .cookie("token", token, {
-        httpOnly: true
+      .cookie('token', token, {
+        httpOnly: true,
       })
       .send();
   } catch (err) {
-    console.error("Register:", err);
+    console.error('Register:', err);
     res.status(500).send();
   }
 };
@@ -95,49 +95,49 @@ exports.loginUser = async (req, res, next) => {
     if (!email || !password) {
       return res
         .status(400)
-        .json({ errorMessage: "Please fill in all required fields" });
+        .json({ errorMessage: 'Please fill in all required fields' });
     }
 
     const existingUser = await User.findOne({ email });
 
     if (!existingUser) {
-      return res.status(401).json({ errorMessage: "Wrong email or password." });
+      return res.status(401).json({ errorMessage: 'Wrong email or password.' });
     }
     const passwordCorrect = await bcrypt.compare(
       password,
-      existingUser.password
+      existingUser.password,
     );
 
     if (!passwordCorrect) {
-      return res.status(401).json({ errorMessage: "Wrong email or password." });
+      return res.status(401).json({ errorMessage: 'Wrong email or password.' });
     }
 
     if (existingUser.isAdmin) {
       const token = jwt.sign(
         {
-          user: existingUser._id
+          user: existingUser._id,
         },
-        process.env.JWT_SECRET_ADMIN
+        process.env.JWT_SECRET_ADMIN,
       );
 
       res
-        .cookie("token", token, {
-          httpOnly: true
+        .cookie('token', token, {
+          httpOnly: true,
         })
         .send();
     }
 
     if (!existingUser.isAdmin) {
-      console.log("Not Admin");
+      console.log('Not Admin');
       const token = jwt.sign(
         {
-          user: existingUser._id
+          user: existingUser._id,
         },
-        process.env.JWT_SECRET_USER
+        process.env.JWT_SECRET_USER,
       );
       res
-        .cookie("token", token, {
-          httpOnly: true
+        .cookie('token', token, {
+          httpOnly: true,
         })
         .send();
     }
@@ -151,7 +151,7 @@ exports.loginUser = async (req, res, next) => {
 
 exports.loggedInUser = (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const { token } = req.cookies;
     if (!token) return res.json(false);
     jwt.verify(token, process.env.JWT_SECRET_USER);
     res.send(true);
@@ -163,7 +163,7 @@ exports.loggedInUser = (req, res, next) => {
 
 exports.loggedInAdmin = (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const { token } = req.cookies;
     if (!token) return res.json(false);
     jwt.verify(token, process.env.JWT_SECRET_ADMIN);
     res.send(true);
@@ -175,17 +175,16 @@ exports.loggedInAdmin = (req, res, next) => {
 
 exports.logoutUser = (req, res, next) => {
   res
-    .cookie("token", "", {
+    .cookie('token', '', {
       httpOnly: true,
-      expires: new Date(0)
+      expires: new Date(0),
     })
     .send();
 };
 
-
 exports.updateUser = async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     const {
       fullName,
       displayName,
@@ -195,31 +194,31 @@ exports.updateUser = async (req, res, next) => {
       city,
       address,
       zipcode,
-    } = req.body
+    } = req.body;
 
     // Validations
 
     if (
-      !fullName ||
-      !displayName ||
-      !email ||
-      !password ||
-      !phoneNumber ||
-      !address ||
-      !city ||
-      !zipcode
+      !fullName
+      || !displayName
+      || !email
+      || !password
+      || !phoneNumber
+      || !address
+      || !city
+      || !zipcode
     ) {
       return res
         .status(400)
-        .json({ errorMessage: "Please fill in all required fields" })
+        .json({ errorMessage: 'Please fill in all required fields' });
     }
 
     if (password.length < 6) {
       return res.status(400).json({
-        errorMessage: "Please enter a password with at least 6 characters.",
-      })
+        errorMessage: 'Please enter a password with at least 6 characters.',
+      });
     }
-    /* 
+    /*
         const existingUser = await User.findOne({ email })
         if (existingUser) {
           return res.status(400).json({
@@ -228,8 +227,8 @@ exports.updateUser = async (req, res, next) => {
         } */
 
     // Hash the password
-    const salt = await bcrypt.genSalt()
-    const passwordHash = await bcrypt.hash(password, salt)
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
 
     const updatedUser = {
       fullName,
@@ -240,14 +239,14 @@ exports.updateUser = async (req, res, next) => {
       zipcode,
       email,
       password: passwordHash,
-    }
+    };
 
     // save user to db
-    const savedUser = await User.findOneAndUpdate(id, updatedUser, { new: true })
+    const savedUser = await User.findOneAndUpdate(id, updatedUser, { new: true });
 
-    res.send(savedUser)
+    res.send(savedUser);
   } catch (err) {
-    console.error("Register:", err)
-    res.status(500).send()
+    console.error('Register:', err);
+    res.status(500).send();
   }
-}
+};
