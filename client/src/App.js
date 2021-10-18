@@ -5,6 +5,11 @@ import { LoginPage } from "./Pages/LoginPage";
 import { RegisterPage } from "./Pages/RegisterPage";
 import { Route, Switch } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
+import { MainContainerStyled } from "./components/MainContainer/MainContainerStyled";
+import { HeaderStyled } from "./components/HeaderContainer/HeaderStyled";
+import { SideBarStyled } from "./components/SideBar/SideBarStyled";
+import { ContentContainerStyled } from "./components/ContentContainer/ContentContainerStyled";
+import { FooterStyled } from "./components/FooterContainer/FooterStyled";
 
 axios.defaults.withCredentials = true;
 
@@ -43,10 +48,17 @@ function App() {
           getIsAdminLoggedIn
         }}
       >
-        <Switch>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-        </Switch>
+        <MainContainerStyled>
+          <HeaderStyled />
+          <SideBarStyled />
+          <ContentContainerStyled>
+            <Switch>
+              <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={RegisterPage} />
+            </Switch>
+          </ContentContainerStyled>
+        <FooterStyled />
+        </MainContainerStyled>
       </AuthContext.Provider>
     </>
   );
