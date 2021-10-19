@@ -5,7 +5,7 @@ export const SideBarStyled = styled.div`
   grid-column: 2/4;
   grid-row: 2;
 
-  background-color: yellow;
+  background-color: #f8f8c7;
 `;
 
 // export default { SideBarStyled };
