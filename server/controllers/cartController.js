@@ -41,7 +41,7 @@ exports.addToCart = async (req, res, next) => {
 exports.deleteCartItem = async (req, res, next) => {
   try {
     const productId = req.params.id;
-    const { userId } = req.body;
+    const userId = checkUser(req.cookies.token)
 
     const user = await User.findById(userId);
 
@@ -69,7 +69,8 @@ exports.deleteCartItem = async (req, res, next) => {
 
 exports.deleteCart = async (req, res, next) => {
   try {
-    const { userId } = req.body;
+    const userId = checkUser(req.cookies.token)
+
 
     // Lägger till hela newproducts ist för olika mongoose queries
     const newUser = await User.findByIdAndUpdate(
