@@ -6,7 +6,7 @@ const ContentContainerStyled = styled.div`
     grid-row: 2;
     height: 3000px;
 
-    background-color: green;
+   // background-color: green;
 `
 
 export {ContentContainerStyled}; 

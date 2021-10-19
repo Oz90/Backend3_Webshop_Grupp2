@@ -139,7 +139,7 @@ exports.loginUser = async (req, res, next) => {
         .cookie('token', token, {
           httpOnly: true,
         })
-        .send();
+        .send(existingUser);
     }
 
     // send the token in a HTTP only cookie
@@ -154,10 +154,10 @@ exports.loggedInUser = (req, res, next) => {
     const { token } = req.cookies;
     if (!token) return res.json(false);
     jwt.verify(token, process.env.JWT_SECRET_USER);
-    res.send(true);
+    return res.send(true);
   } catch (err) {
     console.log(err);
-    res.json(false);
+    return res.json(false);
   }
 };
 

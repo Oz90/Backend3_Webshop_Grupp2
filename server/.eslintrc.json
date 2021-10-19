@@ -11,5 +11,18 @@
         "ecmaVersion": 12
     },
     "rules": {
+        "no-underscore-dangle": "off",
+        "no-unused-vars": [
+            "error",   
+            { 
+                "argsIgnorePattern": "^_|^next$"
+            }    
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120
+            }
+        ]
     }
 }
