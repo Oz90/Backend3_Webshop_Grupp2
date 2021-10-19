@@ -10,10 +10,10 @@ function authAdmin(req, res, next) {
     // Skapar ny prop på req
     req.user = verified.user;
 
-    next();
+    return next();
   } catch (err) {
     console.log(err);
-    res.status(401).json({ errorMessage: 'Unauthorized' });
+    return res.status(401).json({ errorMessage: 'Unauthorized' });
   }
 }
 

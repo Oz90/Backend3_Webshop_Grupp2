@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import fetches from "../../fetches/fetches";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { registerUser } from '../../fetches/fetches';
 
 const StyledForm = styled.form`
   display: flex;
@@ -18,12 +18,12 @@ const StyledInput = styled.input``;
 export const RegisterForm = () => {
   const [registerValue, setRegisterValue] = useState({});
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    fetches.registerUser(registerValue);
+    registerUser(registerValue);
   };
 
-  const handleOnChange = e => {
+  const handleOnChange = (e) => {
     setRegisterValue({ ...registerValue, [e.target.name]: e.target.value });
   };
 

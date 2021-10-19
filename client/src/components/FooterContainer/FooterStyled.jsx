@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const FooterStyled = styled.div`
   display: grid;
@@ -6,6 +6,6 @@ const FooterStyled = styled.div`
   height: 6rem;
 
   background-color: blue;
-`
+`;
 
 export { FooterStyled };

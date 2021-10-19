@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-import styled from "styled-components";
-import fetches from "../../fetches/fetches";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
+import { loginUser } from '../../fetches/fetches';
+import { AuthContext } from '../../context/AuthContext';
 
 const StyledForm = styled.form`
   display: flex;
@@ -20,14 +20,14 @@ export const LoginForm = () => {
   const [loginValue, setLoginValue] = useState({});
   const { getIsUserLoggedIn, getIsAdminLoggedIn } = useContext(AuthContext);
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    fetches.loginUser(loginValue);
+    loginUser(loginValue);
     getIsUserLoggedIn();
     getIsAdminLoggedIn();
   };
 
-  const handleOnChange = e => {
+  const handleOnChange = (e) => {
     setLoginValue({ ...loginValue, [e.target.name]: e.target.value });
   };
 

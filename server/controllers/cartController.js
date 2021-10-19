@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable eqeqeq */
 const User = require('../models/UserModel');
 
 exports.addToCart = async (req, res, next) => {

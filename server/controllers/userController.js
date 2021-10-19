@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/UserModel');
-const Product = require('../models/ProductModel');
 
 exports.registerUser = async (req, res, next) => {
   console.log(req.body);
@@ -74,17 +73,18 @@ exports.registerUser = async (req, res, next) => {
       process.env.JWT_SECRET_USER,
     );
 
-    res
+    return res
       .cookie('token', token, {
         httpOnly: true,
       })
       .send();
   } catch (err) {
     console.error('Register:', err);
-    res.status(500).send();
+    return res.status(500).send();
   }
 };
 
+// eslint-disable-next-line consistent-return
 exports.loginUser = async (req, res, next) => {
   console.log(req.body);
 
@@ -120,7 +120,7 @@ exports.loginUser = async (req, res, next) => {
         process.env.JWT_SECRET_ADMIN,
       );
 
-      res
+      return res
         .cookie('token', token, {
           httpOnly: true,
         })
@@ -135,7 +135,7 @@ exports.loginUser = async (req, res, next) => {
         },
         process.env.JWT_SECRET_USER,
       );
-      res
+      return res
         .cookie('token', token, {
           httpOnly: true,
         })
@@ -145,7 +145,7 @@ exports.loginUser = async (req, res, next) => {
     // send the token in a HTTP only cookie
   } catch (err) {
     console.error(err);
-    res.status(500).send();
+    return res.status(500).send();
   }
 };
 
@@ -166,10 +166,10 @@ exports.loggedInAdmin = (req, res, next) => {
     const { token } = req.cookies;
     if (!token) return res.json(false);
     jwt.verify(token, process.env.JWT_SECRET_ADMIN);
-    res.send(true);
+    return res.send(true);
   } catch (err) {
     console.log(err);
-    res.json(false);
+    return res.json(false);
   }
 };
 
@@ -242,11 +242,13 @@ exports.updateUser = async (req, res, next) => {
     };
 
     // save user to db
-    const savedUser = await User.findOneAndUpdate(id, updatedUser, { new: true });
+    const savedUser = await User.findOneAndUpdate(id, updatedUser, {
+      new: true,
+    });
 
-    res.send(savedUser);
+    return res.send(savedUser);
   } catch (err) {
     console.error('Register:', err);
-    res.status(500).send();
+    return res.status(500).send();
   }
 };
