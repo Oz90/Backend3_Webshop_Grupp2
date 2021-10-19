@@ -29,12 +29,13 @@ export const ProductCategoryPage = () => {
     return (
         <>
             <h2>Testing Product Category Page</h2>
+
             {filteredProducts.map((product, index) => {
                 return (
                     <div>
                         <h1>{product.title}</h1>
+                        <p>{product.description}</p>
                         <p>{product.price}</p>
-
                     </div>
                 )
 
