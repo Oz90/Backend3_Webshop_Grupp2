@@ -83,3 +83,14 @@ exports.deleteCart = async (req, res, next) => {
     res.status(500).send();
   }
 };
+
+exports.getCart = async (req, res, next) => {
+  try {
+    const userId = checkUser(req.cookies.token)
+    const user = await User.findById(userId);
+    res.status(200).json(user.cart);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+}
