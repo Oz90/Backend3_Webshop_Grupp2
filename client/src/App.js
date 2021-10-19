@@ -12,10 +12,6 @@ import { ContentContainerStyled } from './components/ContentContainer/ContentCon
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
 
 axios.defaults.withCredentials = true;
-axios.default.interceptors.response.use((x) => {
-  console.log(JSON.stringify(x.data))
-  return x;
-});
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
@@ -25,22 +21,15 @@ function App() {
     baseURL: 'http://localhost:5000/',
   });
 
-  axios.get('http://localhost:5000/')
-    .then(res => console.log('refrecheedddd'))
-
-
-
   async function getIsUserLoggedIn() {
     const loggedInUserRes = await url.get('/users/loggedinuser');
     setLoggedInUser(loggedInUserRes.data);
-    // console.log("User " + loggedInUser);
   }
 
   async function getIsAdminLoggedIn() {
     const loggedInAdminRes = await url.get('/users/loggedinadmin');
     setLoggedInAdmin(loggedInAdminRes.data);
     setLoggedInUser(loggedInAdminRes.data);
-    // console.log("Admin " + loggedInAdmin);
   }
   useEffect(() => {
     getIsUserLoggedIn();
