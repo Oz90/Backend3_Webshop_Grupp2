@@ -16,10 +16,10 @@ export const SideBar = () => {
 
     return (
         <SideBarStyled>
-            <ul>
+            <ul className="sidebarListItems">
                 {allUniqueCategories.map((category, index) => {
-                    return (<Link to={`/products/${category}`} >
-                        <li key={index}>{category}</li>
+                    return (<Link className="reactLink" to={`/products/${category}`} >
+                        <li key={index}><p className="sidebarLinks">{category}</p></li>
                     </Link>);
                 })}
             </ul>
