@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './Pages/LoginPage';
+import { ProductPage } from './Pages/ProductPage';
+import { ProductCategoryPage } from './Pages/ProductCategoryPage';
 import { RegisterPage } from './Pages/RegisterPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
 import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
-import { SideBarStyled } from './components/SideBar/SideBarStyled';
+import { SideBar } from './components/SideBar/SideBar';
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
 
@@ -50,11 +52,13 @@ function App() {
       >
         <MainContainerStyled>
           <HeaderStyled />
-          <SideBarStyled />
+          <SideBar />
           <ContentContainerStyled>
             <Switch>
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
+              <Route path="/products/:id" component={ProductCategoryPage} />
+              <Route path="/products" component={ProductPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />
