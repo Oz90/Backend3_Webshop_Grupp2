@@ -12,6 +12,10 @@ import { ContentContainerStyled } from './components/ContentContainer/ContentCon
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
 
 axios.defaults.withCredentials = true;
+axios.default.interceptors.response.use((x) => {
+  console.log(JSON.stringify(x.data))
+  return x;
+});
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
@@ -20,6 +24,11 @@ function App() {
   const url = axios.create({
     baseURL: 'http://localhost:5000/',
   });
+
+  axios.get('http://localhost:5000/')
+    .then(res => console.log('refrecheedddd'))
+
+
 
   async function getIsUserLoggedIn() {
     const loggedInUserRes = await url.get('/users/loggedinuser');
