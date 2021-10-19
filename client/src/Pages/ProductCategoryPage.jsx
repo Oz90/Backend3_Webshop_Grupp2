@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { getAllProducts } from '../fetches/fetches';
 
+import styled from 'styled-components';
+
+// const cardStyled = styled.div`
+// background-color: red;
+// `;
+
 export const ProductCategoryPage = () => {
     let { id } = useParams();
     console.log(id);
@@ -28,18 +34,21 @@ export const ProductCategoryPage = () => {
 
     return (
         <>
-            <h2>Testing Product Category Page</h2>
+
 
             {filteredProducts.map((product, index) => {
                 return (
-                    <div>
-                        <h1>{product.title}</h1>
-                        <p>{product.description}</p>
-                        <p>{product.price}</p>
+                    <div className="card">
+                        <img class="thumbnail" src={product.thumbnail} alt="" />
+                        <div className="titleAndPrice">
+                        <h2 class="productTitle">{product.title}</h2>
+                        <p className="productPrice">Price {product.price} Kr</p>
+                        </div>
                     </div>
                 )
-
+                
             })}
+
         </>
     );
 };
