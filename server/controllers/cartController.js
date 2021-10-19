@@ -1,11 +1,12 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable eqeqeq */
 const User = require('../models/UserModel');
+const checkUser = require('../utils/checkUser');
 
 exports.addToCart = async (req, res, next) => {
   try {
     const productId = req.params.id;
-    const { userId } = req.body;
+    const userId = checkUser(req.cookies.token)
     const { amount } = req.body;
 
     const user = await User.findById(userId);
