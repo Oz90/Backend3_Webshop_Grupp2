@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 const ContentContainerStyled = styled.div`
-  display: grid;
-  grid-column: 4/10;
-  grid-row: 2;
-  height: 3000px;
+    grid-column: 4/10;
+    grid-row: 2;
 
-  // background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow-y: scroll;
+
+    background-color: green;
 `;
 
 export { ContentContainerStyled };
