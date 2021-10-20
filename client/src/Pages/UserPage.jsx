@@ -1,57 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { getUser } from '../fetches/fetches';
-import { UserTableStyled, UserTableRowStyled, UserTableDataStyled, UserTableBodyStyled}  from '../components/UserTable/UserTableStyled'
+import { UserTableStyled, UserTableRowStyled, UserTableBodyStyled } from '../components/UserTable/UserTableStyled'
 import UserTableItem from "../components/UserTable/UserTableItem";
+import UserTableContainer from "../components/UserTable/UserTableContainer";
+import { EditUserForm } from "../components/EditUserForm/EditUserForm";
+
 
 export const UserPage = () => {
-    const [userData, setUserData] = useState(undefined);
+  const [userData, setUserData] = useState(undefined);
 
-    async function getUserData() {
-        const userData = await getUser()
-        console.log(userData)
-        setUserData(userData.data);
-    }
+  const [editUser, setEditUser] = useState(false);
 
-    useEffect(() => {
-        getUserData()
-    }, []);
+  async function getUserData() {
+    const userData = await getUser()
+    console.log(userData)
+    setUserData(userData.data);
+  }
 
-    return (
-        <>
-                <UserTableStyled class="table">
-                    <thead>
-                        <UserTableRowStyled>
-                            <th scope="col">User Settings</th>
-                        </UserTableRowStyled>
-                    </thead>
-                    <UserTableBodyStyled>
-                    <UserTableItem name='Display Name' value={userData?.displayName} />
-                        <UserTableRowStyled>
-                            <UserTableDataStyled>Full Name</UserTableDataStyled>
-                            <UserTableDataStyled>{userData?.fullName}</UserTableDataStyled>
-                        </UserTableRowStyled>
-                        <UserTableRowStyled>
-                            <UserTableDataStyled>Email</UserTableDataStyled>
-                            <UserTableDataStyled>{userData?.email}</UserTableDataStyled>
-                        </UserTableRowStyled>
-                        <UserTableRowStyled>
-                            <UserTableDataStyled>Phone Number</UserTableDataStyled>
-                            <UserTableDataStyled>{userData?.phoneNumber}</UserTableDataStyled>
-                        </UserTableRowStyled>
-                        <UserTableRowStyled>
-                            <UserTableDataStyled>Address</UserTableDataStyled>
-                            <UserTableDataStyled>{userData?.address}</UserTableDataStyled>
-                        </UserTableRowStyled>
-                        <UserTableRowStyled>
-                            <UserTableDataStyled>Zip Code</UserTableDataStyled>
-                            <UserTableDataStyled>{userData?.zipcode}</UserTableDataStyled>
-                        </UserTableRowStyled>
-                        <UserTableRowStyled>
-                            <UserTableDataStyled>City</UserTableDataStyled>
-                            <UserTableDataStyled>{userData?.city}</UserTableDataStyled>
-                        </UserTableRowStyled>
-                    </UserTableBodyStyled>
-                </UserTableStyled>
-        </>
-    );
+  useEffect(() => {
+    getUserData()
+  }, []);
+  console.log(editUser);
+  return (
+    <>
+      {userData ?
+        editUser ? <EditUserForm userData={userData} setEditUser={setEditUser} /> :
+          <UserTableContainer userData={userData} setEditUser={setEditUser} />
+
+        :
+        <p>Laddar..? </p>
+
+      }
+
+
+
+    </>
+  );
 };
