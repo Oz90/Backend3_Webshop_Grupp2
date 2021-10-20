@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { registerUser } from '../fetches/fetches';
 
 import {
@@ -6,14 +8,24 @@ import {
   FormStyled,
   InputStyled,
   SubmitStyled,
+  ErrorMessageStyled,
 } from '../components/Form/FormStyled';
 
 export const RegisterPage = () => {
   const [registerValue, setRegisterValue] = useState({});
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  const history = useHistory();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    registerUser(registerValue);
+    registerUser(registerValue)
+      .then(() => {
+        history.push('/');
+      })
+      .catch((error) => {
+        setErrorMsg(error.response.data.errorMessage);
+      });
   };
 
   const handleOnChange = (e) => {
@@ -33,6 +45,7 @@ export const RegisterPage = () => {
         <InputStyled name="zipcode" type="number" placeholder="ZIP Code" />
         <SubmitStyled type="submit" value="Register" />
       </FormStyled>
+      {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
     </FormContainerStyled>
   );
 };
