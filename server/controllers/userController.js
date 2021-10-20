@@ -1,6 +1,18 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/UserModel');
+const checkUser = require('../utils/checkUser');
+
+exports.getUser = async (req, res, next) => {
+  try {
+    const userId = checkUser(req.cookies.token)
+    const user = await User.findById(userId);
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+}
 
 exports.registerUser = async (req, res, next) => {
   console.log(req.body);
