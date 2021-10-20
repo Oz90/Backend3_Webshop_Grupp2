@@ -11,7 +11,7 @@ import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
 import { SideBarStyled } from './components/SideBarContainer/SideBarStyled';
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
-import { ProductCardStyled } from './components/ProductCard/ProductCardStyled';
+// import { ProductCardStyled } from './components/ProductCard/ProductCardStyled';
 
 axios.defaults.withCredentials = true;
 

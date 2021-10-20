@@ -8,8 +8,6 @@ const ContentContainerStyled = styled.div`
     flex-wrap: wrap;
     align-content: flex-start;
     overflow-y: scroll;
-
-    background-color: green;
 `;
 
 export { ContentContainerStyled };
