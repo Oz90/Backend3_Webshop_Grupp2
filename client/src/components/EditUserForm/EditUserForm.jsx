@@ -20,35 +20,37 @@ export const EditUserForm = ({ userData }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    editUser(editValue);
+    const { address, city, fullName, displayName, email, phoneNumber, zipcode } = editValue
+    const payload = { address, city, fullName, displayName, email, phoneNumber, zipcode }
+    console.log(payload)
+    editUser(payload);
   };
 
   const handleOnChange = (e) => {
     setEditValue({ ...editValue, [e.target.name]: e.target.value });
   };
 
-  setEditValue({ ...editValue, "password": "" })
-
   return (
     <StyledDiv>
-      <StyledForm onSubmit={handleOnSubmit} onChange={handleOnChange}>
-        <StyledInput name="email" type="email" value={editValue.email} />
-        <StyledInput name="password" type="password" value={editValue.password} />
-        <StyledInput name="fullName" type="text" value={editValue.fullName} />
+      <StyledForm onSubmit={handleOnSubmit}>
+        <StyledInput name="email" type="email" value={editValue.email} onChange={handleOnChange} />
+        <StyledInput name="fullName" type="text" value={editValue.fullName} onChange={handleOnChange} />
         <StyledInput
           name="displayName"
           type="text"
           value={editValue.displayName}
+          onChange={handleOnChange}
         />
         <StyledInput
           name="phoneNumber"
           type="number"
           value={editValue.phoneNumber}
+          onChange={handleOnChange}
         />
-        <StyledInput name="address" type="text" value={editValue.address} />
-        <StyledInput name="city" type="text" value={editValue.city} />
-        <StyledInput name="zipcode" type="number" value={editValue.zipcode} />
-        <button type="submit">edit</button>
+        <StyledInput name="address" type="text" value={editValue.address} onChange={handleOnChange} />
+        <StyledInput name="city" type="text" value={editValue.city} onChange={handleOnChange} />
+        <StyledInput name="zipcode" type="number" value={editValue.zipcode} onChange={handleOnChange} />
+        <button type="submit">Save Information</button>
       </StyledForm>
     </StyledDiv>
   );
