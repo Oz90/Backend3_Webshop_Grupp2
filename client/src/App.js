@@ -27,14 +27,12 @@ function App() {
   async function getIsUserLoggedIn() {
     const loggedInUserRes = await url.get('/users/loggedinuser');
     setLoggedInUser(loggedInUserRes.data);
-    // console.log("User " + loggedInUser);
   }
 
   async function getIsAdminLoggedIn() {
     const loggedInAdminRes = await url.get('/users/loggedinadmin');
     setLoggedInAdmin(loggedInAdminRes.data);
-
-    // console.log("Admin " + loggedInAdmin);
+    setLoggedInUser(loggedInAdminRes.data);
   }
   useEffect(() => {
     getIsUserLoggedIn();

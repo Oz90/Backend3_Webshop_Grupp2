@@ -86,7 +86,6 @@ exports.registerUser = async (req, res, next) => {
 
 // eslint-disable-next-line consistent-return
 exports.loginUser = async (req, res, next) => {
-  console.log(req.body);
 
   try {
     const { email, password } = req.body;

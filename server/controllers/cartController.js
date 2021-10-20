@@ -1,11 +1,12 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable eqeqeq */
 const User = require('../models/UserModel');
+const checkUser = require('../utils/checkUser');
 
 exports.addToCart = async (req, res, next) => {
   try {
     const productId = req.params.id;
-    const { userId } = req.body;
+    const userId = checkUser(req.cookies.token)
     const { amount } = req.body;
 
     const user = await User.findById(userId);
@@ -40,7 +41,7 @@ exports.addToCart = async (req, res, next) => {
 exports.deleteCartItem = async (req, res, next) => {
   try {
     const productId = req.params.id;
-    const { userId } = req.body;
+    const userId = checkUser(req.cookies.token)
 
     const user = await User.findById(userId);
 
@@ -68,7 +69,8 @@ exports.deleteCartItem = async (req, res, next) => {
 
 exports.deleteCart = async (req, res, next) => {
   try {
-    const { userId } = req.body;
+    const userId = checkUser(req.cookies.token)
+
 
     // Lägger till hela newproducts ist för olika mongoose queries
     const newUser = await User.findByIdAndUpdate(
@@ -82,3 +84,14 @@ exports.deleteCart = async (req, res, next) => {
     res.status(500).send();
   }
 };
+
+exports.getCart = async (req, res, next) => {
+  try {
+    const userId = checkUser(req.cookies.token)
+    const user = await User.findById(userId);
+    res.status(200).json(user.cart);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+}
