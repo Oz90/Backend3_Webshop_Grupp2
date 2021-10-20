@@ -5,7 +5,7 @@ const HeaderStyled = styled.div`
   grid-column: 2/10;
   grid-row: 1;
 
-  background-color: blue;
+  background-color: #8888e3;
 `;
 
 export { HeaderStyled };

@@ -12,6 +12,7 @@ import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
 import { SideBar } from './components/SideBar/SideBar';
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
+import { NavBar } from './components/HeaderContainer/NavBar';
 
 axios.defaults.withCredentials = true;
 
@@ -51,7 +52,9 @@ function App() {
         }}
       >
         <MainContainerStyled>
-          <HeaderStyled />
+          <HeaderStyled >
+            <NavBar/>
+          </HeaderStyled>
           <SideBar />
           <ContentContainerStyled>
             <Switch>
