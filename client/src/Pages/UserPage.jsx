@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getUser } from '../fetches/fetches';
-import { UserTableStyled, UserTableRowStyled, UserTableBodyStyled } from '../components/UserTable/UserTableStyled'
-import UserTableItem from "../components/UserTable/UserTableItem";
 import UserTableContainer from "../components/UserTable/UserTableContainer";
 import { EditUserForm } from "../components/EditUserForm/EditUserForm";
 
