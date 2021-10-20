@@ -35,10 +35,12 @@ function App() {
     setLoggedInUser(loggedInAdminRes.data);
     // console.log("Admin " + loggedInAdmin);
   }
+
   useEffect(() => {
     getIsUserLoggedIn();
     getIsAdminLoggedIn();
   }, []);
+
 
   return (
     <>
