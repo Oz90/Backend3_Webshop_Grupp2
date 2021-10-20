@@ -18,7 +18,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
-  const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
+ const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
 
   const url = axios.create({
     baseURL: 'http://localhost:5000/',
@@ -33,7 +33,7 @@ function App() {
   async function getIsAdminLoggedIn() {
     const loggedInAdminRes = await url.get('/users/loggedinadmin');
     setLoggedInAdmin(loggedInAdminRes.data);
-    setLoggedInUser(loggedInAdminRes.data);
+
     // console.log("Admin " + loggedInAdmin);
   }
   useEffect(() => {
