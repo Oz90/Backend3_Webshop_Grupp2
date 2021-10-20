@@ -10,4 +10,4 @@ const MainContainerStyled = styled.div`
     grid-template-rows: 6rem 1fr 3rem; 
 `;
 
-export { MainContainerStyled }; 
+export { MainContainerStyled };
