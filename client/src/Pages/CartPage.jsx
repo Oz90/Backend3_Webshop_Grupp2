@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getCart } from '../fetches/fetches';
 
-import { CartCard } from "../components/Cart/CartCardStyled";
+import { CartCard } from "../components/Cart/CartCard";
 
 export const CartPage = () => {
   const [cart, setCart] = useState([]);
@@ -15,11 +15,11 @@ export const CartPage = () => {
     <>
       {cart.length > 0
       ?
-      cart.map((item, index) => {
-        return <p key={index}>{item._id}</p>
+      cart.map((item) => {
+        return <CartCard key={item._id} props={item} />
       })
       :
-      <p>0</p>
+      <p>Empty</p>
       }
     </>
   );
