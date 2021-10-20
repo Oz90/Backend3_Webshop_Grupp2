@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './Pages/LoginPage';
+import { UserPage } from './Pages/UserPage';
 import { RegisterPage } from './Pages/RegisterPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
@@ -54,6 +55,7 @@ function App() {
             <Switch>
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
+              <Route path="/user" component={UserPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />
