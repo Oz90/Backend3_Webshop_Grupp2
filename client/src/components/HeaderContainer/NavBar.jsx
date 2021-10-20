@@ -1,9 +1,11 @@
 import React, {useState, useContext} from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from "../../images/dress.svg"
-import cart from "../../images/cart.png"
 import { BsCart3 } from 'react-icons/bs';
 import { AuthContext } from '../../context/AuthContext';
+import LogoutButton from "../LoginForm/LogoutButton"
+
 
 
 const StyledNav = styled.div`
@@ -63,35 +65,28 @@ export const NavBar = () => {
     const { loggedInUser, loggedInAdmin } = useContext(AuthContext);
     console.log("Is logged in " + loggedInUser)
 
+  
+
     return (
         <StyledNav>
-            <StyledImage src={logo} alt="" />
-            <StyledTitle><h1>MONKI 2.0</h1></StyledTitle>
-            <StyledBtnContainer>
-            {loggedInUser ?( <>
-            <StyledBtn>Sign out</StyledBtn>
-            <StyledBtn>Profil</StyledBtn>
-            <StyledBtn>
-                <StyledNotification>1</StyledNotification>
-                 <BsCart3 size={40}/>
-                </StyledBtn>
+                <StyledImage src={logo} alt="" />
+                <StyledTitle><h1>MONKI 2.0</h1></StyledTitle>
+                <StyledBtnContainer>
+            {loggedInUser || loggedInAdmin ?( <>
+                 <LogoutButton/>
+                <StyledBtn>Profil</StyledBtn>
+            {loggedInAdmin ? (<StyledBtn>Admin</StyledBtn>) : null}
+                <StyledBtn>
+                   <StyledNotification>1</StyledNotification>
+                  <BsCart3 size={40}/>
+                  </StyledBtn>
             </>) : (<>
-            <StyledBtn>Sign in</StyledBtn>
-            </>)
+              <Link to="/login">
+              <StyledBtn>Sign in</StyledBtn>
+               </Link>
+            </>) 
         } 
-        {/* {loggedInAdmin ? (
-            <>
-             <StyledBtn>Sign out</StyledBtn>
-             <StyledBtn>Admin</StyledBtn>
-             <StyledBtn>
-                <StyledNotification>1</StyledNotification>
-                 <BsCart3 size={40}/>
-                </StyledBtn>
-            </>) : (
-            <>
-            
-            </>)
-        } */}
+       
 
             </StyledBtnContainer>
         </StyledNav>
