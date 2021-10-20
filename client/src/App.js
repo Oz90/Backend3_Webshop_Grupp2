@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './Pages/LoginPage';
 import { RegisterPage } from './Pages/RegisterPage';
+import { CartPage } from './Pages/CartPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
 import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
@@ -54,6 +55,7 @@ function App() {
             <Switch>
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
+              <Route path="/cart" component={CartPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />
