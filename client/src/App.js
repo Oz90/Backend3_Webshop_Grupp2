@@ -10,16 +10,17 @@ import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
 import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
 //import { SideBar } from './components/SideBar/SideBar';
-import {SideBar} from "./components/SideBarContainer/SideBar"
+import { SideBar } from "./components/SideBarContainer/SideBar"
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
 import { NavBar } from './components/HeaderContainer/NavBar';
+import { DetailPage } from './Pages/DetailPage';
 
 axios.defaults.withCredentials = true;
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
- const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
+  const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
 
   const url = axios.create({
     baseURL: 'http://localhost:5000/',
@@ -51,9 +52,9 @@ function App() {
       >
         <MainContainerStyled>
           <HeaderStyled >
-            <NavBar/>
+            <NavBar />
           </HeaderStyled>
-          <SideBar/>
+          <SideBar />
           {/* <SideBar /> */}
           <ContentContainerStyled>
             <Switch>
@@ -61,6 +62,7 @@ function App() {
               <Route path="/register" component={RegisterPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
+              <Route path="/detailpage" component={DetailPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />
