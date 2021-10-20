@@ -20,17 +20,18 @@ export const LoginPage = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+   
 
     loginUser(loginValue)
       .then(() => {
+        getIsUserLoggedIn();
+        getIsAdminLoggedIn();
         history.push('/');
       })
       .catch((error) => {
         setErrorMsg(error.response.data.errorMessage);
       });
 
-    getIsUserLoggedIn();
-    getIsAdminLoggedIn();
   };
 
   const handleOnChange = (e) => {
