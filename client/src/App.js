@@ -9,7 +9,8 @@ import { RegisterPage } from './Pages/RegisterPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
 import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
-import { SideBar } from './components/SideBar/SideBar';
+//import { SideBar } from './components/SideBar/SideBar';
+import {SideBar} from "./components/SideBarContainer/SideBar"
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
 import { NavBar } from './components/HeaderContainer/NavBar';
@@ -32,7 +33,6 @@ function App() {
   async function getIsAdminLoggedIn() {
     const loggedInAdminRes = await url.get('/users/loggedinadmin');
     setLoggedInAdmin(loggedInAdminRes.data);
-    setLoggedInUser(loggedInAdminRes.data);
   }
   useEffect(() => {
     getIsUserLoggedIn();
@@ -53,7 +53,8 @@ function App() {
           <HeaderStyled >
             <NavBar/>
           </HeaderStyled>
-          <SideBar />
+          <SideBar/>
+          {/* <SideBar /> */}
           <ContentContainerStyled>
             <Switch>
               <Route path="/login" component={LoginPage} />
