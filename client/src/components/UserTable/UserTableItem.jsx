@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserTableRowStyled, UserTableDataStyled } from '../components/UserTable/UserTableStyled'
+import { UserTableRowStyled, UserTableDataStyled } from '../UserTable/UserTableStyled'
 
 export default function UserTableItem(props) {
     return (
