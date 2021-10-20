@@ -10,7 +10,7 @@ export const registerUser = (payload) => url.post('/users/register', payload);
 export const logoutUser = () => url.get('users/logout');
 export const getUser = () => url.get('/users');
 export const getUserOrders = () => url.get('/orders/user');
-export const editUser = () => url.get('/users/update');
+export const editUser = (payload) => url.post('/users/update', payload);
 
 
 // const fetches = {
