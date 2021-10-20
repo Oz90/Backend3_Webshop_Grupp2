@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { UserTableStyled, UserTableRowStyled, UserTableBodyStyled } from './UserTableStyled'
 import UserTableItem from "./UserTableItem";
 
@@ -16,7 +16,7 @@ export default function UserTableContainer({ userData, setEditUser }) {
    const [editUser, setEditUser] = useState(false); */
   return (
     <>
-      <UserTableStyled class="table">
+      <UserTableStyled>
         <thead>
           <UserTableRowStyled>
             <th scope="col">User Settings</th>
@@ -30,10 +30,9 @@ export default function UserTableContainer({ userData, setEditUser }) {
           <UserTableItem name='Address' value={userData?.address} />
           <UserTableItem name='Zip Code' value={userData?.zipcode} />
           <UserTableItem name='City' value={userData?.city} />
-          <button onClick={handleOnClick}> Edit User </button>
-
         </UserTableBodyStyled>
       </UserTableStyled>
+      <button onClick={handleOnClick}> Edit User </button>
     </>
   )
 }
