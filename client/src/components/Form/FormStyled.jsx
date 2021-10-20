@@ -22,6 +22,11 @@ const SubmitStyled = styled.input`
   height: 2rem;
   border: 1px solid black;
   padding: 0 1rem 0 1rem;
+  margin-bottom: 1rem;
+`;
+
+const ErrorMessageStyled = styled.p`
+  color: red;
 `;
 
 export {
@@ -29,4 +34,5 @@ export {
   FormStyled,
   InputStyled,
   SubmitStyled,
+  ErrorMessageStyled,
 };

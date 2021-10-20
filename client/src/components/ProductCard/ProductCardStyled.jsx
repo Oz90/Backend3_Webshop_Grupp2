@@ -8,4 +8,4 @@ const ProductCardStyled = styled.div`
     background-color: red;
 `;
 
-export { ProductCardStyled }; 
+export { ProductCardStyled };

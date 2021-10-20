@@ -9,18 +9,26 @@ import {
   FormStyled,
   InputStyled,
   SubmitStyled,
+  ErrorMessageStyled,
 } from '../components/Form/FormStyled';
 
 export const LoginPage = () => {
   const [loginValue, setLoginValue] = useState({});
+  const [errorMsg, setErrorMsg] = useState(null);
   const { getIsUserLoggedIn, getIsAdminLoggedIn } = useContext(AuthContext);
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // let path = '/';
 
-    loginUser(loginValue);
+    loginUser(loginValue)
+      .then(() => {
+        history.push('/');
+      })
+      .catch((error) => {
+        setErrorMsg(error.response.data.errorMessage);
+      });
+
     getIsUserLoggedIn();
     getIsAdminLoggedIn();
   };
@@ -36,6 +44,7 @@ export const LoginPage = () => {
         <InputStyled name="password" type="password" placeholder="Password" />
         <SubmitStyled type="submit" value="Sign in" />
       </FormStyled>
+      {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
     </FormContainerStyled>
   );
 };
