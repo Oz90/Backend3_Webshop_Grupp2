@@ -2,12 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { getAllProducts } from '../fetches/fetches';
 
-import styled from 'styled-components';
-
-// const cardStyled = styled.div`
-// background-color: red;
-// `;
-
 export const ProductCategoryPage = () => {
     let { id } = useParams();
     console.log(id);
