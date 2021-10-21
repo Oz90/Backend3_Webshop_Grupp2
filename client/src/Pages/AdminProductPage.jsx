@@ -24,11 +24,10 @@ export const AdminProductPage = () => {
                         <StyledListItem key={index}>
                             <Link to={`/admin/products/${product._id}`}>{product.title}</Link>
                         </StyledListItem>
-
                     )
-
                 })}
             </ul>
+            <Link to={`/admin/products/add`}>Add new Product</Link>
         </div>
     );
 };
