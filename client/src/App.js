@@ -62,7 +62,7 @@ function App() {
               <Route path="/register" component={RegisterPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
-              <Route path="/detailpage" component={DetailPage} />
+              <Route path="/detailpage/:id" component={DetailPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />
