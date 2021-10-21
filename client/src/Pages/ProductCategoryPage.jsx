@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { getAllProducts } from '../fetches/fetches';
 
 export const ProductCategoryPage = () => {
@@ -32,13 +32,21 @@ export const ProductCategoryPage = () => {
 
             {filteredProducts.map((product, index) => {
                 return (
-                    <div className="card">
-                        <img class="thumbnail" src={product.thumbnail} alt="" />
-                        <div className="titleAndPrice">
-                        <h2 class="productTitle">{product.title}</h2>
-                        <p className="productPrice">Price {product.price} Kr</p>
-                        </div>
-                    </div>
+                    
+                 <>
+                    <Link to={`/detailpage/${product._id}`}>
+
+                        <div className="card">
+                            <img class="thumbnail" src={product.thumbnail} alt="" />
+                            <div className="titleAndPrice">
+                            <h2 class="productTitle">{product.title}</h2>
+                             <p className="productPrice">Price {product.price} Kr</p>
+                         </div>
+                         </div>
+                    </Link>
+                </>
+
+                    
                 )
                 
             })}
