@@ -20,9 +20,6 @@ export const AdminAddProductPage = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        // const { title, price, description, category, manufacturer, thumbnail, image1, image2, image3 } = productValue
-        // const payload = { title, price, description, category, manufacturer, thumbnail, image1, image2, image3 }
-        // console.log(payload)
         addProduct(productValue);
     };
 
