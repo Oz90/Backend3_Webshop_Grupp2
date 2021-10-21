@@ -14,10 +14,12 @@ export const DetailPage = () => {
         getSingleProduct(id).then(res => setProduct(res.data))
     }, []);
   
-    console.log(product)
+    console.log(product.images)
     return (
         <div>
-            <h1>Detail Page</h1>
+            <h3>{product.title}</h3>
+            <p>{product.description}</p>
+            <p>{product.price}</p>
             <CarouselComp/>
         </div>
     )
