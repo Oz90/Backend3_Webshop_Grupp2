@@ -28,29 +28,21 @@ export const ProductCategoryPage = () => {
 
     return (
         <>
-
-
             {filteredProducts.map((product, index) => {
                 return (
-                    
-                 <>
-                    <Link to={`/detailpage/${product._id}`}>
-
-                        <div className="card">
-                            <img class="thumbnail" src={product.thumbnail} alt="" />
-                            <div className="titleAndPrice">
-                            <h2 class="productTitle">{product.title}</h2>
-                             <p className="productPrice">Price {product.price} Kr</p>
-                         </div>
-                         </div>
-                    </Link>
-                </>
-
-                    
+                    <>
+                        <Link to={`/detailpage/${product._id}`}>
+                            <div className="card">
+                                <img class="thumbnail" src={product.thumbnail} alt="" />
+                                <div className="titleAndPrice">
+                                    <h2 class="productTitle">{product.title}</h2>
+                                    <p className="productPrice">Price {product.price} Kr</p>
+                                </div>
+                            </div>
+                        </Link>
+                    </>
                 )
-                
             })}
-
         </>
     );
 };

@@ -10,6 +10,7 @@ exports.addOrder = async (req, res) => {
     const products = user.cart;
     const newOrder = await new Order({
       user: id,
+      email: user.email,
       products,
     });
     console.log(products);

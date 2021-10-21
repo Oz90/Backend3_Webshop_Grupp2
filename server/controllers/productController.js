@@ -57,6 +57,7 @@ exports.addProduct = async (req, res) => {
 exports.editProduct = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(req.body);
 
     const images = [];
     const image1 = req.body.image1 ? req.body.image1 : 'defaultimage.jpg';
