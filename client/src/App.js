@@ -7,6 +7,7 @@ import { AdminPage } from './Pages/AdminPage';
 import { AdminOrderPage } from './Pages/AdminOrderPage';
 import { AdminProductPage } from './Pages/AdminProductPage';
 import { AdminProductDetailPage } from './Pages/AdminProductDetailPage';
+import { AdminAddProductPage } from './Pages/AdminAddProductPage';
 import { ProductPage } from './Pages/ProductPage';
 import { ProductCategoryPage } from './Pages/ProductCategoryPage';
 import { UserPage } from './Pages/UserPage';
@@ -67,6 +68,7 @@ function App() {
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
               <Route path="/user" component={UserPage} />
+              <Route path="/admin/products/add" component={AdminAddProductPage} />
               <Route path="/admin/products/:id" component={AdminProductDetailPage} />
               <Route path="/admin/products" component={AdminProductPage} />
               <Route path="/admin/orders" component={AdminOrderPage} />

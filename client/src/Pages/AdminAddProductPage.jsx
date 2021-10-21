@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { addProduct } from '../fetches/fetches';
-import styled from "styled-components";
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh */
-`;
-
-const StyledInput = styled.input``;
+import {
+    FormContainerStyled,
+    FormStyled,
+    InputStyled,
+    SubmitStyled,
+} from '../components/Form/FormStyled';
 
 export const AdminAddProductPage = () => {
     const [productValue, setProductValue] = useState({});
@@ -29,27 +22,27 @@ export const AdminAddProductPage = () => {
 
     return (
 
-        <StyledDiv>
-            <StyledForm onSubmit={handleOnSubmit} onChange={handleOnChange}>
-                <StyledInput name="title" type="text" placeholder="Title" />
-                <StyledInput name="price" type="number" placeholder="Price" />
-                <StyledInput
+        <FormContainerStyled>
+            <FormStyled onSubmit={handleOnSubmit} onChange={handleOnChange}>
+                <InputStyled name="title" type="text" placeholder="Title" />
+                <InputStyled name="price" type="number" placeholder="Price" />
+                <InputStyled
                     name="description"
                     type="text"
                     placeholder="Description"
                 />
-                <StyledInput
+                <InputStyled
                     name="category"
                     type="text"
                     placeholder="category"
                 />
-                <StyledInput name="manufacturer" type="text" placeholder="Manufacturer" />
-                <StyledInput name="thumbnail" type="text" placeholder="thumbnail" />
-                <StyledInput name="image1" type="text" placeholder="image1" />
-                <StyledInput name="image2" type="text" placeholder="image2" />
-                <StyledInput name="image3" type="text" placeholder="image3" />
-                <button type="submit">Save Information</button>
-            </StyledForm>
-        </StyledDiv>
+                <InputStyled name="manufacturer" type="text" placeholder="Manufacturer" />
+                <InputStyled name="thumbnail" type="text" placeholder="thumbnail" />
+                <InputStyled name="image1" type="text" placeholder="image1" />
+                <InputStyled name="image2" type="text" placeholder="image2" />
+                <InputStyled name="image3" type="text" placeholder="image3" />
+                <SubmitStyled type="submit" value="Add Product" />
+            </FormStyled>
+        </FormContainerStyled>
     );
 };
