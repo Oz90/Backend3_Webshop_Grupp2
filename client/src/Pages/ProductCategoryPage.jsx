@@ -33,7 +33,9 @@ export const ProductCategoryPage = () => {
                     <>
                         <Link to={`/detailpage/${product._id}`}>
                             <div className="card">
+                                <div className="imgDiv">
                                 <img class="thumbnail" src={product.thumbnail} alt="" />
+                                </div>
                                 <div className="titleAndPrice">
                                     <h2 class="productTitle">{product.title}</h2>
                                     <p className="productPrice">Price {product.price} Kr</p>
