@@ -2,13 +2,19 @@ import React from 'react';
 
 import {
   CartCardContainer,
+  CartCardImage,
+  CartCardInfo,
 } from './CartCardStyled';
 
 export const CartCard = ({ props }) => {
 
   return (
     <CartCardContainer>
-      <p>{props._id}</p>
+      <CartCardImage src={props.thumbnail} alt={props.title} />
+      <CartCardInfo>
+        <p>{props.title}</p>
+        <p>{props.amount}</p>
+      </CartCardInfo>
     </CartCardContainer>
   ) 
 };

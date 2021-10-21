@@ -11,6 +11,8 @@ export const logoutUser = () => url.get('users/logout');
 
 export const getCart = () => url.get('cart');
 
+export const getSingleProduct = (id) => url.get(`products/${id}`);
+
 // const fetches = {
 //   loginUser,
 //   logoutUser,

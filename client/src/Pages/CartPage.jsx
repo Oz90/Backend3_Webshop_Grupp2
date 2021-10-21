@@ -1,25 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { getCart } from '../fetches/fetches';
+import { getCart, getSingleProduct } from '../fetches/fetches';
 
-import { CartCard } from "../components/Cart/CartCard";
+import { CartCard } from '../components/Cart/CartCard';
 
 export const CartPage = () => {
   const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+ 
+  useEffect(() => {
+    getCart()
+      .then(res => setCart(res.data))
+  }, []);
 
   useEffect(() => {
-    getCart().then(res => setCart(res.data))
-  }, []);
+    setProducts([]);
+    cart.map((item) => {
+      getSingleProduct(item._id)
+        .then(res => setProducts(products => [...products, {...res.data, amount: item.amount} ]))
+    });
+  }, [cart]);  
     
   return (
     <>
-      {cart.length > 0
+      {products.length > 0
       ?
-      cart.map((item) => {
+      products.map((item) => {
         return <CartCard key={item._id} props={item} />
       })
       :
-      <p>Empty</p>
+      <p>Cart = empty</p>
       }
     </>
   );
