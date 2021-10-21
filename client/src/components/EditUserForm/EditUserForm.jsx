@@ -18,15 +18,20 @@ const StyledInput = styled.input``;
 
 export const EditUserForm = ({ userData, setEditUser }) => {
   const [editValue, setEditValue] = useState(userData);
+  const [errorMessageResponse, setErrorMessageResponse] = useState()
 
   let history = useHistory()
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     const { address, city, fullName, displayName, email, phoneNumber, zipcode } = editValue
     const payload = { address, city, fullName, displayName, email, phoneNumber, zipcode }
-    console.log(payload)
-    editUser(payload);
+    try {
+      const response = await editUser(payload);
+      history.push('/user');
+    } catch (error) {
+      setErrorMessageResponse(error.response.data);
+    }
   };
 
   const handleOnCancel = (e) => {
@@ -59,6 +64,7 @@ export const EditUserForm = ({ userData, setEditUser }) => {
         <StyledInput name="zipcode" type="number" value={editValue.zipcode} onChange={handleOnChange} />
         <button type="submit">Save</button>
         <button onClick={handleOnCancel} type="button">Cancel</button>
+        {errorMessageResponse?.errorMessage}
       </StyledForm>
     </StyledDiv>
   );
