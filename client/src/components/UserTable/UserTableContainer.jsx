@@ -32,7 +32,6 @@ export default function UserTableContainer({ userData, setEditUser }) {
           <UserTableItem name='City' value={userData?.city} />
         </UserTableBodyStyled>
       </UserTableStyled>
-      <button onClick={handleOnClick}> Edit User </button>
     </>
   )
 }

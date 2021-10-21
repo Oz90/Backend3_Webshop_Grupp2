@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { editUser } from '../../fetches/fetches';
 
@@ -15,8 +16,10 @@ const StyledDiv = styled.div`
 
 const StyledInput = styled.input``;
 
-export const EditUserForm = ({ userData }) => {
+export const EditUserForm = ({ userData, setEditUser }) => {
   const [editValue, setEditValue] = useState(userData);
+
+  let history = useHistory()
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +28,10 @@ export const EditUserForm = ({ userData }) => {
     console.log(payload)
     editUser(payload);
   };
+
+  const handleOnCancel = (e) => {
+    history.push("/user")
+  }
 
   const handleOnChange = (e) => {
     setEditValue({ ...editValue, [e.target.name]: e.target.value });
@@ -50,7 +57,8 @@ export const EditUserForm = ({ userData }) => {
         <StyledInput name="address" type="text" value={editValue.address} onChange={handleOnChange} />
         <StyledInput name="city" type="text" value={editValue.city} onChange={handleOnChange} />
         <StyledInput name="zipcode" type="number" value={editValue.zipcode} onChange={handleOnChange} />
-        <button type="submit">Save Information</button>
+        <button type="submit">Save</button>
+        <button onClick={handleOnCancel} type="button">Cancel</button>
       </StyledForm>
     </StyledDiv>
   );

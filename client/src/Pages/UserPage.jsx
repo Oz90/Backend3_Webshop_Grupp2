@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getUser } from '../fetches/fetches';
+import { useHistory } from 'react-router-dom';
 import UserTableContainer from "../components/UserTable/UserTableContainer";
-import { EditUserForm } from "../components/EditUserForm/EditUserForm";
 
 
 export const UserPage = () => {
   const [userData, setUserData] = useState(undefined);
 
-  const [editUser, setEditUser] = useState(false);
+  let history = useHistory()
 
   async function getUserData() {
     const fetchedUserData = await getUser()
@@ -20,18 +20,24 @@ export const UserPage = () => {
    
   }, []);
 
+  const handleOnEditClick = (e) => {
+    history.push("/user/edit")
+  }
+  const handleOnOrderClick = (e) => {
+    history.push("/user/order")
+  }
+
   return (
     <>
+      <button onClick={handleOnEditClick}>Edit</button>
+      <button onClick={handleOnOrderClick}>Orders</button>
+
       {userData ?
-        editUser ? 
-          <EditUserForm userData={userData} setEditUser={setEditUser} /> 
-          :
-        <UserTableContainer userData={userData} setEditUser={setEditUser} />
+          
+        <UserTableContainer userData={userData} />
         :
         <p>Laddar... </p>
-
       }
-
     </>
   );
 };
