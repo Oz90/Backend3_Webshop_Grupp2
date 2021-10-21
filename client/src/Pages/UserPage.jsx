@@ -17,7 +17,7 @@ export const UserPage = () => {
 
   useEffect(() => {
     getUserData()
-   
+
   }, []);
 
   const handleOnEditClick = (e) => {
@@ -33,7 +33,7 @@ export const UserPage = () => {
       <button onClick={handleOnOrderClick}>Orders</button>
 
       {userData ?
-          
+
         <UserTableContainer userData={userData} />
         :
         <p>Laddar... </p>

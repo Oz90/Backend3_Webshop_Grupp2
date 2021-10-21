@@ -250,8 +250,7 @@ exports.updateUser = async (req, res, next) => {
     updateEmail ? updateUserInfo = { ...updateUserInfo, email } : updateUserInfo;
 
     // save user to db
-    console.log(updateUserInfo);
-    const filter = {_id: id}
+    const filter = { _id: id }
     const savedUser = await User.findOneAndUpdate(filter, updateUserInfo, {
       new: true,
     });
@@ -259,6 +258,6 @@ exports.updateUser = async (req, res, next) => {
     return res.send(savedUser);
   } catch (err) {
     console.error('Register:', err);
-    return res.status(500).send();
+    return res.status(500).send({ errorMessage: "Fatal error, world is ending" });
   }
 };
