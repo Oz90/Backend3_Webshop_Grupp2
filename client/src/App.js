@@ -6,6 +6,7 @@ import { LoginPage } from './Pages/LoginPage';
 import { ProductPage } from './Pages/ProductPage';
 import { ProductCategoryPage } from './Pages/ProductCategoryPage';
 import { UserPage } from './Pages/UserPage';
+import { UserPageEdit } from './Pages/UserPageEdit';
 import { RegisterPage } from './Pages/RegisterPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
@@ -62,6 +63,9 @@ function App() {
               <Route path="/register" component={RegisterPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
+              <Route path="/user/edit" component={UserPageEdit} />
+              <Route path="/user/order" component={UserPage} />
+              <Route path="/user/order/:id" component={UserPage} />
               <Route path="/user" component={UserPage} />
             </Switch>
           </ContentContainerStyled>
