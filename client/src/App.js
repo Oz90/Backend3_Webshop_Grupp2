@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './Pages/LoginPage';
 import { ProductPage } from './Pages/ProductPage';
 import { ProductCategoryPage } from './Pages/ProductCategoryPage';
+import { UserPage } from './Pages/UserPage';
 import { RegisterPage } from './Pages/RegisterPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
@@ -61,6 +62,7 @@ function App() {
               <Route path="/register" component={RegisterPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
+              <Route path="/user" component={UserPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />

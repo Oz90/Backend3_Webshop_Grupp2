@@ -4,12 +4,10 @@ const router = express.Router();
 const orderController = require('../controllers/orderController');
 
 router
-  .get('/', orderController.getAllOrders)
-  .get('/user/:id', orderController.getAllUserOrders)
-  .post('/', orderController.addOrder);
-
-router
+  .get('/user', orderController.getAllUserOrders)
   .get('/:id', orderController.getSingleOrder)
-  .post('/:id', orderController.toggleIsShipped);
+  .post('/:id', orderController.toggleIsShipped)
+  .post('/', orderController.addOrder)
+  .get('/', orderController.getAllOrders);
 
 module.exports = router;
