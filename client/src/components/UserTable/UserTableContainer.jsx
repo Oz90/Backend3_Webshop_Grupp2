@@ -23,7 +23,7 @@ export default function UserTableContainer({ userData, setEditUser }) {
           </UserTableRowStyled>
         </thead>
         <UserTableBodyStyled>
-          <UserTableItem name='Display Name' value={userData?.displayName} />
+          <UserTableItem name='Display Name' value={userData.displayName} />
           <UserTableItem name='Full Name' value={userData?.fullName} />
           <UserTableItem name='Email' value={userData?.email} />
           <UserTableItem name='Phone Number' value={userData?.phoneNumber} />

@@ -7,6 +7,7 @@ exports.getUser = async (req, res, next) => {
   try {
     const userId = checkUser(req.cookies.token)
     const user = await User.findById(userId);
+    console.log(user)
     res.status(200).json(user);
   } catch (err) {
     console.error(err);
@@ -250,7 +251,8 @@ exports.updateUser = async (req, res, next) => {
 
     // save user to db
     console.log(updateUserInfo);
-    const savedUser = await User.findOneAndUpdate(id, updateUserInfo, {
+    const filter = {_id: id}
+    const savedUser = await User.findOneAndUpdate(filter, updateUserInfo, {
       new: true,
     });
 

@@ -10,27 +10,27 @@ export const UserPage = () => {
   const [editUser, setEditUser] = useState(false);
 
   async function getUserData() {
-    const userData = await getUser()
-    console.log(userData)
-    setUserData(userData.data);
+    const fetchedUserData = await getUser()
+    console.log(fetchedUserData)
+    setUserData(fetchedUserData.data);
   }
 
   useEffect(() => {
     getUserData()
+   
   }, []);
-  console.log(editUser);
+
   return (
     <>
       {userData ?
-        editUser ? <EditUserForm userData={userData} setEditUser={setEditUser} /> :
-          <UserTableContainer userData={userData} setEditUser={setEditUser} />
-
+        editUser ? 
+          <EditUserForm userData={userData} setEditUser={setEditUser} /> 
+          :
+        <UserTableContainer userData={userData} setEditUser={setEditUser} />
         :
-        <p>Laddar..? </p>
+        <p>Laddar... </p>
 
       }
-
-
 
     </>
   );
