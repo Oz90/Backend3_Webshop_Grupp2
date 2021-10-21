@@ -14,6 +14,7 @@ export const CartCard = ({ props }) => {
       <CartCardInfo>
         <p>{props.title}</p>
         <p>{props.amount}</p>
+        <p>{props.price}</p>
       </CartCardInfo>
     </CartCardContainer>
   ) 
