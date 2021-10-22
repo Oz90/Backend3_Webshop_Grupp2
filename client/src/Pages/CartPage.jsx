@@ -31,6 +31,12 @@ export const CartPage = () => {
       setTotal(total + (item.price * item.amount));
     });
   }, [products]);
+
+  const handleOnChange = (e) => {
+  };
+
+  const handleOnDelete = (e) => {
+  };
     
   return (
     <>
