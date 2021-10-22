@@ -75,7 +75,9 @@ exports.editProduct = async (req, res) => {
       images,
     };
 
-    await Product.findOneAndUpdate(id, newProduct, { new: true });
+    const filter = { _id: id }
+
+    await Product.findOneAndUpdate(filter, newProduct, { new: true });
 
     res.status(200).json('Updated');
   } catch (err) {

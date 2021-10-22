@@ -5,6 +5,7 @@ const ContentContainerStyled = styled.div`
   grid-column: 4/10;
   grid-row: 2;
   //height: 3000px;
+  overflow: scroll;
 
   grid-template-columns: repeat(3,1fr);
   grid-gap: 5px;
