@@ -1,6 +1,4 @@
 import React from "react";
-import { UserTableStyled, UserTableRowStyled, UserTableBodyStyled } from './UserTableStyled'
-import UserTableItem from "./UserTableItem";
 import {
   ListContainerStyled,
   TextStyled,
