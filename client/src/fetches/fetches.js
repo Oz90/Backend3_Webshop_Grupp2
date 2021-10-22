@@ -20,6 +20,8 @@ export const editUser = (payload) => url.post('/users/update', payload);
 
 export const getCart = () => url.get('cart');
 
+export const removeCartItem = (id) => url.post(`cart/delete/${id}`);
+
 // const fetches = {
 //   loginUser,
 //   logoutUser,

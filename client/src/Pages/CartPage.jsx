@@ -35,9 +35,6 @@ export const CartPage = () => {
   const handleOnChange = (e) => {
   };
 
-  const handleOnDelete = (e) => {
-  };
-    
   return (
     <>
       <CartContentsStyled>

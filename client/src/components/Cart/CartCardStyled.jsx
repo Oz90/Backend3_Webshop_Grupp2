@@ -15,4 +15,26 @@ const CartCardInfo = styled.div`
   padding: 2rem;
 `;
 
-export { CartCardContainer, CartCardImage, CartCardInfo };
+const AmountForm = styled.form`
+`;
+
+const AmountInput = styled.input`
+  height: 2rem;
+  border: 1px solid black;
+  padding: 0 1rem 0 1rem;
+`;
+
+const AmountSubmit = styled.input`
+  height: 2rem;
+  border: 1px solid black;
+  padding: 0 1rem 0 1rem;
+`;
+
+export { 
+  CartCardContainer,
+  CartCardImage,
+  CartCardInfo,
+  AmountForm,
+  AmountInput,
+  AmountSubmit
+};
