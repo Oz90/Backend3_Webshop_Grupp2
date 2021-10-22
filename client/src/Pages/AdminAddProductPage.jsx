@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { addProduct } from '../fetches/fetches';
+import { useHistory } from "react-router-dom"
+
 
 import {
     FormContainerStyled,
@@ -9,11 +11,14 @@ import {
 } from '../components/Form/FormStyled';
 
 export const AdminAddProductPage = () => {
+    const history = useHistory()
     const [productValue, setProductValue] = useState({});
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
         addProduct(productValue);
+        history.push("/admin/products")
+
     };
 
     const handleOnChange = (e) => {

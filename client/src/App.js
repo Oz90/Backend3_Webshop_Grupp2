@@ -24,6 +24,7 @@ import { SideBar } from "./components/SideBarContainer/SideBar"
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
 import { FooterStyled } from './components/FooterContainer/FooterStyled';
 import { NavBar } from './components/HeaderContainer/NavBar';
+import { DetailPage } from './Pages/DetailPage';
 
 axios.defaults.withCredentials = true;
 
@@ -75,6 +76,7 @@ function App() {
               <Route path="/user/edit" component={UserPageEdit} />
               <Route path="/user/order/:id" component={UserPageOrderDetails} />
               <Route path="/user/order" component={UserPageOrders} />
+              <Route path="/detailpage/:id" component={DetailPage} />
               <Route path="/user" component={UserPage} />
               <Route path="/admin/products/add" component={AdminAddProductPage} />
               <Route path="/admin/products/:id" component={AdminProductDetailPage} />

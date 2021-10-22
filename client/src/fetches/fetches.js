@@ -12,6 +12,7 @@ export const getAllProducts = () => url.get('/products');
 export const getSingleProduct = (id) => url.get(`/products/${id}`);
 export const addProduct = (payload) => url.post(`/products/add`, payload);
 export const editSingleProduct = (id, payload) => url.post(`/products/${id}`, payload);
+export const deleteSingleProduct = (id) => url.delete(`/admin/${id}`);
 export const getAllOrders = () => url.get('/orders');
 export const toggleOrderIsShipped = (id) => url.post(`/orders/${id}`);
 export const getUser = () => url.get('/users');

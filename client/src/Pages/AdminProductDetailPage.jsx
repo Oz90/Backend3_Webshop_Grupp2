@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getSingleProduct, editSingleProduct } from '../fetches/fetches';
-import { useParams } from "react-router-dom"
-import styled from "styled-components";
+import { getSingleProduct, editSingleProduct, deleteSingleProduct } from '../fetches/fetches';
+import { useParams, useHistory } from "react-router-dom"
 
 
 import {
@@ -13,10 +12,11 @@ import {
 
 
 export const AdminProductDetailPage = () => {
+    const history = useHistory()
     const { id } = useParams();
     const [productValue, setProductValue] = useState([]);
     // const [updatedProduct, setUpdatedProduct] = useState(product);
-    console.log(productValue.images);
+   
 
     useEffect(() => {
         getSingleProduct(id).then(res => setProductValue(res.data));
@@ -28,12 +28,18 @@ export const AdminProductDetailPage = () => {
         const payload = { title, price, description, category, manufacturer, thumbnail, image1, image2, image3 }
         console.log(payload)
         editSingleProduct(id, payload);
+        history.push("/admin/products")
     };
 
     const handleOnChange = (e) => {
         setProductValue({ ...productValue, [e.target.name]: e.target.value });
     };
 
+    const handleDelete = () =>{
+        deleteSingleProduct(id)
+        history.push("/admin/products")
+
+    }
 
     return (
         <FormContainerStyled>
@@ -58,6 +64,10 @@ export const AdminProductDetailPage = () => {
                 <InputStyled name="image2" type="text" value={productValue.images?.[1]} onChange={handleOnChange} />
                 <InputStyled name="image3" type="text" value={productValue.images?.[2]} onChange={handleOnChange} />
                 <SubmitStyled type="submit" value="Update product info" />
+               
+                <SubmitStyled onClick={handleDelete} type="button" value="Delete product" />
+
+
             </FormStyled>
         </FormContainerStyled>
     );
