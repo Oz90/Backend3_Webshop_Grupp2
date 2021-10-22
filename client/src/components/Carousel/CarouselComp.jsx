@@ -16,9 +16,6 @@ export const CarouselComp = () => {
 
     return (
         <>
-        {product.map((item) => {
-            console.log(item);
-        })}
         <Carousel autoPlay axis="horizontal" infiniteLoop interval="5000">
             <div>
                 <img src={product[0]} />
