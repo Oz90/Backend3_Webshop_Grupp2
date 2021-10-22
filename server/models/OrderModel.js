@@ -17,6 +17,9 @@ const orderSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
+    email: {
+      type: String,
+    },
     isShipped: {
       type: Boolean,
       default: false,

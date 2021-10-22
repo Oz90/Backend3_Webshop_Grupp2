@@ -4,9 +4,11 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 
 router
-  .get('/', productController.getAllProducts);
+  .get('/', productController.getAllProducts)
+  .post('/add', productController.addProduct)
 
 router
-  .get('/:id', productController.getSingleProduct);
+  .get('/:id', productController.getSingleProduct)
+  .post('/:id', productController.editProduct)
 
 module.exports = router;

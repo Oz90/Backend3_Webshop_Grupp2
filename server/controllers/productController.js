@@ -57,6 +57,7 @@ exports.addProduct = async (req, res) => {
 exports.editProduct = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(req.body);
 
     const images = [];
     const image1 = req.body.image1 ? req.body.image1 : 'defaultimage.jpg';
@@ -74,7 +75,9 @@ exports.editProduct = async (req, res) => {
       images,
     };
 
-    await Product.findOneAndUpdate(id, newProduct, { new: true });
+    const filter = { _id: id }
+
+    await Product.findOneAndUpdate(filter, newProduct, { new: true });
 
     res.status(200).json('Updated');
   } catch (err) {

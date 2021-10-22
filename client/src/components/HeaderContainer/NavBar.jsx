@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from "../../images/dress.svg"
@@ -63,31 +63,28 @@ margin-left: 30px;
 
 export const NavBar = () => {
     const { loggedInUser, loggedInAdmin } = useContext(AuthContext);
-    console.log("Is logged in " + loggedInUser)
-
-  
 
     return (
         <StyledNav>
-                <StyledImage src={logo} alt="" />
-                <StyledTitle><h1>MONKI 2.0</h1></StyledTitle>
-                <StyledBtnContainer>
-            {loggedInUser || loggedInAdmin ?( <>
-                 <LogoutButton/>
-                <StyledBtn>Profil</StyledBtn>
-            {loggedInAdmin ? (<StyledBtn>Admin</StyledBtn>) : null}
-                <StyledBtn>
-                   <StyledNotification>1</StyledNotification>
-                  <BsCart3 size={40}/>
-                  </StyledBtn>
-            </>) : (<>
-              <Link to="/login">
-              <StyledBtn>Sign in</StyledBtn>
-               </Link>
-            </>) 
-        } 
-       
-
+            <StyledImage src={logo} alt="" />
+            <StyledTitle><h1>MONKI 2.0</h1></StyledTitle>
+            <StyledBtnContainer>
+                {loggedInUser || loggedInAdmin ? (<>
+                    <LogoutButton />
+                    <Link to="/user"><StyledBtn>Profil</StyledBtn></Link>
+                    {loggedInAdmin ? (<Link to="/admin"><StyledBtn>Admin</StyledBtn></Link>) : null}
+                    <Link to="/cart">
+                        <StyledBtn>
+                            <StyledNotification>1</StyledNotification>
+                            <BsCart3 size={40} />
+                        </StyledBtn>
+                    </Link>
+                </>) : (<>
+                    <Link to="/login">
+                        <StyledBtn>Sign in</StyledBtn>
+                    </Link>
+                </>)
+                }
             </StyledBtnContainer>
         </StyledNav>
     )

@@ -3,9 +3,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './Pages/LoginPage';
+import { AdminPage } from './Pages/AdminPage';
+import { AdminOrderPage } from './Pages/AdminOrderPage';
+import { AdminProductPage } from './Pages/AdminProductPage';
+import { AdminProductDetailPage } from './Pages/AdminProductDetailPage';
+import { AdminAddProductPage } from './Pages/AdminAddProductPage';
 import { ProductPage } from './Pages/ProductPage';
 import { ProductCategoryPage } from './Pages/ProductCategoryPage';
+import { UserPage } from './Pages/UserPage';
 import { RegisterPage } from './Pages/RegisterPage';
+import { CartPage } from './Pages/CartPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
 import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
@@ -60,9 +67,16 @@ function App() {
             <Switch>
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
+              <Route path="/cart" component={CartPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
               <Route path="/detailpage/:id" component={DetailPage} />
+              <Route path="/user" component={UserPage} />
+              <Route path="/admin/products/add" component={AdminAddProductPage} />
+              <Route path="/admin/products/:id" component={AdminProductDetailPage} />
+              <Route path="/admin/products" component={AdminProductPage} />
+              <Route path="/admin/orders" component={AdminOrderPage} />
+              <Route path="/admin" component={AdminPage} />
             </Switch>
           </ContentContainerStyled>
           <FooterStyled />

@@ -1,13 +1,16 @@
 const User = require('../models/UserModel');
 const Order = require('../models/OrderModel');
+const checkUser = require('../utils/checkUser');
+
 
 exports.addOrder = async (req, res) => {
   try {
-    const id = req.body.userId;
+    const id = checkUser(req.cookies.token)
     const user = await User.findById(id);
     const products = user.cart;
     const newOrder = await new Order({
       user: id,
+      email: user.email,
       products,
     });
     console.log(products);
@@ -32,7 +35,7 @@ exports.getSingleOrder = async (req, res) => {
 
 exports.getAllUserOrders = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = checkUser(req.cookies.token)
     const orders = await Order.find({ user: userId });
     res.status(200).json(orders);
   } catch (err) {
