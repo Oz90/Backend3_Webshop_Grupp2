@@ -1,6 +1,19 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/UserModel');
+const checkUser = require('../utils/checkUser');
+
+exports.getUser = async (req, res, next) => {
+  try {
+    const userId = checkUser(req.cookies.token)
+    const user = await User.findById(userId);
+    console.log(user)
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+}
 
 exports.registerUser = async (req, res, next) => {
   console.log(req.body);
@@ -183,12 +196,11 @@ exports.logoutUser = (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = checkUser(req.cookies.token)
     const {
       fullName,
       displayName,
       email,
-      password,
       phoneNumber,
       city,
       address,
@@ -201,7 +213,6 @@ exports.updateUser = async (req, res, next) => {
       !fullName
       || !displayName
       || !email
-      || !password
       || !phoneNumber
       || !address
       || !city
@@ -212,36 +223,36 @@ exports.updateUser = async (req, res, next) => {
         .json({ errorMessage: 'Please fill in all required fields' });
     }
 
-    if (password.length < 6) {
+    //////////// check if email exists. If not let through.
+    //////////// If email exists but is the users own, let through
+    const editUserInfo = await User.findOne({ email })
+    const currentUser = await User.findById(id)
+    let updateEmail = false;
+    if (editUserInfo && (currentUser.email !== editUserInfo.email)) {
       return res.status(400).json({
-        errorMessage: 'Please enter a password with at least 6 characters.',
-      });
+        errorMessage: "This email already exists",
+      })
     }
-    /*
-        const existingUser = await User.findOne({ email })
-        if (existingUser) {
-          return res.status(400).json({
-            errorMessage: "This email already exists",
-          })
-        } */
+
+    !editUserInfo ? updateEmail = true : updateEmail = false;
 
     // Hash the password
-    const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(password, salt);
 
-    const updatedUser = {
+    let updateUserInfo = {
       fullName,
       displayName,
       phoneNumber,
       address,
       city,
       zipcode,
-      email,
-      password: passwordHash,
     };
 
+    updateEmail ? updateUserInfo = { ...updateUserInfo, email } : updateUserInfo;
+
     // save user to db
-    const savedUser = await User.findOneAndUpdate(id, updatedUser, {
+    console.log(updateUserInfo);
+    const filter = {_id: id}
+    const savedUser = await User.findOneAndUpdate(filter, updateUserInfo, {
       new: true,
     });
 

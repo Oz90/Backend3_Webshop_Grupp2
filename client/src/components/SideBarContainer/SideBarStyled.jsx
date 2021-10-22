@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const SideBarStyled = styled.div`
+export const SideBarStyled = styled.div`
   display: grid;
   grid-column: 2/4;
   grid-row: 2;
 
-  background-color: yellow;
+  background-color: #f8f8c7;
 `;
 
-export { SideBarStyled };
+// export default { SideBarStyled };

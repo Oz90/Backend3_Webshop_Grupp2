@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 const ContentContainerStyled = styled.div`
-    grid-column: 4/10;
-    grid-row: 2;
+  display: grid;
+  grid-column: 4/10;
+  grid-row: 2;
+  //height: 3000px;
+  overflow: scroll;
 
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    overflow-y: scroll;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 5px;
+
+   //background-color: #c1eec1;
 `;
 
 export { ContentContainerStyled };

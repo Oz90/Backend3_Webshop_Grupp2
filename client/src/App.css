@@ -1,11 +1,77 @@
 *{
-  margin: 0;
-  padding: 0;
+   margin: 0;
+  padding: 0; 
   box-sizing: border-box;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  font-family: 'Roboto', sans-serif; 
 }
 
 *::-webkit-scrollbar{
   display: none;
+}
+
+/* //////////////////////// Product card styling //////////////////////// */
+.card{
+  overflow: hidden; 
+}
+
+.imgDiv{
+  overflow: hidden;
+}
+
+.thumbnail{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  /* width: 20rem; */
+  cursor: pointer;
+  transition: all .2s ease;  
+  
+}
+
+.thumbnail:hover {
+  transform: scale(1.09);
+}
+
+.productTitle{
+text-align: center;
+margin: 1rem 0 0.5rem 0;
+}
+
+
+.productPrice{
+
+}
+
+.titleAndPrice{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: .7rem;
+
+}
+
+/* //////////////////////// Sidebar styling //////////////////////// */
+
+.reactLink{
+  text-decoration: none;
+  color: black;
+}
+
+.reactLink:hover{
+  color: gray;
+
+}
+
+.sidebarListItems{
+  margin-top: 5rem;
+  list-style: none;
+}
+
+.sidebarLinks{
+  margin-left: 20%;
+  font-size: 2rem;
+  margin-top: 1rem;
 }
