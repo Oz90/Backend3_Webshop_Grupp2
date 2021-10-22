@@ -3,6 +3,7 @@ import { getUser } from '../fetches/fetches';
 import { useHistory } from 'react-router-dom';
 import UserTableContainer from "../components/UserTable/UserTableContainer";
 
+import { ButtonStyled, MiddleColumnStyled } from '../components/Details/DetailsStyled'
 
 export const UserPage = () => {
   const [userData, setUserData] = useState(undefined);
@@ -29,12 +30,16 @@ export const UserPage = () => {
 
   return (
     <>
-      <button onClick={handleOnEditClick}>Edit</button>
-      <button onClick={handleOnOrderClick}>Orders</button>
+      <MiddleColumnStyled>
+        <ButtonStyled onClick={handleOnEditClick}>Edit</ButtonStyled>
+        <ButtonStyled onClick={handleOnOrderClick}>Orders</ButtonStyled>
+      </MiddleColumnStyled>
 
       {userData ?
+        <MiddleColumnStyled>
+          <UserTableContainer userData={userData} />
 
-        <UserTableContainer userData={userData} />
+        </MiddleColumnStyled>
         :
         <p>Laddar... </p>
       }
