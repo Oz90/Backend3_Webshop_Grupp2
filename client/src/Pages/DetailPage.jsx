@@ -1,5 +1,5 @@
 import React, { useEffect , useState} from 'react'
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { CarouselComp } from '../components/Carousel/CarouselComp'
 import { getSingleProduct } from '../fetches/fetches'
 import { DetailPageStyled, DetailsDiv } from '../components/DetailPage/DetailPageStyled'
@@ -25,8 +25,8 @@ export const DetailPage = () => {
             <div>
                 <h3>{product.title}</h3>
                 <p>{product.description}</p>
-                <p>{product.price}</p>
-                <button>Add to cart</button>
+                <p>{product.price} SEK</p>
+                <Link to={`/cart/add/`}><button>Add to cart</button></Link>
             </div>
             </DetailsDiv>
         </DetailPageStyled>
