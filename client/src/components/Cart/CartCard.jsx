@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-
-import { removeCartItem } from '../../fetches/fetches';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { removeCartItem, updateCart } from '../../fetches/fetches';
 
 import {
   CartCardContainer,
@@ -12,6 +12,7 @@ import {
 } from './CartCardStyled';
 
 export const CartCard = ({ props }) => {
+  const { cartItemAmount, setCartItemAmount } = useContext(AuthContext);
   const [productAmount, setProductAmount] = useState(props.amount);
 
   const handleDeleteCartItem = () => {
@@ -22,14 +23,21 @@ export const CartCard = ({ props }) => {
     setProductAmount(e.target.value);
   };
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    setCartItemAmount(0);
+    const payload = { amount: productAmount};
+    updateCart(props._id, payload);
+  };
+
   return (
     <CartCardContainer>
       <CartCardImage src={props.thumbnail} alt={props.title} />
       <CartCardInfo>
         <p>{props.title}</p>
-        <AmountForm>
+        <AmountForm onSubmit={handleOnSubmit}>
           <label for="amount">Amount: </label>
-          <AmountInput name="amount" type="number" value={productAmount}/>
+          <AmountInput onChange={handleOnChange} name="amount" type="number" value={productAmount}/>
           <AmountSubmit type="submit" value="Update"/>
         </AmountForm>
         <p>{props.price}</p>

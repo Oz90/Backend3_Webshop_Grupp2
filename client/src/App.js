@@ -27,6 +27,7 @@ axios.defaults.withCredentials = true;
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
   const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
+  const [cartItemAmount, setCartItemAmount] = useState();
 
   const url = axios.create({
     baseURL: 'http://localhost:5000/',
@@ -50,6 +51,8 @@ function App() {
     <>
       <AuthContext.Provider
         value={{
+          cartItemAmount,
+          setCartItemAmount,
           loggedInUser,
           loggedInAdmin,
           getIsUserLoggedIn,
