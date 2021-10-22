@@ -73,10 +73,12 @@ export const NavBar = () => {
                     <LogoutButton />
                     <Link to="/user"><StyledBtn>Profil</StyledBtn></Link>
                     {loggedInAdmin ? (<Link to="/admin"><StyledBtn>Admin</StyledBtn></Link>) : null}
-                    <StyledBtn>
-                        <StyledNotification>1</StyledNotification>
-                        <BsCart3 size={40} />
-                    </StyledBtn>
+                    <Link to="/cart">
+                        <StyledBtn>
+                            <StyledNotification>1</StyledNotification>
+                            <BsCart3 size={40} />
+                        </StyledBtn>
+                    </Link>
                 </>) : (<>
                     <Link to="/login">
                         <StyledBtn>Sign in</StyledBtn>
