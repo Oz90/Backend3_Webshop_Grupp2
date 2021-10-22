@@ -11,20 +11,23 @@ export const CarouselComp = () => {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        getSingleProduct(id).then(res => setProduct(res.data))
+        getSingleProduct(id).then(res => setProduct(res.data.images))
     }, []);
 
     return (
         <>
+        {product.map((item) => {
+            console.log(item);
+        })}
         <Carousel autoPlay axis="horizontal" infiniteLoop interval="5000">
             <div>
-                <img src={product.images[0]}/>
+                <img src={product[0]} />
             </div>
             <div>
-                <img src={product.images[1]}/>
+                <img src={product[1]} />
             </div>
             <div>
-                <img src={product.images[2]} />
+                <img src={product[2]} />
             </div>
         </Carousel> 
         </>

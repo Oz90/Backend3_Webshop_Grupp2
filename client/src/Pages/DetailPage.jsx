@@ -2,6 +2,7 @@ import React, { useEffect , useState} from 'react'
 import { useParams } from "react-router-dom"
 import { CarouselComp } from '../components/Carousel/CarouselComp'
 import { getSingleProduct } from '../fetches/fetches'
+import { DetailPageStyled, DetailsDiv } from '../components/DetailPage/DetailPageStyled'
 
 export const DetailPage = () => {
     
@@ -14,13 +15,22 @@ export const DetailPage = () => {
         getSingleProduct(id).then(res => setProduct(res.data))
     }, []);
   
-    console.log(product.images)
+    console.log(product)
+    
     return (
-        <div>
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+        <>         
+        <DetailPageStyled>
             <CarouselComp/>
-        </div>
+            <DetailsDiv>
+            <div>
+                <h3>{product.title}</h3>
+                <p>{product.description}</p>
+                <p>{product.price}</p>
+                <button>Add to cart</button>
+            </div>
+            </DetailsDiv>
+        </DetailPageStyled>
+        </>
+        
     )
 }
