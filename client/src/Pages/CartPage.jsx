@@ -10,9 +10,11 @@ import { CartSummaryStyled, PlaceOrderButtonStyled } from '../components/Cart/Ca
 export const CartPage = () => {
   const { cartItemAmount, setCartItemAmount } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
+  const [newCartItemsAmount, setNewCartItemsAmount] = useState([]);
+  const [totalCartItemsAmount, setTotalCartItemsAmount] = useState(0);
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
- 
+
   useEffect(() => {
     setCart([]);
     getCart()
@@ -23,9 +25,9 @@ export const CartPage = () => {
     setProducts([]);
     cart.map((item) => {
       getSingleProduct(item._id)
-        .then(res => setProducts(products => [...products, {...res.data, amount: item.amount} ]));
+        .then(res => setProducts(products => [...products, { ...res.data, amount: item.amount }]));
     });
-  }, [cart]);  
+  }, [cart]);
 
   useEffect(() => {
     setTotal(0);
@@ -34,9 +36,23 @@ export const CartPage = () => {
     });
   }, [products]);
 
-//  useEffect(() => {
-//    cart.map((item) => setCartItemAmount(cartItemAmount + item.amount));
-//  }, [cartItemAmount])
+
+  // Tried to fix the cartitem amount for the "red bubble", code lines 41-58.
+  useEffect(() => {
+    setNewCartItemsAmount(cart.map((item) => item.amount));
+    console.log(newCartItemsAmount);
+  }, [cart])
+
+  useEffect(() => {
+    setTotalCartItemsAmount(newCartItemsAmount.reduce((sum, num) => {
+      return sum + num;
+    }, 0));
+  }, [newCartItemsAmount])
+
+  useEffect(() => {
+    console.log("Total: " + totalCartItemsAmount)
+    setCartItemAmount(totalCartItemsAmount);
+  }, [totalCartItemsAmount])
 
   const handleOnChange = (e) => {
   };
@@ -45,17 +61,17 @@ export const CartPage = () => {
     <>
       <CartContentsStyled>
         {products.length > 0
-        ?
-        products.map((item) => {
-          return <CartCard key={item._id} props={item} />
-        })
-        :
-        <p>Cart = empty</p>
+          ?
+          products.map((item) => {
+            return <CartCard key={item._id} props={item} />
+          })
+          :
+          <p>Cart = empty</p>
         }
       </CartContentsStyled>
       <CartSummaryStyled>
         <p>Sum: {total}:-</p>
-        <PlaceOrderButtonStyled>Place Order</PlaceOrderButtonStyled> 
+        <PlaceOrderButtonStyled>Place Order</PlaceOrderButtonStyled>
       </CartSummaryStyled>
     </>
   );

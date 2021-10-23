@@ -26,7 +26,7 @@ export const CartCard = ({ props }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     setCartItemAmount(0);
-    const payload = { amount: productAmount};
+    const payload = { amount: productAmount };
     updateCart(props._id, payload);
   };
 
@@ -36,14 +36,14 @@ export const CartCard = ({ props }) => {
       <CartCardInfo>
         <p>{props.title}</p>
         <AmountForm onSubmit={handleOnSubmit}>
-          <label for="amount">Amount: </label>
-          <AmountInput onChange={handleOnChange} name="amount" type="number" value={productAmount}/>
-          <AmountSubmit type="submit" value="Update"/>
+          <label htmlFor="amount">Amount: </label>
+          <AmountInput onChange={handleOnChange} name="amount" type="number" value={productAmount} />
+          <AmountSubmit type="submit" value="Update" />
         </AmountForm>
         <p>{props.price}</p>
         <button type="button" onClick={handleDeleteCartItem}>Remove from cart</button>
       </CartCardInfo>
     </CartCardContainer>
-  ) 
+  )
 };
 
