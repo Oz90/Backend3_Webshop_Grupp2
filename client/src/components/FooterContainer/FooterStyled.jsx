@@ -2,10 +2,8 @@ import styled from 'styled-components';
 
 const FooterStyled = styled.div`
   display: grid;
-  grid-column: 2/10;
-  grid-row: 3;
-
-  background-color: blue;
+  grid-column: 1/11;
+  background-color: #8888e3;
 `;
 
 export { FooterStyled };
