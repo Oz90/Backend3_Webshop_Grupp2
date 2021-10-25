@@ -21,6 +21,10 @@ export const editUser = (payload) => url.post('/users/update', payload);
 
 export const getCart = () => url.get('cart');
 
+export const removeCartItem = (id) => url.post(`cart/delete/${id}`);
+
+export const updateCart = (id, payload) => url.post(`cart/add/${id}`, payload);
+
 // const fetches = {
 //   loginUser,
 //   logoutUser,

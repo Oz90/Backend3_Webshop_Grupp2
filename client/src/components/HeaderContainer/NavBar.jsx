@@ -5,6 +5,7 @@ import logo from "../../images/dress.svg"
 import { BsCart3 } from 'react-icons/bs';
 import { AuthContext } from '../../context/AuthContext';
 import LogoutButton from "../LoginForm/LogoutButton"
+import { CartIcon } from './CartIcon';
 
 
 
