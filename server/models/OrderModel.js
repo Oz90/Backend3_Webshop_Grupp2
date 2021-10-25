@@ -20,9 +20,19 @@ const orderSchema = new Schema(
     email: {
       type: String,
     },
+    shippingAddress: {
+      type: Object,
+    },
     isShipped: {
       type: Boolean,
       default: false,
+    },
+    shippingCost: { 
+      type: Number, 
+      default: 49
+    },
+    totalSum: { 
+      type: Number
     },
   },
   {

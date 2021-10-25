@@ -11,6 +11,10 @@
   display: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* //////////////////////// Product card styling //////////////////////// */
 .card{
   overflow: hidden; 

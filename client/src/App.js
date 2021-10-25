@@ -11,6 +11,9 @@ import { AdminAddProductPage } from './Pages/AdminAddProductPage';
 import { ProductPage } from './Pages/ProductPage';
 import { ProductCategoryPage } from './Pages/ProductCategoryPage';
 import { UserPage } from './Pages/UserPage';
+import { UserPageEdit } from './Pages/UserPageEdit';
+import { UserPageOrders } from './Pages/UserPageOrders';
+import  UserPageOrderDetails from './Pages/UserPageOrderDetails';
 import { RegisterPage } from './Pages/RegisterPage';
 import { CartPage } from './Pages/CartPage';
 import { AuthContext } from './context/AuthContext';
@@ -73,6 +76,9 @@ function App() {
               <Route path="/cart" component={CartPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
+              <Route path="/user/edit" component={UserPageEdit} />
+              <Route path="/user/order/:id" component={UserPageOrderDetails} />
+              <Route path="/user/order" component={UserPageOrders} />
               <Route path="/detailpage/:id" component={DetailPage} />
               <Route path="/user" component={UserPage} />
               <Route path="/admin/products/add" component={AdminAddProductPage} />
