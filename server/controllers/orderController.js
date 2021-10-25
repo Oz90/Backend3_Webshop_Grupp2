@@ -8,12 +8,20 @@ exports.addOrder = async (req, res) => {
     const id = checkUser(req.cookies.token)
     const user = await User.findById(id);
     const products = user.cart;
+    const totalSum = req.body.totalSum || 200
+
+    const shippingAddress = {
+      street: user.address,
+      zipcode: user.zipcode,
+      city: user.city,
+      }
     const newOrder = await new Order({
       user: id,
       email: user.email,
       products,
+      shippingAddress,
+      totalSum
     });
-    console.log(products);
     newOrder.save();
     res.send(newOrder);
   } catch (err) {

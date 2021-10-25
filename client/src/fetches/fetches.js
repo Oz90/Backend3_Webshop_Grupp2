@@ -17,9 +17,14 @@ export const getAllOrders = () => url.get('/orders');
 export const toggleOrderIsShipped = (id) => url.post(`/orders/${id}`);
 export const getUser = () => url.get('/users');
 export const getUserOrders = () => url.get('/orders/user');
+export const getSingleOrder = (id) => url.get(`/orders/${id}`);
 export const editUser = (payload) => url.post('/users/update', payload);
 
 export const getCart = () => url.get('cart');
+
+export const removeCartItem = (id) => url.post(`cart/delete/${id}`);
+
+export const updateCart = (id, payload) => url.post(`cart/add/${id}`, payload);
 
 // const fetches = {
 //   loginUser,
