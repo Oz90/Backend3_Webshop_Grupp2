@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { getSingleOrder, getSingleProduct } from '../fetches/fetches';
 import Moment from 'react-moment'
 import {
-    ListContainerStyled,
+    ListContainerStyledWide,
     TextStyled,
     ListStyled,
-    CardStyled,
-    TitleStyled
+    TitleStyled,
+    MiddleColumnStyled
 } from '../components/Details/DetailsStyled'
 
 import {
@@ -16,6 +16,9 @@ import {
     CartCardInfo,
 } from '../components/Cart/CartCardStyled';
 
+import {
+    ButtonStyled,
+} from '../components/Form/FormStyled'
 
 
 export default function UserPageOrderDetails() {
@@ -23,6 +26,8 @@ export default function UserPageOrderDetails() {
     const { id } = useParams();
     const [order, setOrder] = useState([]);
     const [products, setProducts] = useState([]);
+
+    let history = useHistory()
 
     useEffect(() => {
         setOrder([]);
@@ -40,10 +45,15 @@ export default function UserPageOrderDetails() {
 
     }, [order]); 
 
-
+    const handleOnBack = (e) => {
+        history.push("/user")
+    } 
+    
     return (
         <>
-        <ListContainerStyled>
+        <MiddleColumnStyled>
+                <ButtonStyled onClick={handleOnBack} type="button">Back</ButtonStyled>
+        <ListContainerStyledWide>
             <ListStyled>
                 <TitleStyled>Shipped</TitleStyled>
                 <TextStyled>{order?.isShipped ? "Yes" : "No"}</TextStyled>
@@ -78,7 +88,8 @@ export default function UserPageOrderDetails() {
                 <TitleStyled>Total Cost</TitleStyled>
                     <TextStyled>{order?.totalSum + order?.shippingCost} SEK</TextStyled>
             </ListStyled>
-        </ListContainerStyled>
+        </ListContainerStyledWide>
+        </MiddleColumnStyled>
         </>
     )
 }
