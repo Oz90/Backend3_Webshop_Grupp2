@@ -7,12 +7,18 @@ import styled from 'styled-components';
 
 const StyledBtn = styled.button`
 background-color: inherit;
-margin-right: .7rem;
-width: 50px;
-height: 40px;
+color: white;
+margin-right: 1.5rem;
 border: none;
 cursor: pointer;
-position: relative;`
+font-size: 1rem;
+font-weight: 300;
+letter-spacing: 1.4px;
+transition: all .2s ease-in-out;
+&:hover {
+    transform: scale(1.1);
+  }
+  `
 
 export default function LogoutButton() {
   const { getIsUserLoggedIn, getIsAdminLoggedIn } = useContext(AuthContext);
