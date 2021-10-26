@@ -8,6 +8,7 @@ import { InputStyled } from "../Form/FormStyled"
 export const SideBar = () => {
   const [searchItem, setSearchItem] = useState()
   const [products, setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   const history = useHistory()
   useEffect(() => {
@@ -17,28 +18,29 @@ export const SideBar = () => {
   const allUniqueCategories = [
     ...new Set(products.map((products) => products.category)),
   ]
-  // console.log(allUniqueCategories);
 
-  const handleOnChange = (e) => {
-    for (let i = 0; i < products.length; i++) {
-      if (e.target.value == products[i].title) {
-        setSearchItem(e.target.value)
-        history.push(`/detailpage/${products[i]._id}`)
-      } else {
-        //setSearchItem("test")
-      }
-    }
-    //console.log(e.target.value)
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-  useEffect(() => {
-    console.log(searchItem)
-  }, [searchItem])
+  const handleOnChange = (e) => {
+    const inputValue = e.target.value
+
+    const capitalInputValue = capitalizeFirstLetter(inputValue)
+
+    if (capitalInputValue == "") {
+      setFilteredProducts([])
+    } else {
+      const result = products.filter((item) =>
+        item.title.includes(capitalInputValue)
+      )
+      setFilteredProducts(result)
+    }
+  }
 
   return (
     <SideBarStyled>
       <ul className="sidebarListItems">
-        <InputStyled onChange={handleOnChange}></InputStyled>
         {allUniqueCategories.map((category, index) => {
           return (
             <Link className="reactLink" to={`/products/${category}`}>
@@ -49,6 +51,19 @@ export const SideBar = () => {
           )
         })}
       </ul>
+      <div>
+        <InputStyled
+          placeholder="Search products"
+          onChange={handleOnChange}
+        ></InputStyled>
+        {filteredProducts.map((product) => {
+          return (
+            <a href={`/detailpage/${product._id}`}>
+              <p>{product.title}</p>
+            </a>
+          )
+        })}
+      </div>
     </SideBarStyled>
   )
 }
