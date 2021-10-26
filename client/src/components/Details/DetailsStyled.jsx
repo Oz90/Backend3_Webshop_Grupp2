@@ -28,6 +28,12 @@ const TitleStyled = styled.p`
   font-size: .9rem;
   color: #939393;
 `;
+const CardStyled = styled.div`
+  width: 100%;
+  border: 1px solid black;
+  padding: .3rem;
+  margin-bottom: 1rem;
+`;
 
 const MiddleColumnStyled = styled.div`
   grid-column: 1/4;
@@ -39,5 +45,6 @@ export {
   TextStyled,
   ButtonStyled,
   TitleStyled,
-  MiddleColumnStyled
+  MiddleColumnStyled,
+  CardStyled
 };
