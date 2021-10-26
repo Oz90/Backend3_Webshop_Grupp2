@@ -5,6 +5,10 @@ const FormContainerStyled = styled.div`
   float: left;
   width: 30vw;
 `;
+const FormContainerStyledWide = styled.div`
+  padding: 2rem;
+  width: 80%;
+`;
 
 const FormStyled = styled.form`
   width: 100%;
@@ -43,6 +47,7 @@ const ErrorMessageStyled = styled.p`
 
 export {
   FormContainerStyled,
+  FormContainerStyledWide,
   FormStyled,
   InputStyled,
   SubmitStyled,
