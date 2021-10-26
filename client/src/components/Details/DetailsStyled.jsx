@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const ListContainerStyled = styled.div`
+const ListContainerStyledWide = styled.div`
   padding: 2rem;
-  float: left;
-  width: 30vw;
+  margin: auto;
+  width: 80%;
 `;
 
 const ListStyled = styled.div`
@@ -36,11 +36,13 @@ const CardStyled = styled.div`
 `;
 
 const MiddleColumnStyled = styled.div`
-  grid-column: 1/4;
+  display: grid;
+  grid-column: 1/11;
+  width: 100%;
 `;
 
 export {
-  ListContainerStyled,
+  ListContainerStyledWide,
   ListStyled,
   TextStyled,
   ButtonStyled,
