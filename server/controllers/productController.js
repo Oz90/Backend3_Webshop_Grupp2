@@ -45,6 +45,19 @@ exports.addProduct = async (req, res) => {
       images,
     };
 
+    if (
+      !req.body.title
+      || !req.body.description
+      || !req.body.price
+      || !req.body.category
+      || !req.body.manufacturer
+      || !req.body.thumbnail
+    ) {
+      return res
+        .status(400)
+        .json({ errorMessage: 'Please fill in all required fields' });
+    }
+
     const product = await new Product(newProduct);
     product.save();
     res.status(200).json(product);
