@@ -56,26 +56,3 @@ margin: 1rem 0 0.5rem 0;
   margin-bottom: .7rem;
 
 }
-
-/* //////////////////////// Sidebar styling //////////////////////// */
-
-.reactLink{
-  text-decoration: none;
-  color: black;
-}
-
-.reactLink:hover{
-  color: gray;
-
-}
-
-.sidebarListItems{
-  margin-top: 5rem;
-  list-style: none;
-}
-
-.sidebarLinks{
-  margin-left: 20%;
-  font-size: 2rem;
-  margin-top: 1rem;
-}
