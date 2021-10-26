@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import { editUser } from '../../fetches/fetches';
 import {
-  FormContainerStyled,
+  FormContainerStyledWide,
   FormStyled,
   InputStyled,
   ButtonStyled,
@@ -21,7 +20,7 @@ export const EditUserForm = ({ userData, setEditUser }) => {
     const { address, city, fullName, displayName, email, phoneNumber, zipcode } = editValue
     const payload = { address, city, fullName, displayName, email, phoneNumber, zipcode }
     try {
-      const response = await editUser(payload);
+      await editUser(payload);
       history.push('/user');
     } catch (error) {
       setErrorMessageResponse(error.response.data);
@@ -37,7 +36,7 @@ export const EditUserForm = ({ userData, setEditUser }) => {
   };
 
   return (
-    <FormContainerStyled>
+    <FormContainerStyledWide>
       <FormStyled onSubmit={handleOnSubmit}>
         <LabelStyled for="email">Email</LabelStyled>
         <InputStyled name="email" type="email" value={editValue.email} onChange={handleOnChange} />
@@ -67,6 +66,6 @@ export const EditUserForm = ({ userData, setEditUser }) => {
         <ButtonStyled onClick={handleOnCancel} type="button">Cancel</ButtonStyled>
         {errorMessageResponse?.errorMessage}
       </FormStyled>
-    </FormContainerStyled>
+    </FormContainerStyledWide>
   );
 };

@@ -33,16 +33,13 @@ export const UserPage = () => {
       <MiddleColumnStyled>
         <ButtonStyled onClick={handleOnEditClick}>Edit</ButtonStyled>
         <ButtonStyled onClick={handleOnOrderClick}>Orders</ButtonStyled>
-      </MiddleColumnStyled>
 
       {userData ?
-        <MiddleColumnStyled>
           <UserTableContainer userData={userData} />
-
+          :
+          <p>Laddar... </p>
+        }
         </MiddleColumnStyled>
-        :
-        <p>Laddar... </p>
-      }
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  ListContainerStyled,
+  ListContainerStyledWide,
   TextStyled,
   ListStyled,
   ButtonStyled,
@@ -11,7 +11,7 @@ export default function UserTableContainer({ userData, setEditUser }) {
 
   return (
     <>
-      <ListContainerStyled>
+      <ListContainerStyledWide>
         <ListStyled>
           <TitleStyled>Display Name</TitleStyled>
           <TextStyled>{userData?.displayName}</TextStyled>
@@ -28,7 +28,7 @@ export default function UserTableContainer({ userData, setEditUser }) {
           <TitleStyled>City</TitleStyled>
           <TextStyled>{userData?.city}</TextStyled>
         </ListStyled>
-      </ListContainerStyled>
+      </ListContainerStyledWide>
     </>
   )
 }

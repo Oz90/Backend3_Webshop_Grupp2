@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUser } from '../fetches/fetches';
 import { EditUserForm } from "../components/EditUserForm/EditUserForm";
+import { ButtonStyled, MiddleColumnStyled } from '../components/Details/DetailsStyled'
 
 
 export const UserPageEdit = () => {
@@ -19,7 +20,7 @@ export const UserPageEdit = () => {
 
     return (
         <>
-
+            <MiddleColumnStyled>
             {userData ?
                 
                 <EditUserForm userData={userData} />  
@@ -27,7 +28,7 @@ export const UserPageEdit = () => {
                 <p>Laddar... </p>
 
             }
-
+            </MiddleColumnStyled>
         </>
     );
 };
