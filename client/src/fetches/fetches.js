@@ -26,6 +26,10 @@ export const removeCartItem = (id) => url.post(`cart/delete/${id}`);
 
 export const updateCart = (id, payload) => url.post(`cart/add/${id}`, payload);
 
+export const placeOrder = (payload) => url.post('orders', payload);
+
+export const deleteCart = () => url.post('cart/delete');
+
 // const fetches = {
 //   loginUser,
 //   logoutUser,
