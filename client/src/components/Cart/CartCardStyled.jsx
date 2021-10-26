@@ -5,6 +5,14 @@ const CartCardContainer = styled.div`
   width: 100%;
   height: 20vw;
 `;
+const CartCardContainerBorder = styled.div`
+  display: flex;
+  width: 100%;
+  height: 20vw;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  padding-right: 1rem;
+`;
 
 const CartCardImage = styled.img`
   height:calc(100%-1rem);
@@ -36,5 +44,6 @@ export {
   CartCardInfo,
   AmountForm,
   AmountInput,
-  AmountSubmit
+  AmountSubmit,
+  CartCardContainerBorder
 };
