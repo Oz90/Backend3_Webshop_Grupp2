@@ -7,7 +7,7 @@ const MainContainerStyled = styled.div`
     overflow: hidden;
     
     grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: 6rem 1fr 3rem; 
+    grid-template-rows: 5rem 1fr; 
 `;
 
 export { MainContainerStyled };

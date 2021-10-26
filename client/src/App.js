@@ -89,7 +89,7 @@ function App() {
               <Route path="/" component={ProductPage} />
             </Switch>
           </ContentContainerStyled>
-          <FooterStyled />
+          {/* <FooterStyled /> */}
         </MainContainerStyled>
       </AuthContext.Provider>
     </>
