@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
-
 import { getAllProducts } from '../fetches/fetches';
+import { Container } from '../components/ProductPage/ProductPageStyled'
 
 export const ProductPage = () => {
     const [products, setProducts] = useState([]);
@@ -21,7 +21,8 @@ export const ProductPage = () => {
     }, [products]);
 
     return (
-        <>
+        <> 
+            {/* <Container> */}
             {shuffledProducts.map((product, index) => {
                 return <Link to={`/detailpage/${product._id}`}>
                     <div className="card">
@@ -35,6 +36,7 @@ export const ProductPage = () => {
                     </div>
                 </Link>
             })}
+           {/*  </Container> */}
         </>
     );
 };
