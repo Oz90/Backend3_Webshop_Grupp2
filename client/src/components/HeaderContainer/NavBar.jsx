@@ -1,57 +1,79 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from "../../images/dress.svg"
+import logo from "../../images/dressi-logo-2.png"
 import { BsCart3 } from 'react-icons/bs';
+import { HiSearch } from 'react-icons/hi';
 import { AuthContext } from '../../context/AuthContext';
 import LogoutButton from "../LoginForm/LogoutButton"
 import { CartIcon } from './CartIcon';
 
 
 
-const StyledNav = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-`
-const StyledImage = styled.img`
-width: 50px;
-height: 50px;
-margin-left: 2rem;
+
+const Container = styled.div`
+    height: 100%;
+    color: white;
+    
 `
 
-const StyledCartBtn = styled.button`
-width: 0px;
-height: 0px;
-margin-right: 1rem;
-background-color: inherit;
-position: relative;
+const Wrapper = styled.div`
+    height: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
 
+const Left = styled.div`
+    flex: 1;
+    justify-content: flex-start;
+    margin-left: 1.5rem;
+`
+/* const Center = styled.div`
+    flex: .1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+` */
+const Right = styled.div`
+    flex: 1;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1.5rem;
+`
 
-const StyledTitle = styled.div`
-
+const Logo = styled.span`
+    
+    img {
+        height: 1.5rem;
+    }
+    a {
+        color: white;
+    }
 
 `
 
-const StyledBtnContainer = styled.div`
-display: flex;
-justify-content: center;
-margin-right:2rem;
-`
 
 const StyledBtn = styled.button`
 background-color: inherit;
-margin-right: .7rem;
-width: 50px;
-height: 40px;
+margin-right: 1.5rem;
 border: none;
 cursor: pointer;
-position: relative;
+color: white;
+font-size: 1rem;
+font-weight: 300;
+letter-spacing: 1.4px;
+transition: all .2s ease-in-out;
+&:hover {
+    transform: scale(1.1);
+}
 `
-
 const StyledNotification = styled.div`
-background-color: red;
+background-color: #f56b6b;
+letter-spacing: normal;
+font-size: .8rem;
 border-radius: 50%;
 width: 15px;
 height: 15px;
@@ -59,34 +81,42 @@ z-index: 99;
 position: absolute;
 margin-top: 0;
 color: white;
-margin-left: 30px;
+margin-left: 15px;
 `
 
 export const NavBar = () => {
     const { loggedInUser, loggedInAdmin } = useContext(AuthContext);
 
     return (
-        <StyledNav>
-            <StyledImage src={logo} alt="" />
-            <StyledTitle><h1>MONKI 2.0</h1></StyledTitle>
-            <StyledBtnContainer>
+        <Container>
+            <Wrapper>
+            <Left>
+                    <Logo><Link to="/"><img src={logo} alt="" /></Link></Logo>
+            </Left>
+           {/*  <Center>
+                <SearchContainer>
+                    <HiSearch /> <Input />
+                </SearchContainer>
+            </Center> */}
+            <Right>
                 {loggedInUser || loggedInAdmin ? (<>
                     <LogoutButton />
-                    <Link to="/user"><StyledBtn>Profil</StyledBtn></Link>
+                    <Link to="/user"><StyledBtn>Profile</StyledBtn></Link>
                     {loggedInAdmin ? (<Link to="/admin"><StyledBtn>Admin</StyledBtn></Link>) : null}
                     <Link to="/cart">
                         <StyledBtn>
                             <StyledNotification>1</StyledNotification>
-                            <BsCart3 size={40} />
+                            <BsCart3 size={25} />
                         </StyledBtn>
                     </Link>
                 </>) : (<>
                     <Link to="/login">
-                        <StyledBtn>Sign in</StyledBtn>
+                        <StyledBtn>Log in</StyledBtn>
                     </Link>
                 </>)
                 }
-            </StyledBtnContainer>
-        </StyledNav>
+                </Right>
+            </Wrapper>
+        </Container>
     )
 }
