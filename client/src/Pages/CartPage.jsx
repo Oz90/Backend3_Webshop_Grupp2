@@ -7,7 +7,8 @@ import { getCart, getSingleProduct, placeOrder, deleteCart } from '../fetches/fe
 import { CartCard } from '../components/Cart/CartCard';
 import { CartContentsStyled } from '../components/Cart/CartContentsStyled';
 import { CartSummaryStyled, PlaceOrderButtonStyled } from '../components/Cart/CartSummaryStyled';
-import { ErrorMessageStyled } from '../components/Form/FormStyled';
+import Colors from '../styleAssets/Colors'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages'
 
 export const CartPage = () => {
   const history = useHistory();
@@ -80,7 +81,7 @@ export const CartPage = () => {
           :
           <p>Cart = empty</p>
         }
-      {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
+        {errorMsg && <Message type={Colors.danger}>{errorMsg}</Message>}
       </CartContentsStyled>
       <CartSummaryStyled>
         <p>Sum: {total}:-</p>

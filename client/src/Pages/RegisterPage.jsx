@@ -2,20 +2,16 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { registerUser } from '../fetches/fetches';
+import Colors from '../styleAssets/Colors'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages'
 
 import {
   FormContainerStyled,
   FormStyled,
-  InputStyled,
-  SubmitStyled,
-  ErrorMessageStyled,
+  InputStyled
 } from '../components/Form/FormStyled';
 
-import {
-    ButtonPrimary,
-    InputPrimary,
-    InputSecondary
-  } from '../components/Buttons/ButtonsStyled'
+import { InputPrimary } from '../components/Buttons/ButtonsStyled'
 
 export const RegisterPage = () => {
   const [registerValue, setRegisterValue] = useState({});
@@ -51,7 +47,7 @@ export const RegisterPage = () => {
         <InputStyled name="zipcode" type="number" placeholder="ZIP Code" />
         <InputPrimary type="submit" value="Register" />
       </FormStyled>
-      {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
+      {errorMsg && <Message type={Colors.danger} >{errorMsg}</Message>}
     </FormContainerStyled>
   );
 };

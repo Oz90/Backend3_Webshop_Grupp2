@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom"
 
 import { loginUser } from "../fetches/fetches"
 import { AuthContext } from "../context/AuthContext"
+import Colors from '../styleAssets/Colors'
 
 import { InputPrimary, InputSecondary } from "../components/Buttons/ButtonsStyled"
 
@@ -10,9 +11,9 @@ import {
   FormContainerStyled,
   FormStyled,
   InputStyled,
-  SubmitStyled,
-  ErrorMessageStyled,
 } from "../components/Form/FormStyled"
+
+import { Message } from '../components/FeedbackMessages/FeedbackMessages'
 
 export const LoginPage = () => {
   const [loginValue, setLoginValue] = useState({})
@@ -48,7 +49,7 @@ export const LoginPage = () => {
           <InputSecondary type="button" value="Register" />
         </Link>
       </FormStyled>
-      {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
+      {errorMsg && <Message type={Colors.danger} >{errorMsg}</Message>}
     </FormContainerStyled>
   )
 }

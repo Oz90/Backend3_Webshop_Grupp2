@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { addProduct } from '../fetches/fetches';
 import { useHistory } from "react-router-dom"
 
+import Colors from '../styleAssets/Colors'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages'
 
 import {
     FormContainerStyled,
     FormStyled,
     InputStyled,
-    SubmitStyled,
-    ErrorMessageStyled,
+    SubmitStyled
 } from '../components/Form/FormStyled';
 
 export const AdminAddProductPage = () => {
@@ -52,7 +53,7 @@ export const AdminAddProductPage = () => {
                 <InputStyled name="image3" type="text" placeholder="image3" />
                 <SubmitStyled type="submit" value="Add Product" />
             </FormStyled>
-            {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
+            {errorMsg && <Message type={Colors.danger} >{errorMsg}</Message>}
         </FormContainerStyled>
     );
 };
