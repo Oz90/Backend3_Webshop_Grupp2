@@ -45,6 +45,7 @@ const MiddleColumnStyled = styled.div`
   display: grid;
   grid-column: 1/11;
   width: 100%;
+  margin: auto;
 `;
 
 export {
