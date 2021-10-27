@@ -8,6 +8,7 @@ import {
 
 import { ButtonPrimary } from '../Buttons/ButtonsStyled'
 import { ButtonContainer } from '../Buttons/ButtonContainer'
+import { HeaderOne } from '../Texts/TextsStyled';
 import { useHistory } from 'react-router-dom';
 
 export default function UserTableContainer({ userData, setEditUser }) {
@@ -23,9 +24,10 @@ export default function UserTableContainer({ userData, setEditUser }) {
   return (
     <>
       <ListContainerStyledWide>
+        <HeaderOne>Your Profile</HeaderOne>
         <ButtonContainer>
-          <ButtonPrimary onClick={handleOnEditClick}>Edit</ButtonPrimary>
-          <ButtonPrimary onClick={handleOnOrderClick}>Orders</ButtonPrimary>
+          <ButtonPrimary onClick={handleOnEditClick}>Edit Profile</ButtonPrimary>
+          <ButtonPrimary onClick={handleOnOrderClick}>View Orders</ButtonPrimary>
         </ButtonContainer>
         <ListStyled>
           <TitleStyled>Display Name</TitleStyled>

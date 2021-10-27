@@ -7,11 +7,12 @@ import {
   InputStyled,
   LabelStyled,
 } from '../../components/Form/FormStyled'
-
 import Colors from '../../styleAssets/Colors'
 import { Message } from '../FeedbackMessages/FeedbackMessages';
 import { ButtonDanger, ButtonSuccess } from '../../components/Buttons/ButtonsStyled';
 import { ButtonContainer} from '../../components/Buttons/ButtonContainer';
+import { HeaderOne } from '../../components/Texts/TextsStyled';
+
 
 export const EditUserForm = ({ userData, setEditUser }) => {
   const [editValue, setEditValue] = useState(userData);
@@ -42,6 +43,7 @@ export const EditUserForm = ({ userData, setEditUser }) => {
   return (
     <FormContainerStyledWide>
       <FormStyled onSubmit={handleOnSubmit}>
+        <HeaderOne>Edit Your Profile</HeaderOne>
         <LabelStyled for="email">Email</LabelStyled>
         <InputStyled name="email" type="email" value={editValue.email} onChange={handleOnChange} />
         <LabelStyled for="fullName">Full Name</LabelStyled>

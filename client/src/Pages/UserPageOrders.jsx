@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { getUserOrders } from '../fetches/fetches';
-import { MiddleColumnStyled } from '../components/Details/DetailsStyled'
+import { MiddleColumnStyled, ListContainerStyledWide } from '../components/Details/DetailsStyled'
 import OrderCard from "../components/UserOrders/OrderCard";
-import {
-    ButtonStyled,
-} from '../components/Form/FormStyled'
+import { ButtonPrimary } from '../components/Buttons/ButtonsStyled'
+import { ButtonContainer } from '../components/Buttons/ButtonContainer'
+import { HeaderOne } from '../components/Texts/TextsStyled'
 
 export const UserPageOrders = () => {
 
@@ -32,11 +32,16 @@ export const UserPageOrders = () => {
     return (
         <>
             <MiddleColumnStyled>
-            <ButtonStyled onClick={handleOnBack} type="button">Back</ButtonStyled>
+                <ListContainerStyledWide>
+                    <HeaderOne>Your Orders</HeaderOne>
+                    <ButtonContainer>
+                        <ButtonPrimary onClick={handleOnBack} type="button">Back</ButtonPrimary>
+                    </ButtonContainer>
 
         {orderData?.map(item => {
             return <OrderCard key={item._id} order={item}/>
         })}
+                </ListContainerStyledWide>
             </MiddleColumnStyled>
 
         </>
