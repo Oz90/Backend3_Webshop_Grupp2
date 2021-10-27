@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import Colors from '../../styleAssets/Colors.js';
 
 const FormContainerStyled = styled.div`
   padding: 2rem;
   float: left;
-  width: 30vw;
+  width: 70vw;
 `;
 const FormContainerStyledWide = styled.div`
   padding: 2rem;
@@ -15,11 +16,20 @@ const FormStyled = styled.form`
 `;
 
 const InputStyled = styled.input`
+  font-size: 1rem;
+  border: 3px solid ${Colors.primary};
+  color: ${Colors.primary};
+  background-color: ${Colors.white};
   width: 100%;
-  height: 2rem;
-  border: 1px solid black;
+  height: 2.6rem;
   padding-left: 1rem;
   margin-bottom: 1rem;
+  :focus {
+      outline:none;
+  }
+  ::placeholder {
+    color: ${Colors.primary};
+  }
 `;
 
 const SubmitStyled = styled.input`
