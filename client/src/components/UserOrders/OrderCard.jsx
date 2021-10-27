@@ -2,12 +2,20 @@ import styled from 'styled-components';
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Moment from 'react-moment';
+import Colors from '../../styleAssets/Colors'
 
 
 const OrderCardStyled = styled.div`
-    padding: 0.5rem;
-    margin: 0.5rem;
-    border: 1px solid black;
+    font-size: 1rem;
+  border: 3px solid ${Colors.primary};
+  color: ${Colors.primary};
+  background-color: ${Colors.white};
+  width: 100%;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  :hover {
+      background-color: ${Colors.primary}, 0.7;
+  }
 `;
 
 
