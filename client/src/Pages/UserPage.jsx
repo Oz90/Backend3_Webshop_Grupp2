@@ -22,18 +22,12 @@ export const UserPage = () => {
 
   }, []);
 
-  const handleOnEditClick = (e) => {
-    history.push("/user/edit")
-  }
-  const handleOnOrderClick = (e) => {
-    history.push("/user/order")
-  }
+
 
   return (
     <>
       <MiddleColumnStyled>
-        <ButtonPrimary onClick={handleOnEditClick}>Edit</ButtonPrimary>
-        <ButtonPrimary onClick={handleOnOrderClick}>Orders</ButtonPrimary>
+       
 
       {userData ?
           <UserTableContainer userData={userData} />

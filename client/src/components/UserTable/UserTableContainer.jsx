@@ -6,11 +6,26 @@ import {
   TitleStyled
 } from '../../components/Details/DetailsStyled'
 
+import { ButtonPrimary } from '../Buttons/ButtonsStyled'
+
+import { useHistory } from 'react-router-dom';
+
+
 export default function UserTableContainer({ userData, setEditUser }) {
+  let history = useHistory()
+
+  const handleOnEditClick = (e) => {
+    history.push("/user/edit")
+  }
+  const handleOnOrderClick = (e) => {
+    history.push("/user/order")
+  }
 
   return (
     <>
       <ListContainerStyledWide>
+        <ButtonPrimary onClick={handleOnEditClick}>Edit</ButtonPrimary>
+        <ButtonPrimary onClick={handleOnOrderClick}>Orders</ButtonPrimary>
         <ListStyled>
           <TitleStyled>Display Name</TitleStyled>
           <TextStyled>{userData?.displayName}</TextStyled>
