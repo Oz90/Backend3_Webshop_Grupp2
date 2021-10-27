@@ -7,9 +7,8 @@ import {
 } from '../../components/Details/DetailsStyled'
 
 import { ButtonPrimary } from '../Buttons/ButtonsStyled'
-
+import { ButtonContainer } from '../Buttons/ButtonContainer'
 import { useHistory } from 'react-router-dom';
-
 
 export default function UserTableContainer({ userData, setEditUser }) {
   let history = useHistory()
@@ -24,8 +23,10 @@ export default function UserTableContainer({ userData, setEditUser }) {
   return (
     <>
       <ListContainerStyledWide>
-        <ButtonPrimary onClick={handleOnEditClick}>Edit</ButtonPrimary>
-        <ButtonPrimary onClick={handleOnOrderClick}>Orders</ButtonPrimary>
+        <ButtonContainer>
+          <ButtonPrimary onClick={handleOnEditClick}>Edit</ButtonPrimary>
+          <ButtonPrimary onClick={handleOnOrderClick}>Orders</ButtonPrimary>
+        </ButtonContainer>
         <ListStyled>
           <TitleStyled>Display Name</TitleStyled>
           <TextStyled>{userData?.displayName}</TextStyled>
