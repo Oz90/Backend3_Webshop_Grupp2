@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { loginUser } from '../../fetches/fetches';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext'
+import { ButtonPrimary} from '../../components/Buttons/ButtonsStyled';
 
 const StyledForm = styled.form`
   display: flex;
@@ -36,7 +37,7 @@ export const LoginForm = () => {
       <StyledForm onSubmit={handleOnSubmit} onChange={handleOnChange}>
         <StyledInput name="email" type="email" placeholder="Email" />
         <StyledInput name="password" type="password" placeholder="Password" />
-        <button type="submit">Sign in</button>
+        <ButtonPrimary type="submit">Sign in</ButtonPrimary>
       </StyledForm>
     </StyledDiv>
   );

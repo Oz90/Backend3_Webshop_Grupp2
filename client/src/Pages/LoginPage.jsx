@@ -4,6 +4,8 @@ import { useHistory, Link } from "react-router-dom"
 import { loginUser } from "../fetches/fetches"
 import { AuthContext } from "../context/AuthContext"
 
+import { InputPrimary, InputSecondary } from "../components/Buttons/ButtonsStyled"
+
 import {
   FormContainerStyled,
   FormStyled,
@@ -41,9 +43,9 @@ export const LoginPage = () => {
       <FormStyled onSubmit={handleOnSubmit} onChange={handleOnChange}>
         <InputStyled name="email" type="email" placeholder="Email" />
         <InputStyled name="password" type="password" placeholder="Password" />
-        <SubmitStyled type="submit" value="Sign in" />
+        <InputPrimary type="submit" value="Sign in" />
         <Link to="/register">
-          <SubmitStyled type="button" value="Register" />
+          <InputSecondary type="button" value="Register" />
         </Link>
       </FormStyled>
       {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
