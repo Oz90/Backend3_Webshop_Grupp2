@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { AuthContext } from '../context/AuthContext';
-import { getCart, getSingleProduct } from '../fetches/fetches';
+import { getCart, getSingleProduct, placeOrder, deleteCart } from '../fetches/fetches';
 
 import { CartCard } from '../components/Cart/CartCard';
 import { CartContentsStyled } from '../components/Cart/CartContentsStyled';
 import { CartSummaryStyled, PlaceOrderButtonStyled } from '../components/Cart/CartSummaryStyled';
+import { ErrorMessageStyled } from '../components/Form/FormStyled';
 
 export const CartPage = () => {
+  const history = useHistory();
+  const [errorMsg, setErrorMsg] = useState(null);
   const { cartItemAmount, setCartItemAmount } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
   const [newCartItemsAmount, setNewCartItemsAmount] = useState([]);
@@ -54,7 +58,15 @@ export const CartPage = () => {
     setCartItemAmount(totalCartItemsAmount);
   }, [totalCartItemsAmount])
 
-  const handleOnChange = (e) => {
+  const handlePlaceOrder = (e) => {
+    placeOrder({totalSum: total})
+      .then(() => {
+        deleteCart();
+        history.push('/');
+      })
+      .catch((error) => {
+        setErrorMsg(error.response.data.errorMessage);
+      });
   };
 
   return (
@@ -68,10 +80,11 @@ export const CartPage = () => {
           :
           <p>Cart = empty</p>
         }
+      {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
       </CartContentsStyled>
       <CartSummaryStyled>
         <p>Sum: {total}:-</p>
-        <PlaceOrderButtonStyled>Place Order</PlaceOrderButtonStyled>
+        <PlaceOrderButtonStyled onClick={handlePlaceOrder}>Place Order</PlaceOrderButtonStyled>
       </CartSummaryStyled>
     </>
   );

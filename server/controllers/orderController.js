@@ -8,7 +8,7 @@ exports.addOrder = async (req, res) => {
     const id = checkUser(req.cookies.token)
     const user = await User.findById(id);
     const products = user.cart;
-    const totalSum = req.body.totalSum || 200
+    const totalSum = req.body.totalSum
 
     const shippingAddress = {
       street: user.address,
@@ -22,8 +22,14 @@ exports.addOrder = async (req, res) => {
       shippingAddress,
       totalSum
     });
-    newOrder.save();
-    res.send(newOrder);
+    if(user.cart.length < 1){
+      return res
+        .status(400)
+        .json({ errorMessage: 'Cart is empty' });
+    }else {
+      newOrder.save();
+      res.send(newOrder);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send(err);

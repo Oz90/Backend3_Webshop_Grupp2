@@ -8,16 +8,20 @@ import {
     FormStyled,
     InputStyled,
     SubmitStyled,
+    ErrorMessageStyled,
 } from '../components/Form/FormStyled';
 
 export const AdminAddProductPage = () => {
     const history = useHistory()
+    const [errorMsg, setErrorMsg] = useState(null);
     const [productValue, setProductValue] = useState({});
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        addProduct(productValue);
-        history.push("/admin/products")
+        addProduct(productValue).then(() => {history.push("/admin/products");})
+        .catch((error) => {
+          setErrorMsg(error.response.data.errorMessage);
+        });
 
     };
 
@@ -48,6 +52,7 @@ export const AdminAddProductPage = () => {
                 <InputStyled name="image3" type="text" placeholder="image3" />
                 <SubmitStyled type="submit" value="Add Product" />
             </FormStyled>
+            {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
         </FormContainerStyled>
     );
 };
