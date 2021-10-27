@@ -16,6 +16,10 @@ a {
   color: inherit;
 }
 
+p, h2 {
+  color: #5e5f75;
+}
+
 /* //////////////////////// Product card styling //////////////////////// */
 .card {
   overflow: hidden;
