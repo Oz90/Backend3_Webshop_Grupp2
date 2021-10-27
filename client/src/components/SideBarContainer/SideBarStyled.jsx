@@ -46,6 +46,7 @@ const Input = styled.input`
   background: none;
   color: ${Colors.primary};
   font-size: 1rem;
+  letter-spacing: 1.2px;
   :focus {
       outline: none;
       background: none;
