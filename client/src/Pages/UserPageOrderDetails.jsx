@@ -16,9 +16,8 @@ import {
     CartCardInfo,
 } from '../components/Cart/CartCardStyled';
 
-import {
-    ButtonPrimary
-} from '../components/Buttons/ButtonsStyled'
+import { ButtonPrimary } from '../components/Buttons/ButtonsStyled'
+import { ButtonContainer } from '../components/Buttons/ButtonContainer'
 
 
 export default function UserPageOrderDetails() {
@@ -52,8 +51,10 @@ export default function UserPageOrderDetails() {
     return (
         <>
         <MiddleColumnStyled>
-                <ButtonPrimary onClick={handleOnBack} type="button">Back</ButtonPrimary>
         <ListContainerStyledWide>
+            <ButtonContainer>
+                <ButtonPrimary onClick={handleOnBack} type="button">Back</ButtonPrimary>
+            </ButtonContainer>
             <ListStyled>
                 <TitleStyled>Shipped</TitleStyled>
                 <TextStyled>{order?.isShipped ? "Yes" : "No"}</TextStyled>
