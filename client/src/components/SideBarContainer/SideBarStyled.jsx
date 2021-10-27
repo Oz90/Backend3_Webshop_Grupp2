@@ -62,6 +62,8 @@ const SideBarStyled = styled.div`
   display: grid;
   grid-column: 1/3;
   grid-row: 2;
+  background: rgb(230,227,255);
+background: linear-gradient(90deg, rgba(230,227,255,1) 0%, rgba(255,255,255,0.2690606174698795) 100%);
 `;
 
 export {  
