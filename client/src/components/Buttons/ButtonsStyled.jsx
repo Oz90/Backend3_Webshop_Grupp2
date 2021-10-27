@@ -50,7 +50,6 @@ const ButtonSecondary = styled(ButtonPrimary)`
   border: 3px solid ${Colors.primary};
   color: ${Colors.primary};
   background-color: ${Colors.white};
-
   :hover {
       background-color: ${Colors.primary};
       color: ${Colors.white};
@@ -59,20 +58,16 @@ const ButtonSecondary = styled(ButtonPrimary)`
 `;
 
 const ButtonDanger = styled(ButtonPrimary)`
-  border: 3px solid ${Colors.danger};
-  color: ${Colors.danger};
-  background-color: ${Colors.white};
-
+  color: ${Colors.white};
+  background-color: ${Colors.danger};
   :hover {
-      background-color: ${Colors.danger};
-      color: ${Colors.white};
+      opacity: 0.7;
   }
 `;
 
 const ButtonSuccess = styled(ButtonPrimary)`
   color: ${Colors.white};
   background-color: ${Colors.success};
-
   :hover {
       background-color: ${Colors.success}, 0.7;
   }
