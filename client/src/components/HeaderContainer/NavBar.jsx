@@ -60,7 +60,7 @@ cursor: pointer;
 color: white;
 font-size: 1rem;
 font-weight: 300;
-letter-spacing: 1.4px;
+letter-spacing: 1.2px;
 transition: all .2s ease-in-out;
 &:hover {
     transform: scale(1.1);

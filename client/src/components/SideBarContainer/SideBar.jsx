@@ -13,7 +13,7 @@ const StyledLink = styled.a`
         color: black;
         font-size: 1rem;
         font-weight: 300;
-        letter-spacing: 1.4px;
+        letter-spacing: 1.2px;
         
         `
 const StyledUl = styled.ul`
@@ -40,7 +40,7 @@ const SearchContainer = styled.div`
     height: 2rem;
     display: flex;
     align-items: center;
-    margin:5rem 1rem 0 1rem;
+    margin: 2rem 1rem 0 1rem;
     padding: 5px;
 `
 const Input = styled.input`
@@ -53,7 +53,7 @@ const Input = styled.input`
         outline: none;
         background: none;
         height: 100%;
-        weight: 100%
+        weight: 100%;
     }
 `
 export const SideBar = () => {
@@ -110,9 +110,11 @@ export const SideBar = () => {
                 </SearchContainer>
                 {filteredProducts.map((product) => {
                     return (
+                        <StyledLink>
                         <a href={`/detailpage/${product._id}`}>
-                            <p>{product.title}</p>
+                            <StyledLi>{product.title}</StyledLi>
                         </a>
+                        </StyledLink>
                     )
                 })}
             </StyledUl>
