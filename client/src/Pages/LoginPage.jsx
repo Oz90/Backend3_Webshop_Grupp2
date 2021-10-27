@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useContext } from "react"
+import { useHistory, Link } from "react-router-dom"
 
-import { loginUser } from '../fetches/fetches';
-import { AuthContext } from '../context/AuthContext';
+import { loginUser } from "../fetches/fetches"
+import { AuthContext } from "../context/AuthContext"
 
 import {
   FormContainerStyled,
@@ -10,33 +10,31 @@ import {
   InputStyled,
   SubmitStyled,
   ErrorMessageStyled,
-} from '../components/Form/FormStyled';
+} from "../components/Form/FormStyled"
 
 export const LoginPage = () => {
-  const [loginValue, setLoginValue] = useState({});
-  const [errorMsg, setErrorMsg] = useState(null);
-  const { getIsUserLoggedIn, getIsAdminLoggedIn } = useContext(AuthContext);
-  const history = useHistory();
+  const [loginValue, setLoginValue] = useState({})
+  const [errorMsg, setErrorMsg] = useState(null)
+  const { getIsUserLoggedIn, getIsAdminLoggedIn } = useContext(AuthContext)
+  const history = useHistory()
 
   const handleOnSubmit = (e) => {
-    e.preventDefault();
-   
+    e.preventDefault()
 
     loginUser(loginValue)
       .then(() => {
-        getIsUserLoggedIn();
-        getIsAdminLoggedIn();
-        history.push('/');
+        getIsUserLoggedIn()
+        getIsAdminLoggedIn()
+        history.push("/")
       })
       .catch((error) => {
-        setErrorMsg(error.response.data.errorMessage);
-      });
-
-  };
+        setErrorMsg(error.response.data.errorMessage)
+      })
+  }
 
   const handleOnChange = (e) => {
-    setLoginValue({ ...loginValue, [e.target.name]: e.target.value });
-  };
+    setLoginValue({ ...loginValue, [e.target.name]: e.target.value })
+  }
 
   return (
     <FormContainerStyled>
@@ -44,8 +42,11 @@ export const LoginPage = () => {
         <InputStyled name="email" type="email" placeholder="Email" />
         <InputStyled name="password" type="password" placeholder="Password" />
         <SubmitStyled type="submit" value="Sign in" />
+        <Link to="/register">
+          <SubmitStyled type="button" value="Register" />
+        </Link>
       </FormStyled>
       {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
     </FormContainerStyled>
-  );
-};
+  )
+}

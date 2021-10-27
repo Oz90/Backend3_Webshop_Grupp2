@@ -3,12 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from "../../images/dressi-logo-2.png"
 import { BsCart3 } from 'react-icons/bs';
-import { HiSearch } from 'react-icons/hi';
 import { AuthContext } from '../../context/AuthContext';
 import LogoutButton from "../LoginForm/LogoutButton"
-import { CartIcon } from './CartIcon';
-
-
 
 
 const Container = styled.div`
@@ -85,7 +81,7 @@ margin-left: 15px;
 `
 
 export const NavBar = () => {
-    const { loggedInUser, loggedInAdmin } = useContext(AuthContext);
+  const { loggedInUser, loggedInAdmin } = useContext(AuthContext)
 
     return (
         <Container>

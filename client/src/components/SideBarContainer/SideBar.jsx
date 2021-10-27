@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { SideBarStyled } from './SideBarStyled';
 import { getAllProducts } from '../../fetches/fetches';
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import styled from 'styled-components';
 import { HiSearch } from 'react-icons/hi';
 
@@ -57,30 +57,94 @@ const Input = styled.input`
     }
 `
 export const SideBar = () => {
-    const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        getAllProducts().then(res => setProducts(res.data))
-    }, []);
+  const [searchItem, setSearchItem] = useState()
+  const [products, setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
 
-    const allUniqueCategories = [...new Set(products.map(products => products.category))]
-    // console.log(allUniqueCategories);
+  const history = useHistory()
+  useEffect(() => {
+    getAllProducts().then((res) => setProducts(res.data))
+  }, [])
+
+  const allUniqueCategories = [
+    ...new Set(products.map((products) => products.category)),
+  ]
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
+  const handleOnChange = (e) => {
+    const inputValue = e.target.value
+
+    const capitalInputValue = capitalizeFirstLetter(inputValue)
+
+    if (capitalInputValue == "") {
+      setFilteredProducts([])
+    } else {
+      const result = products.filter((item) =>
+        item.title.includes(capitalInputValue)
+      )
+      setFilteredProducts(result)
+    }
+  }
+
 
     return (
         <SideBarStyled>
             <StyledUl className="sidebarListItems">
-            <SearchContainer>
-                <HiSearch /> <Input />
-            </SearchContainer>
                 {allUniqueCategories.map((category, index) => {
                     return (
-                    <StyledLink>
+                        <StyledLink>
                             <Link className="reactLink" to={`/products/${category}`} >
                                 <StyledLi key={index}>{category}</StyledLi>
                             </Link>
-                    </StyledLink> );
+                        </StyledLink>);
+                })}
+                <SearchContainer>
+                    <HiSearch /> 
+                    <Input 
+                        placeholder="Search products"
+                        onChange={handleOnChange}/>
+                </SearchContainer>
+                {filteredProducts.map((product) => {
+                    return (
+                        <a href={`/detailpage/${product._id}`}>
+                            <p>{product.title}</p>
+                        </a>
+                    )
                 })}
             </StyledUl>
         </SideBarStyled >
     )
+
+  /* return (
+    <SideBarStyled>
+      <ul className="sidebarListItems">
+        {allUniqueCategories.map((category, index) => {
+          return (
+            <Link className="reactLink" to={`/products/${category}`}>
+              <li key={index}>
+                <p className="sidebarLinks">{category}</p>
+              </li>
+            </Link>
+          )
+        })}
+      </ul>
+      <div>
+        <InputStyled
+          placeholder="Search products"
+          onChange={handleOnChange}
+        ></InputStyled>
+        {filteredProducts.map((product) => {
+          return (
+            <a href={`/detailpage/${product._id}`}>
+              <p>{product.title}</p>
+            </a>
+          )
+        })}
+      </div>
+    </SideBarStyled>
+  ) */
 }
