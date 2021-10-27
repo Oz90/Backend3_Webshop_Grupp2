@@ -11,6 +11,12 @@ import {
   ErrorMessageStyled,
 } from '../components/Form/FormStyled';
 
+import {
+    ButtonPrimary,
+    InputPrimary,
+    InputSecondary
+  } from '../components/Buttons/ButtonsStyled'
+
 export const RegisterPage = () => {
   const [registerValue, setRegisterValue] = useState({});
   const [errorMsg, setErrorMsg] = useState(null);
@@ -43,7 +49,7 @@ export const RegisterPage = () => {
         <InputStyled name="address" type="text" placeholder="Address" />
         <InputStyled name="city" type="text" placeholder="City" />
         <InputStyled name="zipcode" type="number" placeholder="ZIP Code" />
-        <SubmitStyled type="submit" value="Register" />
+        <InputPrimary type="submit" value="Register" />
       </FormStyled>
       {errorMsg && <ErrorMessageStyled>{errorMsg}</ErrorMessageStyled>}
     </FormContainerStyled>
