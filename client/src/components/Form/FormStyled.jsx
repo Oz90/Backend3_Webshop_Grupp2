@@ -51,17 +51,12 @@ const LabelStyled = styled.label`
   color: #939393;
 `;
 
-const ErrorMessageStyled = styled.p`
-  color: red;
-`;
-
 export {
   FormContainerStyled,
   FormContainerStyledWide,
   FormStyled,
   InputStyled,
   SubmitStyled,
-  ErrorMessageStyled,
   ButtonStyled,
   LabelStyled
 };
