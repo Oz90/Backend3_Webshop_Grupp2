@@ -59,7 +59,7 @@ border: none;
 cursor: pointer;
 color: white;
 font-size: 1rem;
-font-weight: 300;
+font-weight: 400;
 letter-spacing: 1.2px;
 transition: all .2s ease-in-out;
 &:hover {
