@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Colors from '../../styleAssets/Colors.js';
 
 const CartCardContainer = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const CartCardContainerBorder = styled.div`
   display: flex;
   width: 100%;
   height: 20vw;
-  border: 1px solid black;
+  border: 3px solid ${Colors.primary};
   margin-bottom: 1rem;
   padding-right: 1rem;
 `;
