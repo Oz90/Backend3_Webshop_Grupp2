@@ -3,7 +3,6 @@ import {
   ListContainerStyledWide,
   TextStyled,
   ListStyled,
-  ButtonStyled,
   TitleStyled
 } from '../../components/Details/DetailsStyled'
 

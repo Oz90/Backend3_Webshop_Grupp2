@@ -5,9 +5,10 @@ import {
   FormContainerStyledWide,
   FormStyled,
   InputStyled,
-  ButtonStyled,
   LabelStyled,
 } from '../../components/Form/FormStyled'
+
+import { ButtonPrimary, ButtonSecondary, ButtonDanger, ButtonSuccess } from '../../components/Buttons/ButtonsStyled';
 
 export const EditUserForm = ({ userData, setEditUser }) => {
   const [editValue, setEditValue] = useState(userData);
@@ -62,8 +63,8 @@ export const EditUserForm = ({ userData, setEditUser }) => {
         <InputStyled name="city" type="text" value={editValue.city} onChange={handleOnChange} />
         <LabelStyled for="zipcode">Zipcode</LabelStyled>
         <InputStyled name="zipcode" type="number" value={editValue.zipcode} onChange={handleOnChange} />
-        <ButtonStyled type="submit">Save</ButtonStyled>
-        <ButtonStyled onClick={handleOnCancel} type="button">Cancel</ButtonStyled>
+        <ButtonSuccess type="submit">Save</ButtonSuccess>
+        <ButtonDanger onClick={handleOnCancel} type="button">Cancel</ButtonDanger>
         {errorMessageResponse?.errorMessage}
       </FormStyled>
     </FormContainerStyledWide>

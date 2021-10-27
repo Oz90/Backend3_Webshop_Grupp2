@@ -17,8 +17,8 @@ import {
 } from '../components/Cart/CartCardStyled';
 
 import {
-    ButtonStyled,
-} from '../components/Form/FormStyled'
+    ButtonPrimary
+} from '../components/Buttons/ButtonsStyled'
 
 
 export default function UserPageOrderDetails() {
@@ -52,7 +52,7 @@ export default function UserPageOrderDetails() {
     return (
         <>
         <MiddleColumnStyled>
-                <ButtonStyled onClick={handleOnBack} type="button">Back</ButtonStyled>
+                <ButtonPrimary onClick={handleOnBack} type="button">Back</ButtonPrimary>
         <ListContainerStyledWide>
             <ListStyled>
                 <TitleStyled>Shipped</TitleStyled>
