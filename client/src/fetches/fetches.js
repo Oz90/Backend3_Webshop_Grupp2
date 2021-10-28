@@ -2,9 +2,11 @@ import axios from 'axios';
 
 // Middleware = Allows HTTP to set cookies
 axios.defaults.withCredentials = true;
+const ourURLs = 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/'
+
 
 const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/'
+    baseURL: ourURLs
 });
 
 export const loginUser = (payload) => url.post('/users/login', payload);

@@ -34,8 +34,11 @@ function App() {
   const [cartItemAmount, setCartItemAmount] = useState();
 
   // console.log(process.env.API_KEY);
+
+  const ourURLs = 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/'
+
   const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/',
+    baseURL: ourURLs,
   });
 
   async function getIsUserLoggedIn() {
