@@ -149,7 +149,7 @@ exports.loginUser = async (req, res, next) => {
       );
       return res
         .cookie('token', token, {
-          // httpOnly: true,
+          httpOnly: true,
         })
         .send(existingUser);
     }
