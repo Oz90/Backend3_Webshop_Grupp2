@@ -7,8 +7,15 @@ const ButtonContainer = styled.div`
         margin-right: 1rem;
     }
 `;
+const ButtonContainerBottom = styled.div`
+    margin-top: 2rem;
+    button {
+        margin-right: 1rem;
+    }
+`;
 
 
 export {
     ButtonContainer,
+    ButtonContainerBottom
 };
