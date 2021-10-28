@@ -22,7 +22,6 @@ export const ProductPage = () => {
 
     return (
         <> 
-            {/* <Container> */}
             {shuffledProducts.map((product, index) => {
                 return <Link to={`/detailpage/${product._id}`}>
                     <div className="card">
@@ -36,7 +35,6 @@ export const ProductPage = () => {
                     </div>
                 </Link>
             })}
-           {/*  </Container> */}
         </>
     );
 };
