@@ -196,7 +196,7 @@ exports.logoutUser = (req, res, next) => {
     .cookie('token', '', {
       httpOnly: true,
       secure: true,
-      sameSite: "None"
+      sameSite: "None",
       expires: new Date(0),
     })
     .send();
