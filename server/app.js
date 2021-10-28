@@ -23,6 +23,11 @@ const cartRouter = require('./routes/cart');
 
 const app = express();
 
+console.log(process.env.API_KEY)
+console.log(process.env.JWT_SECRET_USER)
+console.log(process.env.JWT_SECRET_ADMIN)
+console.log(process.env.CLIENT_URL)
+
 // Middlewares
 app.use(
   cors({
