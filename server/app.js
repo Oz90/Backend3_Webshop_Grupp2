@@ -26,12 +26,12 @@ const app = express();
 console.log(process.env.JWT_SECRET_ADMIN)
 console.log(process.env.JWT_SECRET_USER)
 console.log(process.env.ATLAS_URI)
-console.log(process.env.CLIENT_URL)
+console.log(process.env.ATLAS_URI)
 
 // Middlewares
 app.use(
   cors({
-    origin: ["https://aqueous-castle-08428.herokuapp.com/", 'http://localhost:3000', 'http://localhost:3001'],
+    origin: ['https://aqueous-castle-08428.herokuapp.com/', 'http://localhost:3000', 'http://localhost:3001'],
     credentials: true,
   }),
 );
