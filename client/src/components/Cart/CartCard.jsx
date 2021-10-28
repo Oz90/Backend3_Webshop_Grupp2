@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import {useHistory} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 import { removeCartItem, updateCart } from '../../fetches/fetches';
 
@@ -15,8 +16,12 @@ export const CartCard = ({ props }) => {
   const { cartItemAmount, setCartItemAmount } = useContext(AuthContext);
   const [productAmount, setProductAmount] = useState(props.amount);
 
+  const history = useHistory();
+
   const handleDeleteCartItem = () => {
     removeCartItem(props._id);
+    history.go(0);
+
   };
 
   const handleOnChange = (e) => {
