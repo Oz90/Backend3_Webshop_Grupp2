@@ -24,6 +24,7 @@ const CartCardInfo = styled.div`
   padding: 0 2rem;
 `;
 
+
 const AmountForm = styled.form`
 `;
 
@@ -39,6 +40,15 @@ const AmountSubmit = styled.input`
   padding: 0 1rem 0 1rem;
 `;
 
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+  div {
+    margin-right: .5rem;
+  }
+`;
+
+
 export { 
   CartCardContainer,
   CartCardImage,
@@ -46,5 +56,6 @@ export {
   AmountForm,
   AmountInput,
   AmountSubmit,
-  CartCardContainerBorder
+  CartCardContainerBorder,
+  FlexRow
 };

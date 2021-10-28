@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 import { removeCartItem, updateCart } from '../../fetches/fetches';
 
-import { InputPrimary, ButtonSecondary } from '../../components/Buttons/ButtonsStyled';
+import { InputPrimary, ButtonSecondary, ConfirmInput, RemoveButton } from '../../components/Buttons/ButtonsStyled';
 import { ButtonContainerBottom } from '../../components/Buttons/ButtonContainer';
 import { HeaderThree, P, PriceP, HeaderTwo } from '../../components/Texts/TextsStyled';
 import { InputStyled, LabelStyled } from '../../components/Form/FormStyled'
@@ -16,6 +16,7 @@ import {
   AmountForm,
   AmountInput,
   AmountSubmit,
+  FlexRow
 } from './CartCardStyled';
 
 export const CartCard = ({ props }) => {
@@ -46,14 +47,18 @@ export const CartCard = ({ props }) => {
       <CartCardImage src={props.thumbnail} alt={props.title} />
       <CartCardInfo>
         <HeaderTwo>{props.title}</HeaderTwo>
-        <AmountForm onSubmit={handleOnSubmit}>
-          <LabelStyled htmlFor="amount">Amount: </LabelStyled>
-          <InputStyled onChange={handleOnChange} name="amount" type="number" value={productAmount} />
-          <InputPrimary type="submit" value="Confirm Amount" />
-        </AmountForm>
         <PriceP>{props.price} SEK</PriceP>
+        <AmountForm onSubmit={handleOnSubmit}>
+          <FlexRow>
+            <div>
+              <LabelStyled htmlFor="amount">Amount: </LabelStyled>
+              <InputStyled onChange={handleOnChange} name="amount" type="number" value={productAmount} />
+            </div>
+            <ConfirmInput type="submit" value="✓" />
+          </FlexRow>
+        </AmountForm>
         <ButtonContainerBottom>
-          <ButtonSecondary type="button" onClick={handleDeleteCartItem}>Remove</ButtonSecondary>
+          <RemoveButton type="button" onClick={handleDeleteCartItem}>x</RemoveButton>
         </ButtonContainerBottom>
       </CartCardInfo>
     </CartCardContainer>
