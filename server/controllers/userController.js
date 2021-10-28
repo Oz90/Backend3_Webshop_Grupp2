@@ -156,6 +156,7 @@ exports.loginUser = async (req, res, next) => {
     }
 
     // send the token in a HTTP only cookie
+    console.log(token);
   } catch (err) {
     console.error(err);
     return res.status(500).send();
