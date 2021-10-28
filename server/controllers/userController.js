@@ -90,7 +90,6 @@ exports.registerUser = async (req, res, next) => {
       .cookie('token', token, {
         httpOnly: true,
         secure: true,
-        sameSite: "None",
       })
       .send();
   } catch (err) {
@@ -138,7 +137,6 @@ exports.loginUser = async (req, res, next) => {
         .cookie('token', token, {
           httpOnly: true,
           secure: true,
-          sameSite: "None",
         })
         .send();
     }
@@ -155,7 +153,6 @@ exports.loginUser = async (req, res, next) => {
         .cookie('token', token, {
           httpOnly: true,
           secure: true,
-          sameSite: "None",
         })
         .send(existingUser);
     }
