@@ -16,44 +16,7 @@ a {
   color: inherit;
 }
 
-p, h2 {
+p,
+h2 {
   color: #5e5f75;
-}
-
-/* //////////////////////// Product card styling //////////////////////// */
-.card {
-  overflow: hidden;
-}
-
-.imgDiv {
-  overflow: hidden;
-}
-
-.thumbnail {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  /* width: 20rem; */
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.thumbnail:hover {
-  transform: scale(1.09);
-}
-
-.productTitle {
-  text-align: center;
-  margin: 1rem 0 0.5rem 0;
-}
-
-.productPrice {
-}
-
-.titleAndPrice {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 0.7rem;
 }
