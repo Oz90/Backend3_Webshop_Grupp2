@@ -35,7 +35,7 @@ function App() {
 
   // console.log(process.env.API_KEY);
   const url = axios.create({
-    baseURL: process.env.API_KEY || 'http://localhost:5000/',
+    baseURL: 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/',
   });
 
   async function getIsUserLoggedIn() {
