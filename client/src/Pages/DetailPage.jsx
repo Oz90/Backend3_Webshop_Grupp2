@@ -14,7 +14,7 @@ import { Message } from '../components/FeedbackMessages/FeedbackMessages';
 
 import { ButtonPrimary } from '../components/Buttons/ButtonsStyled';
 import { ButtonContainerBottom } from '../components/Buttons/ButtonContainer';
-import { HeaderThree, P, PriceP } from '../components/Texts/TextsStyled'
+import { HeaderThree, P, PriceP } from '../components/Texts/TextsStyled';
 
 
 
