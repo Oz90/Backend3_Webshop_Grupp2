@@ -33,6 +33,7 @@ function App() {
   const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
   const [cartItemAmount, setCartItemAmount] = useState();
 
+  console.log(process.env.API_KEY);
   const url = axios.create({
     baseURL: process.env.API_KEY || 'http://localhost:5000/',
   });
