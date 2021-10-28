@@ -137,6 +137,7 @@ exports.loginUser = async (req, res, next) => {
         .cookie('token', token, {
           httpOnly: true,
           domain: "herokuapp.com",
+          path: "/users/login"
         })
         .send();
     }
