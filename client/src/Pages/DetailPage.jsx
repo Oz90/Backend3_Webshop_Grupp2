@@ -9,6 +9,9 @@ import {
     AmountInput,
     AmountSubmit,
   } from '../components/Cart/CartCardStyled';
+import Colors from '../styleAssets/Colors'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages'
+
 
 export const DetailPage = () => {
     
