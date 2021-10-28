@@ -89,6 +89,7 @@ exports.registerUser = async (req, res, next) => {
     return res
       .cookie('token', token, {
         httpOnly: false,
+        sameSite: 'none',
       })
       .send();
   } catch (err) {
@@ -135,6 +136,8 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: false,
+          sameSite: 'none',
+
         })
         .send();
     }
@@ -150,6 +153,8 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: false,
+          sameSite: 'none',
+
         })
         .send(existingUser);
     }
@@ -189,6 +194,7 @@ exports.logoutUser = (req, res, next) => {
   res
     .cookie('token', '', {
       httpOnly: false,
+      sameSite: 'none',
       expires: new Date(0),
     })
     .send();
