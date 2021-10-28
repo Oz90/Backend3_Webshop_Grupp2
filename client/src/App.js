@@ -35,7 +35,7 @@ function App() {
 
   // console.log(process.env.API_KEY);
 
-  const ourURLs = 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/'
+  const ourURLs = process.env.API_KEY || 'http://localhost:5000/'
 
   const url = axios.create({
     baseURL: ourURLs,
