@@ -27,27 +27,28 @@ import { NavBar } from './components/HeaderContainer/NavBar';
 import { DetailPage } from './Pages/DetailPage';
 
 axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "https://stark-headland-25678.herokuapp.com/" || 'http://localhost:5000/';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
   const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
   const [cartItemAmount, setCartItemAmount] = useState();
 
-  // console.log(process.env.API_KEY);
+  console.log(process.env.API_KEY);
 
-  const ourURLs = process.env.API_KEY || 'http://localhost:5000/'
+  // const ourURLs = process.env.API_KEY || 'http://localhost:5000/'
 
-  const url = axios.create({
-    baseURL: ourURLs,
-  });
+  // const url = axios.create({
+  //   baseURL: ourURLs,
+  // });
 
   async function getIsUserLoggedIn() {
-    const loggedInUserRes = await url.get('/users/loggedinuser');
+    const loggedInUserRes = await axios.get('/users/loggedinuser');
     setLoggedInUser(loggedInUserRes.data);
   }
 
   async function getIsAdminLoggedIn() {
-    const loggedInAdminRes = await url.get('/users/loggedinadmin');
+    const loggedInAdminRes = await axios.get('/users/loggedinadmin');
     setLoggedInAdmin(loggedInAdminRes.data);
   }
   useEffect(() => {
