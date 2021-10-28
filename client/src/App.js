@@ -34,7 +34,7 @@ function App() {
   const [cartItemAmount, setCartItemAmount] = useState();
 
   const url = axios.create({
-    baseURL: 'http://localhost:5000/',
+    baseURL: process.env.API_KEY || 'http://localhost:5000/',
   });
 
   async function getIsUserLoggedIn() {
