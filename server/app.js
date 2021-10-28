@@ -26,7 +26,7 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://intense-caverns-54638.herokuapp.com/'],
+    origin: ['http://localhost:3000', 'http://localhost:3001', process.env.CLIENT_URL],
     credentials: true,
   }),
 );
