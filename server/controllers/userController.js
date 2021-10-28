@@ -89,7 +89,8 @@ exports.registerUser = async (req, res, next) => {
     return res
       .cookie('token', token, {
         httpOnly: true,
-        domain: "herokuapp.com",
+        secure: true,
+        sameSite: "None"
       })
       .send();
   } catch (err) {
@@ -136,8 +137,8 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
-          domain: "herokuapp.com",
-          path: "/users/login"
+          secure: true,
+          sameSite: "None"
         })
         .send();
     }
@@ -153,7 +154,8 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
-          domain: "herokuapp.com",
+          secure: true,
+          sameSite: "None"
         })
         .send(existingUser);
     }
@@ -193,7 +195,8 @@ exports.logoutUser = (req, res, next) => {
   res
     .cookie('token', '', {
       httpOnly: true,
-      domain: "herokuapp.com",
+      secure: true,
+      sameSite: "None"
       expires: new Date(0),
     })
     .send();
