@@ -8,7 +8,12 @@ import { CartCard } from '../components/Cart/CartCard';
 import { CartContentsStyled } from '../components/Cart/CartContentsStyled';
 import { CartSummaryStyled, PlaceOrderButtonStyled } from '../components/Cart/CartSummaryStyled';
 import Colors from '../styleAssets/Colors'
-import { Message } from '../components/FeedbackMessages/FeedbackMessages'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages';
+
+import { ButtonPrimary } from '../components/Buttons/ButtonsStyled';
+import { ButtonContainerBottom } from '../components/Buttons/ButtonContainer';
+import { HeaderThree, P, PriceP } from '../components/Texts/TextsStyled';
+import { InputStyled } from '../components/Form/FormStyled'
 
 export const CartPage = () => {
   const history = useHistory();
@@ -84,8 +89,10 @@ export const CartPage = () => {
         {errorMsg && <Message type={Colors.danger}>{errorMsg}</Message>}
       </CartContentsStyled>
       <CartSummaryStyled>
-        <p>Sum: {total}:-</p>
-        <PlaceOrderButtonStyled onClick={handlePlaceOrder}>Place Order</PlaceOrderButtonStyled>
+        <PriceP>Sum: {total} SEK</PriceP>
+        <ButtonContainerBottom>
+          <ButtonPrimary onClick={handlePlaceOrder}>Place Order</ButtonPrimary>
+        </ButtonContainerBottom>
       </CartSummaryStyled>
     </>
   );

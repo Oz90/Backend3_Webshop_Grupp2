@@ -3,6 +3,12 @@ import {useHistory} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 import { removeCartItem, updateCart } from '../../fetches/fetches';
 
+import { InputPrimary, ButtonSecondary } from '../../components/Buttons/ButtonsStyled';
+import { ButtonContainerBottom } from '../../components/Buttons/ButtonContainer';
+import { HeaderThree, P, PriceP, HeaderTwo } from '../../components/Texts/TextsStyled';
+import { InputStyled, LabelStyled } from '../../components/Form/FormStyled'
+
+
 import {
   CartCardContainer,
   CartCardImage,
@@ -39,14 +45,16 @@ export const CartCard = ({ props }) => {
     <CartCardContainer>
       <CartCardImage src={props.thumbnail} alt={props.title} />
       <CartCardInfo>
-        <p>{props.title}</p>
+        <HeaderTwo>{props.title}</HeaderTwo>
         <AmountForm onSubmit={handleOnSubmit}>
-          <label htmlFor="amount">Amount: </label>
-          <AmountInput onChange={handleOnChange} name="amount" type="number" value={productAmount} />
-          <AmountSubmit type="submit" value="Update" />
+          <LabelStyled htmlFor="amount">Amount: </LabelStyled>
+          <InputStyled onChange={handleOnChange} name="amount" type="number" value={productAmount} />
+          <InputPrimary type="submit" value="Confirm Amount" />
         </AmountForm>
-        <p>{props.price}</p>
-        <button type="button" onClick={handleDeleteCartItem}>Remove from cart</button>
+        <PriceP>{props.price} SEK</PriceP>
+        <ButtonContainerBottom>
+          <ButtonSecondary type="button" onClick={handleDeleteCartItem}>Remove</ButtonSecondary>
+        </ButtonContainerBottom>
       </CartCardInfo>
     </CartCardContainer>
   )

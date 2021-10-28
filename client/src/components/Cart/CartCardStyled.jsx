@@ -21,7 +21,7 @@ const CartCardImage = styled.img`
 `;
 
 const CartCardInfo = styled.div`
-  padding: 2rem;
+  padding: 0 2rem;
 `;
 
 const AmountForm = styled.form`
