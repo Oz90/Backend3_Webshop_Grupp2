@@ -17,6 +17,14 @@ const HeaderThree = styled.h3`
     margin: 1rem 0;
     
 `;
+const HeaderTwo = styled.h3`
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: ${Colors.primary};
+    margin: 1rem 0;
+    
+`;
 const P = styled.p`
     font-size: 1rem;
     font-weight: 300;
@@ -36,6 +44,7 @@ const PriceP = styled.p`
 export {
     HeaderOne,
     HeaderThree,
+    HeaderTwo,
     P,
     PriceP
 };
