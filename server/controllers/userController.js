@@ -89,6 +89,7 @@ exports.registerUser = async (req, res, next) => {
     return res
       .cookie('token', token, {
         httpOnly: true,
+        domain: heruko.com,
       })
       .send();
   } catch (err) {
@@ -135,6 +136,7 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
+          domain: heruko.com,
         })
         .send();
     }
@@ -150,6 +152,7 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
+          domain: heruko.com,
         })
         .send(existingUser);
     }
@@ -189,6 +192,7 @@ exports.logoutUser = (req, res, next) => {
   res
     .cookie('token', '', {
       httpOnly: true,
+      domain: heruko.com,
       expires: new Date(0),
     })
     .send();
