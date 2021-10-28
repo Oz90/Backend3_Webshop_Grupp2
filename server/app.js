@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
-// require('dotenv').config();
+require('dotenv').config();
 
 const uri = process.env.ATLAS_URI;
 
@@ -29,13 +29,12 @@ console.log(process.env.ATLAS_URI)
 console.log(process.env.CLIENT_URL)
 
 // Middlewares
-app.use(cors());
-// app.use(
-//   cors({
-//     origin: ["https://aqueous-castle-08428.herokuapp.com/", 'http://localhost:3000', 'http://localhost:3001'],
-//     credentials: true,
-//   }),
-// );
+app.use(
+  cors({
+    origin: ["https://aqueous-castle-08428.herokuapp.com/", 'http://localhost:3000', 'http://localhost:3001'],
+    credentials: true,
+  }),
+);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
