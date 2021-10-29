@@ -86,15 +86,20 @@ function App() {
               <Route path="/user/order" component={UserPageOrders} />
               <Route path="/detailpage/:id" component={DetailPage} />
               <Route path="/user" component={UserPage} />
-              <Route path="/admin/products/add" component={AdminAddProductPage} />
-              <Route path="/admin/products/:id" component={AdminProductDetailPage} />
-              <Route path="/admin/products" component={AdminProductPage} />
-              <Route path="/admin/orders" component={AdminOrderPage} />
-              <Route path="/admin" component={AdminPage} />
-              <Route path="/" component={ProductPage} />
+              {
+                loggedInAdmin && true(
+                  <>
+                    <Route path="/admin/products/add" component={AdminAddProductPage} />
+                    <Route path="/admin/products/:id" component={AdminProductDetailPage} />
+                    <Route path="/admin/products" component={AdminProductPage} />
+                    <Route path="/admin/orders" component={AdminOrderPage} />
+                    <Route path="/admin" component={AdminPage} />
+                    <Route path="/" component={ProductPage} />
+                  </>
+                )
+              }
             </Switch>
           </ContentContainerStyled>
-          {/* <FooterStyled /> */}
         </MainContainerStyled>
       </AuthContext.Provider>
     </>
