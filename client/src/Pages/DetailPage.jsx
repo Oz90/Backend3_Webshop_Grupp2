@@ -10,7 +10,12 @@ import {
     AmountSubmit,
   } from '../components/Cart/CartCardStyled';
 import Colors from '../styleAssets/Colors'
-import { Message } from '../components/FeedbackMessages/FeedbackMessages'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages';
+
+import { ButtonPrimary } from '../components/Buttons/ButtonsStyled';
+import { ButtonContainerBottom } from '../components/Buttons/ButtonContainer';
+import { HeaderThree, P, PriceP } from '../components/Texts/TextsStyled';
+
 
 
 export const DetailPage = () => {
@@ -19,6 +24,7 @@ export const DetailPage = () => {
     let { id } = useParams();
 
     const [product, setProduct] = useState([]);
+    const [cart, setCart] = useState(null);
 
     const { cartItemAmount, setCartItemAmount } = useContext(AuthContext);
 
@@ -26,11 +32,12 @@ export const DetailPage = () => {
         getSingleProduct(id).then(res => setProduct(res.data))
     }, []);
 
-    const handleOnClick = (e) => {
+        const handleOnClick = (e) => {
         e.preventDefault();
         setCartItemAmount(0);
         const payload = { amount: 1 };
-        updateCart(product._id, payload);
+        updateCart(product._id, payload).then(res => setCart(res.data))
+
       };
     
     return (
@@ -39,11 +46,14 @@ export const DetailPage = () => {
             <CarouselComp/>
             <DetailsDiv>
             <div>
-                <h3>{product.title}</h3>
-                <p>{product.description}</p>
-                <p>{product.price} SEK</p>
-                <button onClick={handleOnClick}>Add to cart</button>
+                <HeaderThree>{product.title}</HeaderThree>
+                <P>{product.description}</P>
+                <PriceP>{product.price} SEK</PriceP>
+                    <ButtonContainerBottom>
+                        <ButtonPrimary onClick={handleOnClick}>Add to cart</ButtonPrimary>
+                    </ButtonContainerBottom>
             </div>
+                    {cart && <Message type={Colors.success} >This item was added to your cart successfully.</Message>}
             </DetailsDiv>
         </DetailPageStyled>
         </>

@@ -72,6 +72,30 @@ const ButtonSuccess = styled(ButtonPrimary)`
       background-color: ${Colors.success}, 0.7;
   }
 `;
+const ConfirmInput = styled.input`
+    color: ${Colors.white};
+    height: 2.65rem;
+    width: 2.6rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: ${Colors.primary};
+        :hover {
+            opacity: 0.7;
+        }
+`;
+const RemoveButton = styled.button`
+    color: ${Colors.white};
+    height: 2.6rem;
+    width: 2.6rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: ${Colors.danger};
+        :hover {
+            opacity: 0.7;
+        }
+`;
 
 export {
     ButtonPrimary,
@@ -79,5 +103,7 @@ export {
     InputSecondary,
     ButtonSecondary, 
     ButtonDanger,
-    ButtonSuccess
+    ButtonSuccess,
+    RemoveButton,
+    ConfirmInput
 };
