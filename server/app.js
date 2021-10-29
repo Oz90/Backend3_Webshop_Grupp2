@@ -33,7 +33,7 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: ['https://aqueous-castle-08428.herokuapp.com/'],
+    origin: ['https://aqueous-castle-08428.herokuapp.com'],
     credentials: true,
   }),
 );
