@@ -78,14 +78,18 @@ function App() {
             <Switch>
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
-              <Route path="/cart" component={CartPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
               <Route path="/products" component={ProductPage} />
-              <Route path="/user/edit" component={UserPageEdit} />
-              <Route path="/user/order/:id" component={UserPageOrderDetails} />
-              <Route path="/user/order" component={UserPageOrders} />
               <Route path="/detailpage/:id" component={DetailPage} />
-              <Route path="/user" component={UserPage} />
+              {loggedInUser === true && (
+                <>
+                  <Route path="/cart" component={CartPage} />
+                  <Route path="/user/edit" component={UserPageEdit} />
+                  <Route path="/user/order/:id" component={UserPageOrderDetails} />
+                  <Route path="/user/order" component={UserPageOrders} />
+                  <Route path="/user" component={UserPage} />
+                </>
+              )}
               {
                 loggedInAdmin === true && (
                   <>
