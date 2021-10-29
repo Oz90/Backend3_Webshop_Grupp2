@@ -10,7 +10,7 @@ axios.defaults.withCredentials = true;
 
 
 const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/',
+    baseURL: 'http://localhost:5000/',
 });
 
 export const loginUser = (payload) => url.post('/users/login', payload);
@@ -20,7 +20,7 @@ export const getAllProducts = () => url.get('/products');
 export const getSingleProduct = (id) => url.get(`/products/${id}`);
 export const addProduct = (payload) => url.post(`/products/add`, payload);
 export const editSingleProduct = (id, payload) => url.post(`/products/${id}`, payload);
-export const deleteSingleProduct = (id) => url.delete(`/admin/${id}`);
+export const deleteSingleProduct = (id) => url.delete(`/products/${id}`);
 export const getAllOrders = () => url.get('/orders');
 export const toggleOrderIsShipped = (id) => url.post(`/orders/${id}`);
 export const getUser = () => url.get('/users');
