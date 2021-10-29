@@ -89,7 +89,7 @@ exports.registerUser = async (req, res, next) => {
     return res
       .cookie('token', token, {
         httpOnly: true,
-        domain: "herokuapp.com",
+        domain: "stark-headland-25678.herokuapp.com",
         sameSite: false,
         secure: true,
       })
@@ -138,7 +138,7 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
-          domain: "herokuapp.com",
+          domain: "stark-headland-25678.herokuapp.com",
           sameSite: false,
           secure: true,
         })
@@ -156,7 +156,7 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
-          domain: "herokuapp.com",
+          domain: "stark-headland-25678.herokuapp.com",
           sameSite: false,
           secure: true,
 
@@ -199,7 +199,7 @@ exports.logoutUser = (req, res, next) => {
   res
     .cookie('token', '', {
       httpOnly: true,
-      domain: "herokuapp.com",
+      domain: "stark-headland-25678.herokuapp.com",
       sameSite: false,
       secure: true,
       expires: new Date(0),
