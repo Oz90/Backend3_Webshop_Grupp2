@@ -87,17 +87,17 @@ function App() {
               <Route path="/detailpage/:id" component={DetailPage} />
               <Route path="/user" component={UserPage} />
               {
-                loggedInAdmin && true(
+                loggedInAdmin === true && (
                   <>
-                    <Route path="/admin/products/add" component={AdminAddProductPage} />
-                    <Route path="/admin/products/:id" component={AdminProductDetailPage} />
-                    <Route path="/admin/products" component={AdminProductPage} />
-                    <Route path="/admin/orders" component={AdminOrderPage} />
-                    <Route path="/admin" component={AdminPage} />
-                    <Route path="/" component={ProductPage} />
+                    <Route exact path="/admin/products/add" component={AdminAddProductPage} />
+                    <Route exact path="/admin/products/:id" component={AdminProductDetailPage} />
+                    <Route exact path="/admin/products" component={AdminProductPage} />
+                    <Route exact path="/admin/orders" component={AdminOrderPage} />
+                    <Route exact path="/admin" component={AdminPage} />
                   </>
                 )
               }
+              <Route path="/" component={ProductPage} />
             </Switch>
           </ContentContainerStyled>
         </MainContainerStyled>
