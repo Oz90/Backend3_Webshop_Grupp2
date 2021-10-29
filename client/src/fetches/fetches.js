@@ -3,14 +3,14 @@ import axios from 'axios';
 // Middleware = Allows HTTP to set cookies
 axios.defaults.withCredentials = true;
 
-// axios.defaults.baseURL = 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/';
+// axios.defaults.baseURL = 'http://localhost:5000/';
 
 // const ourURLs = 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/'
 // console.log(ourURLs);
 
 
 const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com/',
+    baseURL: 'http://localhost:5000/'
 });
 
 export const loginUser = (payload) => url.post('/users/login', payload);
