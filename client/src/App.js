@@ -73,35 +73,24 @@ function App() {
             <NavBar />
           </HeaderStyled>
           <SideBar />
-          {/* <SideBar /> */}
           <ContentContainerStyled>
             <Switch>
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
               <Route path="/products/:id" component={ProductCategoryPage} />
-              <Route path="/products" component={ProductPage} />
               <Route path="/detailpage/:id" component={DetailPage} />
-              {loggedInUser === true && (
-                <>
-                  <Route path="/cart" component={CartPage} />
-                  <Route path="/user/edit" component={UserPageEdit} />
-                  <Route path="/user/order/:id" component={UserPageOrderDetails} />
-                  <Route path="/user/order" component={UserPageOrders} />
-                  <Route path="/user" component={UserPage} />
-                </>
-              )}
-              {
-                loggedInAdmin === true && (
-                  <>
-                    <Route exact path="/admin/products/add" component={AdminAddProductPage} />
-                    <Route exact path="/admin/products/:id" component={AdminProductDetailPage} />
-                    <Route exact path="/admin/products" component={AdminProductPage} />
-                    <Route exact path="/admin/orders" component={AdminOrderPage} />
-                    <Route exact path="/admin" component={AdminPage} />
-                  </>
-                )
-              }
-              <Route path="/" component={ProductPage} />
+              {(loggedInUser || loggedInAdmin) &&
+                <Route path="/cart" component={CartPage} />}
+              {(loggedInUser || loggedInAdmin) && <Route path="/user/edit" component={UserPageEdit} />}
+              {(loggedInUser || loggedInAdmin) && <Route path="/user/order/:id" component={UserPageOrderDetails} />}
+              {(loggedInUser || loggedInAdmin) && <Route path="/user/order" component={UserPageOrders} />}
+              {(loggedInUser || loggedInAdmin) && <Route path="/user" component={UserPage} />}
+              {loggedInAdmin && <Route exact path="/admin/products/add" component={AdminAddProductPage} />}
+              {loggedInAdmin && <Route exact path="/admin/products/:id" component={AdminProductDetailPage} />}
+              {loggedInAdmin && <Route exact path="/admin/products" component={AdminProductPage} />}
+              {loggedInAdmin && <Route exact path="/admin/orders" component={AdminOrderPage} />}
+              {loggedInAdmin && <Route exact path="/admin" component={AdminPage} />}
+              <Route exact path="/" component={ProductPage} />
             </Switch>
           </ContentContainerStyled>
         </MainContainerStyled>
