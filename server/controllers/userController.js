@@ -90,8 +90,6 @@ exports.registerUser = async (req, res, next) => {
       .cookie('token', token, {
         httpOnly: true,
         domain: "stark-headland-25678.herokuapp.com",
-        sameSite: "lax",
-        secure: true,
       })
       .send();
   } catch (err) {
@@ -139,8 +137,6 @@ exports.loginUser = async (req, res, next) => {
         .cookie('token', token, {
           httpOnly: true,
           domain: "stark-headland-25678.herokuapp.com",
-          sameSite: "lax",
-          secure: true,
         })
         .send();
     }
@@ -157,8 +153,6 @@ exports.loginUser = async (req, res, next) => {
         .cookie('token', token, {
           httpOnly: true,
           domain: "stark-headland-25678.herokuapp.com",
-          sameSite: "lax",
-          secure: true,
 
         })
         .send(existingUser);
@@ -200,8 +194,6 @@ exports.logoutUser = (req, res, next) => {
     .cookie('token', '', {
       httpOnly: true,
       domain: "stark-headland-25678.herokuapp.com",
-      sameSite: "lax",
-      secure: true,
       expires: new Date(0),
     })
     .send();
