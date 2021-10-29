@@ -136,7 +136,7 @@ exports.loginUser = async (req, res, next) => {
       return res
         .cookie('token', token, {
           httpOnly: true,
-          domain: "stark-headland-25678.herokuapp.com/users/login/",
+          domain: "stark-headland-25678.herokuapp.com",
         })
         .send();
     }
