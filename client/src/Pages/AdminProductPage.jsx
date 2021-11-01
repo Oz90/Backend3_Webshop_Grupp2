@@ -21,7 +21,9 @@ export const AdminProductPage = () => {
                 <Link to="/admin">
                     <ButtonPrimary>Back</ButtonPrimary>
                 </Link>
+                <Link to="/admin/products/add">
             <ButtonSuccess>Add Product</ButtonSuccess>
+                </Link>
             </ButtonContainer>
                 {products.map((product, index) => {
                     return (
