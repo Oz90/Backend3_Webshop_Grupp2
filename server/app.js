@@ -33,7 +33,7 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://aqueous-castle-08428.herokuapp.com'],
+    origin: ['https://aqueous-castle-08428.herokuapp.com', 'http://localhost:3000', 'http://localhost:3001'],
     credentials: true,
   }),
 );

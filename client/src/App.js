@@ -27,7 +27,6 @@ import { NavBar } from './components/HeaderContainer/NavBar';
 import { DetailPage } from './Pages/DetailPage';
 
 axios.defaults.withCredentials = true;
-// axios.defaults.baseURL = 'https://stark-headland-25678.herokuapp.com/' || 'http://localhost:5000/';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(undefined);
@@ -39,8 +38,7 @@ function App() {
   // const ourURLs = process.env.API_KEY || 'http://localhost:5000/'
 
   const url = axios.create({
-    //baseURL: 'http://localhost:5000/',
-    baseURL: 'https://stark-headland-25678.herokuapp.com/',
+    baseURL: 'https://stark-headland-25678.herokuapp.com',
   });
 
   async function getIsUserLoggedIn() {
