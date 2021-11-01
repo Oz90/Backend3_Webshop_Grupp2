@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getAllProducts } from '../fetches/fetches';
 import { Link } from "react-router-dom"
-import styled from "styled-components";
-
-const StyledListItem = styled.li`
-border: 3px black solid;
-`
+import { ButtonPrimary, ButtonSuccess } from '../components/Buttons/ButtonsStyled'
+import { ButtonContainer } from '../components/Buttons/ButtonContainer'
+import { HeaderOne } from '../components/Texts/TextsStyled'
+import { TextStyledNoBorder } from "../components/Details/DetailsStyled";
 
 export const AdminProductPage = () => {
     const [products, setProducts] = useState([]);
@@ -17,17 +16,23 @@ export const AdminProductPage = () => {
 
     return (
         <div>
-            <h2>Admin Product Page</h2>
-            <ul>
+            <HeaderOne>All Products</HeaderOne>
+            <ButtonContainer>
+                <Link to="/admin">
+                    <ButtonPrimary>Back</ButtonPrimary>
+                </Link>
+            <ButtonSuccess>Add Product</ButtonSuccess>
+            </ButtonContainer>
                 {products.map((product, index) => {
                     return (
-                        <StyledListItem key={index}>
+                        <TextStyledNoBorder key={index}>
                             <Link to={`/admin/products/${product._id}`}>{product.title}</Link>
-                        </StyledListItem>
+                        </TextStyledNoBorder>
                     )
                 })}
-            </ul>
-            <Link to={`/admin/products/add`}>Add new Product</Link>
+            <Link to={`/admin/products/add`}>
+               
+            </Link>
         </div>
     );
 };
