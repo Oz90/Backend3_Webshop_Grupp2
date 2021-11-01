@@ -29,8 +29,6 @@ exports.registerUser = async (req, res, next) => {
       zipcode,
     } = req.body;
 
-    // Validations
-
     if (
       !fullName
       || !displayName
@@ -59,7 +57,6 @@ exports.registerUser = async (req, res, next) => {
       });
     }
 
-    // Hash the password
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
@@ -74,11 +71,8 @@ exports.registerUser = async (req, res, next) => {
       password: passwordHash,
     });
 
-    // save user to db
-
     const savedUser = await newUser.save();
 
-    // sign the token
     const token = jwt.sign(
       {
         user: savedUser._id,
@@ -99,13 +93,11 @@ exports.registerUser = async (req, res, next) => {
   }
 };
 
-// eslint-disable-next-line consistent-return
 exports.loginUser = async (req, res, next) => {
 
   try {
     const { email, password } = req.body;
 
-    // Validations
     if (!email || !password) {
       return res
         .status(400)
@@ -160,7 +152,6 @@ exports.loginUser = async (req, res, next) => {
         .send(existingUser);
     }
 
-    // send the token in a HTTP only cookie
   } catch (err) {
     console.error(err);
     return res.status(500).send();
@@ -215,7 +206,6 @@ exports.updateUser = async (req, res, next) => {
       zipcode,
     } = req.body;
 
-    // Validations
 
     if (
       !fullName
@@ -231,8 +221,6 @@ exports.updateUser = async (req, res, next) => {
         .json({ errorMessage: 'Please fill in all required fields' });
     }
 
-    //////////// check if email exists. If not let through.
-    //////////// If email exists but is the users own, let through
     const editUserInfo = await User.findOne({ email })
     const currentUser = await User.findById(id)
     let updateEmail = false;
@@ -243,8 +231,6 @@ exports.updateUser = async (req, res, next) => {
     }
 
     !editUserInfo ? updateEmail = true : updateEmail = false;
-
-    // Hash the password
 
     let updateUserInfo = {
       fullName,
@@ -257,7 +243,6 @@ exports.updateUser = async (req, res, next) => {
 
     updateEmail ? updateUserInfo = { ...updateUserInfo, email } : updateUserInfo;
 
-    // save user to db
     const filter = { _id: id }
     const savedUser = await User.findOneAndUpdate(filter, updateUserInfo, {
       new: true,

@@ -7,7 +7,6 @@ function authAdmin(req, res, next) {
 
     const verified = jwt.verify(token, process.env.JWT_SECRET_ADMIN);
 
-    // Skapar ny prop på req
     req.user = verified.user;
 
     return next();

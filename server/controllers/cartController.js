@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable eqeqeq */
 const User = require('../models/UserModel');
 const checkUser = require('../utils/checkUser');
 
@@ -11,21 +9,19 @@ exports.addToCart = async (req, res, next) => {
 
     const user = await User.findById(userId);
 
-    // lägg till det som kommer in direkt
     const newProducts = [
       {
         _id: productId,
         amount,
       },
     ];
-    // lägger in allt som inte är samma pr id som kommer in
+
     for (let i = 0; i < user.cart.length; i++) {
       if (productId != user.cart[i]._id) {
         newProducts.push(user.cart[i]);
       }
     }
 
-    // Lägger till hela newproducts ist för olika mongoose queries
     const newUser = await User.findByIdAndUpdate(
       userId,
       { $set: { cart: newProducts } },
