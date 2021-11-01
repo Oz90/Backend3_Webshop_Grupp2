@@ -77,7 +77,19 @@ exports.editProduct = async (req, res) => {
     const image2 = req.body.image2 ? req.body.image2 : 'defaultimage2.jpg';
     const image3 = req.body.image3 ? req.body.image3 : 'defaultimage3.jpg';
     images.push(image1, image2, image3);
-
+    
+    if (
+      !req.body.title
+      || !req.body.description
+      || !req.body.price
+      || !req.body.category
+      || !req.body.manufacturer
+      || !req.body.thumbnail
+    ) {
+      return res
+        .status(400)
+        .json({ errorMessage: 'Please fill in all required fields' });
+    }
     const newProduct = {
       title: req.body.title,
       description: req.body.description,
