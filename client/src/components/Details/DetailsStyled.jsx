@@ -22,6 +22,13 @@ const TextStyled = styled.p`
   padding: .5rem;
   margin-bottom: 1rem;
 `;
+const TextStyledNoBorder = styled.p`
+  font-size: 1rem;
+  color: ${Colors.primary};
+  background-color: ${Colors.white};
+  width: 100%;
+  margin-bottom: 1rem;
+`;
 
 const ButtonStyled = styled.button`
   height: 2rem;
@@ -55,5 +62,6 @@ export {
   ButtonStyled,
   TitleStyled,
   MiddleColumnStyled,
-  CardStyled
+  CardStyled,
+  TextStyledNoBorder
 };

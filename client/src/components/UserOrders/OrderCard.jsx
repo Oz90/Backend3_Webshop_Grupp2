@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import Colors from '../../styleAssets/Colors'
 
 
-const OrderCardStyled = styled.div`
+export const OrderCardStyled = styled.div`
     font-size: 1rem;
   border: 3px solid ${Colors.primary};
   color: ${Colors.primary};

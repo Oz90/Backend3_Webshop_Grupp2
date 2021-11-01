@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import { getAllOrders, toggleOrderIsShipped } from '../fetches/fetches';
-import styled from "styled-components";
-
-const StyledListItem = styled.li`
-border: 3px black solid;
-`
+import { ButtonPrimary } from '../components/Buttons/ButtonsStyled'
+import { ButtonContainer } from '../components/Buttons/ButtonContainer'
+import { OrderCardStyled } from "../components/UserOrders/OrderCard";
+import { TitleStyled, TextStyledNoBorder } from "../components/Details/DetailsStyled";
+import { MiddleColumnStyled } from '../components/Details/DetailsStyled';
+import { HeaderOne } from '../components/Texts/TextsStyled'
 
 export const AdminOrderPage = () => {
     const [orders, setOrders] = useState([]);
@@ -19,23 +21,28 @@ export const AdminOrderPage = () => {
 
 
     return (
-        <div>
-            <ul>
-                {orders.map((order, index) => {
-                    return (
-                        <StyledListItem key={index}>
-                            <p>Order number: {order._id}</p>
-                            <p>Customer: {order.user}</p>
-                            <p>Customer email: {order.email}</p>
-                            <p>Is order currently shipped? {order.isShipped ? "Is shipped" : "Not shipped"}</p>
-                            <button onClick={() => shipOrder(order._id)}>{order.isShipped ? "Cancel shipping" : "Start shipping"}</button>
-                        </StyledListItem>
-
-                    )
-
-                })}
-            </ul>
-
-        </div>
+        <MiddleColumnStyled>
+            <HeaderOne>All Orders</HeaderOne>
+            <ButtonContainer>
+                <Link to="/admin">
+                    <ButtonPrimary>Back</ButtonPrimary>
+                </Link>
+            </ButtonContainer>
+            {orders.map((order, index) => {
+                return (
+                    <OrderCardStyled key={index}>
+                        <TitleStyled>Order number</TitleStyled>
+                        <TextStyledNoBorder>{order._id}</TextStyledNoBorder>
+                        <TitleStyled>Customer</TitleStyled>
+                        <TextStyledNoBorder>{order.user}</TextStyledNoBorder>
+                        <TitleStyled>Customer email</TitleStyled>
+                        <TextStyledNoBorder>{order.email}</TextStyledNoBorder>
+                        <TitleStyled>Is order currently shipped?</TitleStyled>
+                        <TextStyledNoBorder>{order.isShipped ? "Is shipped" : "Not shipped"}</TextStyledNoBorder>
+                        <ButtonPrimary onClick={() => shipOrder(order._id)}>{order.isShipped ? "Cancel shipping" : "Start shipping"}</ButtonPrimary>
+                    </OrderCardStyled>
+                )
+            })}
+        </MiddleColumnStyled>
     );
 };
