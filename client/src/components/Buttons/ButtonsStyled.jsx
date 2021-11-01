@@ -64,8 +64,22 @@ const ButtonDanger = styled(ButtonPrimary)`
       opacity: 0.7;
   }
 `;
+const InputDanger = styled(InputPrimary)`
+  color: ${Colors.white};
+  background-color: ${Colors.danger};
+  :hover {
+      opacity: 0.7;
+  }
+`;
 
 const ButtonSuccess = styled(ButtonPrimary)`
+  color: ${Colors.white};
+  background-color: ${Colors.success};
+  :hover {
+      background-color: ${Colors.success}, 0.7;
+  }
+`;
+const InputSuccess = styled(InputPrimary)`
   color: ${Colors.white};
   background-color: ${Colors.success};
   :hover {
@@ -103,7 +117,9 @@ export {
     InputSecondary,
     ButtonSecondary, 
     ButtonDanger,
+    InputDanger,
     ButtonSuccess,
     RemoveButton,
-    ConfirmInput
+    ConfirmInput,
+    InputSuccess
 };
