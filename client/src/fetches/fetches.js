@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com'
+    baseURL: process.env.API_KEY || 'http://localhost:5000'
 });
 
 export const loginUser = (payload) => url.post('/users/login', payload);

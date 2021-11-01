@@ -19,10 +19,8 @@ import { CartPage } from './Pages/CartPage';
 import { AuthContext } from './context/AuthContext';
 import { MainContainerStyled } from './components/MainContainer/MainContainerStyled';
 import { HeaderStyled } from './components/HeaderContainer/HeaderStyled';
-//import { SideBar } from './components/SideBar/SideBar';
 import { SideBar } from "./components/SideBarContainer/SideBar"
 import { ContentContainerStyled } from './components/ContentContainer/ContentContainerStyled';
-import { FooterStyled } from './components/FooterContainer/FooterStyled';
 import { NavBar } from './components/HeaderContainer/NavBar';
 import { DetailPage } from './Pages/DetailPage';
 
@@ -33,12 +31,8 @@ function App() {
   const [loggedInAdmin, setLoggedInAdmin] = useState(undefined);
   const [cartItemAmount, setCartItemAmount] = useState();
 
-  console.log(process.env.API_KEY);
-
-  // const ourURLs = process.env.API_KEY || 'http://localhost:5000/'
-
   const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com',
+    baseURL: process.env.API_KEY || 'http://localhost:5000',
   });
 
   async function getIsUserLoggedIn() {

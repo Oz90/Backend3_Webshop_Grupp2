@@ -25,11 +25,6 @@ const cartRouter = require('./routes/cart');
 
 const app = express();
 
-// console.log(process.env.API_KEY)
-// console.log(process.env.JWT_SECRET_USER)
-// console.log(process.env.JWT_SECRET_ADMIN)
-// console.log(process.env.CLIENT_URL)
-
 // Middlewares
 app.use(
   cors({
@@ -38,20 +33,12 @@ app.use(
   }),
 );
 
-// app.set('trust proxy', 1);
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use(function (req, res, next) {
-//   res.header('Access-Control-Allow-Origin', req.headers.origin);
-//   res.header('Access-Control-Allow-Credentials', true)
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
