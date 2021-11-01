@@ -136,9 +136,10 @@ exports.loginUser = async (req, res, next) => {
 
       return res
         .cookie('token', token, {
-          httpOnly: true,
-          strict: true,
-          sameSite: "none"
+          // httpOnly: true,
+          // strict: true,
+          sameSite: "none",
+          secure: true
         })
         .send();
     }
