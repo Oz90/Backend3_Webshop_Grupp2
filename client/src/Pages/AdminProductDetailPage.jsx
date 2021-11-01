@@ -5,6 +5,8 @@ import { useParams, useHistory } from "react-router-dom"
 import { ButtonPrimary, InputSuccess, InputDanger } from '../components/Buttons/ButtonsStyled'
 import { ButtonContainerBottom, ButtonContainer } from '../components/Buttons/ButtonContainer'
 import { HeaderOne } from '../components/Texts/TextsStyled'
+import Colors from '../styleAssets/Colors'
+import { Message } from '../components/FeedbackMessages/FeedbackMessages'
 
 import {
     FormContainerStyled,
@@ -18,6 +20,7 @@ export const AdminProductDetailPage = () => {
     const history = useHistory()
     const { id } = useParams();
     const [productValue, setProductValue] = useState([]);
+    const [errorMsg, setErrorMsg] = useState(null);
    
 
     useEffect(() => {
@@ -26,11 +29,12 @@ export const AdminProductDetailPage = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        const { title, price, description, category, manufacturer, thumbnail, image1, image2, image3 } = productValue
-        const payload = { title, price, description, category, manufacturer, thumbnail, image1, image2, image3 }
-        console.log(payload)
-        editSingleProduct(id, payload);
-        history.push("/admin/products")
+
+        editSingleProduct(id, productValue)
+            .then(() => { history.push("/admin/products")})
+            .catch((error) => {
+                setErrorMsg(error.response.data.errorMessage);
+            });
     };
 
     const handleOnChange = (e) => {
@@ -80,6 +84,7 @@ export const AdminProductDetailPage = () => {
                 <InputStyled name="image2" type="text" value={productValue.images?.[1]} onChange={handleOnChange} />
                 <LabelStyled for="image3">Image 3</LabelStyled>
                 <InputStyled name="image3" type="text" value={productValue.images?.[2]} onChange={handleOnChange} />
+            {errorMsg && <Message type={Colors.danger} >{errorMsg}</Message>}
                 <ButtonContainerBottom>
                 <InputSuccess type="submit" value="Update product" />
                 <InputDanger onClick={handleDelete} type="button" value="Delete product" />
