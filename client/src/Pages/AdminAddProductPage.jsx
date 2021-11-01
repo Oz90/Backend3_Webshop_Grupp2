@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { addProduct } from '../fetches/fetches';
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 
 import Colors from '../styleAssets/Colors'
 import { Message } from '../components/FeedbackMessages/FeedbackMessages'
+import { InputSuccess, ButtonPrimary } from '../components/Buttons/ButtonsStyled'
+import { ButtonContainer } from '../components/Buttons/ButtonContainer'
+import { HeaderOne } from '../components/Texts/TextsStyled'
 
 import {
     FormContainerStyled,
     FormStyled,
     InputStyled,
-    SubmitStyled
 } from '../components/Form/FormStyled';
 
 export const AdminAddProductPage = () => {
@@ -33,6 +35,12 @@ export const AdminAddProductPage = () => {
     return (
 
         <FormContainerStyled>
+            <HeaderOne>Add Product</HeaderOne>
+            <ButtonContainer>
+                <Link to="/admin">
+                    <ButtonPrimary>Back</ButtonPrimary>
+                </Link>
+            </ButtonContainer>
             <FormStyled onSubmit={handleOnSubmit} onChange={handleOnChange}>
                 <InputStyled name="title" type="text" placeholder="Title" />
                 <InputStyled name="price" type="number" placeholder="Price" />
@@ -51,7 +59,7 @@ export const AdminAddProductPage = () => {
                 <InputStyled name="image1" type="text" placeholder="image1" />
                 <InputStyled name="image2" type="text" placeholder="image2" />
                 <InputStyled name="image3" type="text" placeholder="image3" />
-                <SubmitStyled type="submit" value="Add Product" />
+                <InputSuccess type="submit" value="Add Product" />
             </FormStyled>
             {errorMsg && <Message type={Colors.danger} >{errorMsg}</Message>}
         </FormContainerStyled>
