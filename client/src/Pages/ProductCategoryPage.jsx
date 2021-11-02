@@ -35,7 +35,7 @@ export const ProductCategoryPage = () => {
             <Link key={product._id} to={`/detailpage/${product._id}`}>
               <StyledCard>
                 <StyledImgDiv>
-                  <StyledThumbnail  src={product.thumbnail} alt="" />
+                  <StyledThumbnail  src={product.thumbnail} alt="product" />
                 </StyledImgDiv>
                 <StyledTitleAndPrice>
                   <StyledProductTitle >{product.title}</StyledProductTitle>

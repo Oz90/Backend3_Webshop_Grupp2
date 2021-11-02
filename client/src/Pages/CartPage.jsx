@@ -6,14 +6,13 @@ import { getCart, getSingleProduct, placeOrder, deleteCart } from '../fetches/fe
 
 import { CartCard } from '../components/Cart/CartCard';
 import { CartContentsStyled } from '../components/Cart/CartContentsStyled';
-import { CartSummaryStyled, PlaceOrderButtonStyled } from '../components/Cart/CartSummaryStyled';
+import { CartSummaryStyled } from '../components/Cart/CartSummaryStyled';
 import Colors from '../styleAssets/Colors'
 import { Message } from '../components/FeedbackMessages/FeedbackMessages';
 
 import { ButtonPrimary } from '../components/Buttons/ButtonsStyled';
 import { ButtonContainerBottom } from '../components/Buttons/ButtonContainer';
-import { HeaderThree, P, PriceP } from '../components/Texts/TextsStyled';
-import { InputStyled } from '../components/Form/FormStyled'
+import { PriceP } from '../components/Texts/TextsStyled';
 
 export const CartPage = () => {
   const history = useHistory();

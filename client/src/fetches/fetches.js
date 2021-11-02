@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-// Middleware = Allows HTTP to set cookies
 axios.defaults.withCredentials = true;
 
 const url = axios.create({
     baseURL: process.env.API_KEY || 'http://localhost:5000'
 });
+
+/* const url = axios.create({
+    baseURL: 'https://stark-headland-25678.herokuapp.com'
+}); */
 
 export const loginUser = (payload) => url.post('/users/login', payload);
 export const registerUser = (payload) => url.post('/users/register', payload);
@@ -31,11 +34,3 @@ export const updateCart = (id, payload) => url.post(`cart/add/${id}`, payload);
 export const placeOrder = (payload) => url.post('orders', payload);
 
 export const deleteCart = () => url.post('cart/delete');
-
-// const fetches = {
-//   loginUser,
-//   logoutUser,
-//   registerUser,
-// };
-
-// export default fetches;

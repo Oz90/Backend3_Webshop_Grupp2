@@ -23,7 +23,7 @@ export const NavBar = () => {
         <Left>
           <Logo>
             <Link to="/">
-              <img src={logo} alt="" />
+              <img src={logo} alt="logo" />
             </Link>
           </Logo>
         </Left>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { addProduct } from '../fetches/fetches';
 import { useHistory, Link } from "react-router-dom"
 

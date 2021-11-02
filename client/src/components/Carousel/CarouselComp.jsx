@@ -18,13 +18,13 @@ export const CarouselComp = () => {
         <>
         <Carousel autoPlay axis="horizontal" infiniteLoop interval="5000">
             <div>
-                <img src={product[0]} />
+                <img alt="product" src={product[0]} />
             </div>
             <div>
-                <img src={product[1]} />
+                    <img alt="product" src={product[1]} />
             </div>
             <div>
-                <img src={product[2]} />
+                    <img alt="product" src={product[2]} />
             </div>
         </Carousel> 
         </>
