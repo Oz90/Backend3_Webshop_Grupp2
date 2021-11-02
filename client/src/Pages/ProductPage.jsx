@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getAllProducts } from "../fetches/fetches"
-import { Container } from "../components/ProductPage/ProductPageStyled"
+import { PriceP, StyledProductTitle } from '../components/Texts/TextsStyled'
 import {
   StyledCard,
   StyledImgDiv,
   StyledThumbnail,
-  StyledProductTitle,
   StyledTitleAndPrice,
 } from "../components/StylingProductCategoryPage/StyledProductCategoryPage"
 
@@ -38,7 +37,7 @@ export const ProductPage = () => {
               </StyledImgDiv>
               <StyledTitleAndPrice>
                 <StyledProductTitle>{product.title}</StyledProductTitle>
-                <p>Price {product.price} Kr</p>
+                <PriceP>{product.price} SEK</PriceP>
               </StyledTitleAndPrice>
             </StyledCard>
           </Link>
