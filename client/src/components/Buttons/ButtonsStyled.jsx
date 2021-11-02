@@ -64,6 +64,7 @@ const ButtonDanger = styled(ButtonPrimary)`
       opacity: 0.7;
   }
 `;
+
 const InputDanger = styled(InputPrimary)`
   color: ${Colors.white};
   background-color: ${Colors.danger};
@@ -79,6 +80,7 @@ const ButtonSuccess = styled(ButtonPrimary)`
       background-color: ${Colors.success}, 0.7;
   }
 `;
+
 const InputSuccess = styled(InputPrimary)`
   color: ${Colors.white};
   background-color: ${Colors.success};
@@ -86,6 +88,7 @@ const InputSuccess = styled(InputPrimary)`
       background-color: ${Colors.success}, 0.7;
   }
 `;
+
 const ConfirmInput = styled.input`
     color: ${Colors.white};
     height: 2.65rem;
@@ -98,6 +101,7 @@ const ConfirmInput = styled.input`
             opacity: 0.7;
         }
 `;
+
 const RemoveButton = styled.button`
     color: ${Colors.white};
     height: 2.6rem;
@@ -111,6 +115,21 @@ const RemoveButton = styled.button`
         }
 `;
 
+const LogoutButtonStyled = styled.button`
+background-color: inherit;
+color: white;
+margin-right: 1.5rem;
+border: none;
+cursor: pointer;
+font-size: 1rem;
+font-weight: 400;
+letter-spacing: 1.2px;
+transition: all .2s ease-in-out;
+&:hover {
+    transform: scale(1.1);
+  }
+  `
+
 export {
     ButtonPrimary,
     InputPrimary,
@@ -121,5 +140,6 @@ export {
     ButtonSuccess,
     RemoveButton,
     ConfirmInput,
-    InputSuccess
+    InputSuccess,
+    LogoutButtonStyled
 };

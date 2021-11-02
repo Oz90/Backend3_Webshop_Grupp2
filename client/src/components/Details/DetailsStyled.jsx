@@ -28,13 +28,6 @@ const TextStyledNoBorder = styled.p`
   margin-bottom: 1rem;
 `;
 
-const ButtonStyled = styled.button`
-  height: 2rem;
-  border: 1px solid black;
-  padding: 0 1rem 0 1rem;
-  margin-bottom: 1rem;
-`;
-
 const TitleStyled = styled.p`
   font-size: .9rem;
   color: #939393;
@@ -57,7 +50,6 @@ export {
   ListContainerStyledWide,
   ListStyled,
   TextStyled,
-  ButtonStyled,
   TitleStyled,
   MiddleColumnStyled,
   CardStyled,

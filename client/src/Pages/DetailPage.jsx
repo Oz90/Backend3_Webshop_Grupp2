@@ -1,14 +1,9 @@
 import React, { useEffect , useState,useContext} from 'react'
 import { AuthContext } from '../context/AuthContext';
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { CarouselComp } from '../components/Carousel/CarouselComp'
 import { getSingleProduct, updateCart } from '../fetches/fetches'
 import { DetailPageStyled, DetailsDiv } from '../components/DetailPage/DetailPageStyled'
-import {
-    AmountForm,
-    AmountInput,
-    AmountSubmit,
-  } from '../components/Cart/CartCardStyled';
 import Colors from '../styleAssets/Colors'
 import { Message } from '../components/FeedbackMessages/FeedbackMessages';
 

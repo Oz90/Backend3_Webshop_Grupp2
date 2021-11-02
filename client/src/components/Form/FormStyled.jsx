@@ -31,20 +31,6 @@ const InputStyled = styled.input`
   }
 `;
 
-const SubmitStyled = styled.input`
-  height: 2rem;
-  border: 1px solid black;
-  padding: 0 1rem 0 1rem;
-  margin-bottom: 1rem;
-`;
-
-const ButtonStyled = styled.button`
-  height: 2rem;
-  border: 1px solid black;
-  padding: 0 1rem 0 1rem;
-  margin-bottom: 1rem;
-`;
-
 const LabelStyled = styled.label`
   font-size: .9rem;
   color: #939393;
@@ -55,7 +41,5 @@ export {
   FormContainerStyledWide,
   FormStyled,
   InputStyled,
-  SubmitStyled,
-  ButtonStyled,
   LabelStyled
 };

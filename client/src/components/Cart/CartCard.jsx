@@ -2,20 +2,15 @@ import React, { useState, useContext } from 'react';
 import {useHistory} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 import { removeCartItem, updateCart } from '../../fetches/fetches';
-
-import { InputPrimary, ButtonSecondary, ConfirmInput, RemoveButton } from '../../components/Buttons/ButtonsStyled';
+import { ConfirmInput, RemoveButton } from '../../components/Buttons/ButtonsStyled';
 import { ButtonContainerBottom } from '../../components/Buttons/ButtonContainer';
-import { HeaderThree, P, PriceP, HeaderTwo } from '../../components/Texts/TextsStyled';
+import { PriceP, HeaderTwo } from '../../components/Texts/TextsStyled';
 import { InputStyled, LabelStyled } from '../../components/Form/FormStyled'
-
-
 import {
   CartCardContainer,
   CartCardImage,
   CartCardInfo,
   AmountForm,
-  AmountInput,
-  AmountSubmit,
   FlexRow
 } from './CartCardStyled';
 

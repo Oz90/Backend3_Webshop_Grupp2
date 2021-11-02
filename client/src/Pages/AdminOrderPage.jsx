@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { getAllOrders, toggleOrderIsShipped } from '../fetches/fetches';
 import { ButtonPrimary } from '../components/Buttons/ButtonsStyled'
 import { ButtonContainer } from '../components/Buttons/ButtonContainer'
-import { OrderCardStyled } from "../components/UserOrders/OrderCard";
+import { OrderCardStyled } from '../components/UserOrders/OrderCardStyled'
 import { TitleStyled, TextStyledNoBorder } from "../components/Details/DetailsStyled";
 import { MiddleColumnStyled } from '../components/Details/DetailsStyled';
 import { HeaderOne } from '../components/Texts/TextsStyled'

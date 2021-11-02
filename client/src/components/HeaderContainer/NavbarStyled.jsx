@@ -18,12 +18,6 @@ const Left = styled.div`
   justify-content: flex-start;
   margin-left: 1.5rem;
 `
-/* const Center = styled.div`
-    flex: .1;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-` */
 const Right = styled.div`
   flex: 1;
   display: flex;
