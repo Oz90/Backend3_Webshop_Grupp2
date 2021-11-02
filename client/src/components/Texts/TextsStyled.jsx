@@ -35,7 +35,7 @@ const P = styled.p`
 const PriceP = styled.p`
     font-size: 1.1rem;
     font-weight: 500;
-    letter-spacing: 1.05px;
+    letter-spacing: .5px;
     color: ${Colors.darkGrey};
     margin-top: .5rem; 
 `;
@@ -47,6 +47,17 @@ const ProductP = styled.p`
     margin-top: .5rem; 
 `;
 
+const StyledProductTitle = styled.h2`
+  border: none;
+  cursor: pointer;
+  color: ${Colors.darkGrey};
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+`
+
 
 export {
     HeaderOne,
@@ -54,5 +65,6 @@ export {
     HeaderTwo,
     P,
     PriceP,
-    ProductP
+    ProductP,
+    StyledProductTitle
 };
