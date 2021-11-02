@@ -23,7 +23,7 @@ export const RegisterPage = () => {
     e.preventDefault();
     registerUser(registerValue)
       .then(() => {
-        history.push('/');
+        history.push('/login');
       })
       .catch((error) => {
         setErrorMsg(error.response.data.errorMessage);

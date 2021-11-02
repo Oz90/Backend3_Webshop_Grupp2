@@ -73,20 +73,10 @@ exports.registerUser = async (req, res, next) => {
 
     const savedUser = await newUser.save();
 
-    const token = jwt.sign(
-      {
-        user: savedUser._id,
-      },
-      process.env.JWT_SECRET_USER,
-    );
-
     return res
-      .cookie('token', token, {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true
-      })
-      .send();
+      .status(200)
+      .send()
+      
   } catch (err) {
     console.error('Register:', err);
     return res.status(500).send();
