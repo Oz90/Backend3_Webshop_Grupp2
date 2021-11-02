@@ -46,11 +46,8 @@ export const CartPage = () => {
     });
   }, [products]);
 
-
-  // Tried to fix the cartitem amount for the "red bubble", code lines 41-58.
   useEffect(() => {
     setNewCartItemsAmount(cart.map((item) => item.amount));
-    console.log(newCartItemsAmount);
   }, [cart])
 
   useEffect(() => {
@@ -60,7 +57,6 @@ export const CartPage = () => {
   }, [newCartItemsAmount])
 
   useEffect(() => {
-    console.log("Total: " + totalCartItemsAmount)
     setCartItemAmount(totalCartItemsAmount);
   }, [totalCartItemsAmount])
 

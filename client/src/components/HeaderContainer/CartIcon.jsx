@@ -6,7 +6,6 @@ import { AuthContext } from '../../context/AuthContext';
 export const CartIcon = () => {
   const { cartItemAmount } = useContext(AuthContext);
   useEffect(() => {
-    console.log('hej');
   }, [cartItemAmount]);
 
 

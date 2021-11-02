@@ -11,7 +11,7 @@ function authAdmin(req, res, next) {
 
     return next();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return res.status(401).json({ errorMessage: 'Unauthorized' });
   }
 }

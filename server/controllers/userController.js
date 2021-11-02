@@ -7,7 +7,6 @@ exports.getUser = async (req, res, next) => {
   try {
     const userId = checkUser(req.cookies.token)
     const user = await User.findById(userId);
-    console.log(user)
     res.status(200).json(user);
   } catch (err) {
     console.error(err);
@@ -16,7 +15,6 @@ exports.getUser = async (req, res, next) => {
 }
 
 exports.registerUser = async (req, res, next) => {
-  console.log(req.body);
   try {
     const {
       fullName,
@@ -76,7 +74,7 @@ exports.registerUser = async (req, res, next) => {
     return res
       .status(200)
       .send()
-      
+
   } catch (err) {
     console.error('Register:', err);
     return res.status(500).send();
@@ -126,7 +124,6 @@ exports.loginUser = async (req, res, next) => {
     }
 
     if (!existingUser.isAdmin) {
-      console.log('Not Admin');
       const token = jwt.sign(
         {
           user: existingUser._id,
@@ -155,7 +152,7 @@ exports.loggedInUser = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET_USER);
     return res.send(true);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return res.json(false);
   }
 };
@@ -167,7 +164,7 @@ exports.loggedInAdmin = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET_ADMIN);
     return res.send(true);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return res.json(false);
   }
 };

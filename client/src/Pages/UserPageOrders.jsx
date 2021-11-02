@@ -20,7 +20,6 @@ export const UserPageOrders = () => {
 
     async function getUserData() {
         const fetchedOrderData = await getUserOrders()
-        console.log(fetchedOrderData)
         setOrderData(fetchedOrderData.data);
     }
 

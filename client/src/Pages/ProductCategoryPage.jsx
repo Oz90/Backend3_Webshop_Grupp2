@@ -11,7 +11,6 @@ import {
 
 export const ProductCategoryPage = () => {
   let { id } = useParams()
-  console.log(id)
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
 
@@ -21,7 +20,6 @@ export const ProductCategoryPage = () => {
 
   useEffect(() => {
     filterProducts(id)
-    console.log(products)
   }, [products, id])
 
   const filterProducts = (id) => {
