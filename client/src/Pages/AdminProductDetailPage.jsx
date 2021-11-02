@@ -20,17 +20,28 @@ export const AdminProductDetailPage = () => {
     const history = useHistory()
     const { id } = useParams();
     const [productValue, setProductValue] = useState([]);
+    const [imgValues, setImgValues] = useState([]);
     const [errorMsg, setErrorMsg] = useState(null);
    
 
     useEffect(() => {
-        getSingleProduct(id).then(res => setProductValue(res.data));
+        getSingleProduct(id)
+            .then(res => {
+                setProductValue(res.data)
+                setImgValues({
+                    image1: res.data.images[0],
+                    image2: res.data.images[1],
+                    image3: res.data.images[2]
+                })
+            });
+        
+            
     }, [])
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
 
-        editSingleProduct(id, productValue)
+        editSingleProduct(id, { ...productValue, ...imgValues })
             .then(() => { history.push("/admin/products")})
             .catch((error) => {
                 setErrorMsg(error.response.data.errorMessage);
@@ -39,6 +50,7 @@ export const AdminProductDetailPage = () => {
 
     const handleOnChange = (e) => {
         setProductValue({ ...productValue, [e.target.name]: e.target.value });
+        setImgValues({...imgValues, [e.target.name]: e.target.value})
     };
 
     const handleDelete = () =>{
@@ -79,11 +91,11 @@ export const AdminProductDetailPage = () => {
                 <LabelStyled for="thumbnail">Thumbnail</LabelStyled>
                 <InputStyled name="thumbnail" type="text" value={productValue?.thumbnail} onChange={handleOnChange} />
                 <LabelStyled for="image1">Image 1</LabelStyled>
-                <InputStyled name="image1" type="text" value={productValue.images?.[0]} onChange={handleOnChange} />
+                <InputStyled name="image1" type="text" value={imgValues.image1} onChange={handleOnChange} />
                 <LabelStyled for="image2">Image 2</LabelStyled>
-                <InputStyled name="image2" type="text" value={productValue.images?.[1]} onChange={handleOnChange} />
+                <InputStyled name="image2" type="text" value={imgValues.image2} onChange={handleOnChange} />
                 <LabelStyled for="image3">Image 3</LabelStyled>
-                <InputStyled name="image3" type="text" value={productValue.images?.[2]} onChange={handleOnChange} />
+                <InputStyled name="image3" type="text" value={imgValues.image3} onChange={handleOnChange} />
             {errorMsg && <Message type={Colors.danger} >{errorMsg}</Message>}
                 <ButtonContainerBottom>
                 <InputSuccess type="submit" value="Update product" />
