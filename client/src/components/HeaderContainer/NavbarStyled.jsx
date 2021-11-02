@@ -16,14 +16,14 @@ const Wrapper = styled.div`
 const Left = styled.div`
   flex: 1;
   justify-content: flex-start;
-  margin-left: 1.5rem;
+  margin-left: 3.8rem;
 `
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 1.5rem;
+  margin-right: 3.8rem;
 `
 
 const Logo = styled.span`
