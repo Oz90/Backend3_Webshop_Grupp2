@@ -84,7 +84,7 @@ export const CartPage = () => {
             return <CartCard key={item._id} props={item} />
           })
           :
-          <p>Cart = empty</p>
+          <Message type={Colors.danger}>Your cart is empty</Message>
         }
         {errorMsg && <Message type={Colors.danger}>{errorMsg}</Message>}
       </CartContentsStyled>
