@@ -19,11 +19,6 @@ const StyledThumbnail = styled.img`
   }
 `
 
-const StyledProductTitle = styled.h2`
-  text-align: center;
-  margin: 1rem 0 0.5rem 0;
-`
-
 const StyledTitleAndPrice = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,6 +30,5 @@ export {
   StyledCard,
   StyledImgDiv,
   StyledThumbnail,
-  StyledProductTitle,
   StyledTitleAndPrice,
 }
