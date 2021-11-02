@@ -51,26 +51,24 @@ export const SideBar = () => {
             <StyledUl className="sidebarListItems">
                 {allUniqueCategories.map((category, index) => {
                     return (
-                        <StyledLink>
-                            <Link className="reactLink" to={`/products/${category}`} >
-                                <StyledLi key={index}>{category}</StyledLi>
-                            </Link>
-                        </StyledLink>);
+                      <StyledLink key={index}>
+                        <Link className="reactLink" to={`/products/${category}`} >
+                          <StyledLi key={index}>{category}</StyledLi>
+                        </Link>
+                      </StyledLink>);
                 })}
                 <SearchContainer>
-                    <HiSearch /> 
-                    <Input 
-                        placeholder="Search products"
-                        onChange={handleOnChange}/>
+                  <HiSearch /> 
+                  <Input 
+                      placeholder="Search products"
+                      onChange={handleOnChange}/>
                 </SearchContainer>
                 {filteredProducts.map((product) => {
-                    return (
-                        <StyledLink>
-                        <a href={`/detailpage/${product._id}`}>
-                            <StyledLi>{product.title}</StyledLi>
-                        </a>
-                        </StyledLink>
-                    )
+                  return (
+                    <StyledLink key={product._id} href={`/detailpage/${product._id}`}>
+                      <StyledLi key={product._id}>{product.title}</StyledLi>
+                    </StyledLink>
+                  )
                 })}
             </StyledUl>
         </SideBarStyled >

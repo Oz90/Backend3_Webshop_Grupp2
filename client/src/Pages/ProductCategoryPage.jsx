@@ -32,7 +32,7 @@ export const ProductCategoryPage = () => {
       {filteredProducts.map((product, index) => {
         return (
           <>
-            <Link to={`/detailpage/${product._id}`}>
+            <Link key={product._id} to={`/detailpage/${product._id}`}>
               <StyledCard>
                 <StyledImgDiv>
                   <StyledThumbnail  src={product.thumbnail} alt="" />
