@@ -3,8 +3,6 @@ import Colors from '../../styleAssets/Colors.js';
 
 
 const ListContainerStyledWide = styled.div`
-  padding: 2rem;
-  margin: auto;
   width: 80%;
 `;
 

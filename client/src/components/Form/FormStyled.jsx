@@ -7,7 +7,6 @@ const FormContainerStyled = styled.div`
   width: 70vw;
 `;
 const FormContainerStyledWide = styled.div`
-  padding: 2rem;
   width: 80%;
 `;
 
