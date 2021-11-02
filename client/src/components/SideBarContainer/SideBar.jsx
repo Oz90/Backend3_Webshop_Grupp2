@@ -51,12 +51,11 @@ export const SideBar = () => {
             <StyledUl className="sidebarListItems">
                 {allUniqueCategories.map((category, index) => {
                     return (
-                      <StyledLink key={index}>
-                        <Link className="reactLink" to={`/products/${category}`} >
+                        <StyledLink key={index} className="reactLink" to={`/products/${category}`} >
                           <StyledLi key={index}>{category}</StyledLi>
-                        </Link>
-                      </StyledLink>);
-                })}
+                        </StyledLink>);
+                      })
+                    }
                 <SearchContainer>
                   <HiSearch /> 
                   <Input 
