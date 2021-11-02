@@ -40,11 +40,19 @@ const PriceP = styled.p`
     margin-top: .5rem; 
 `;
 
+const ProductP = styled.p`
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: ${Colors.primary};
+    margin-top: .5rem; 
+`;
+
 
 export {
     HeaderOne,
     HeaderThree,
     HeaderTwo,
     P,
-    PriceP
+    PriceP,
+    ProductP
 };

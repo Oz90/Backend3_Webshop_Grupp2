@@ -18,6 +18,7 @@ import {
 
 import { ButtonPrimary } from '../components/Buttons/ButtonsStyled'
 import { ButtonContainer } from '../components/Buttons/ButtonContainer'
+import { ProductP } from '../components/Texts/TextsStyled'
 
 
 export default function UserPageOrderDetails() {
@@ -75,10 +76,9 @@ export default function UserPageOrderDetails() {
                                 <CartCardContainerBorder>
                                     <CartCardImage src={product.thumbnail} alt={product.title}/>
                                     <CartCardInfo>
-
-                                    <p>Title: {product.title}</p>
-                                    <p>Amount: {product.amount} </p>
-                                    <p>price: {product.price} SEK</p>
+                                        <ProductP>Title: {product.title}</ProductP>
+                                        <ProductP>Amount: {product.amount} </ProductP>
+                                        <ProductP>price: {product.price} SEK</ProductP>
                                     </CartCardInfo>
                                 </CartCardContainerBorder>
                             </>       
