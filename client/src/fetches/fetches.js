@@ -2,13 +2,13 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-const url = axios.create({
-    baseURL: process.env.API_KEY || 'http://localhost:5000'
-});
-
 /* const url = axios.create({
-    baseURL: 'https://stark-headland-25678.herokuapp.com'
+    baseURL: process.env.API_KEY || 'http://localhost:5000'
 }); */
+
+const url = axios.create({
+    baseURL: 'https://stark-headland-25678.herokuapp.com'
+});
 
 export const loginUser = (payload) => url.post('/users/login', payload);
 export const registerUser = (payload) => url.post('/users/register', payload);
