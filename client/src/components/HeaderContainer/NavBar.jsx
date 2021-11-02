@@ -41,7 +41,6 @@ export const NavBar = () => {
               ) : null}
               <Link to="/cart">
                 <StyledBtn>
-                  <StyledNotification>1</StyledNotification>
                   <BsCart3 size={25} />
                 </StyledBtn>
               </Link>
